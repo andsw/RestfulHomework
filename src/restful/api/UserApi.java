@@ -75,18 +75,19 @@ public class UserApi {
 	
 	@POST
 	@Path("/logout")
-	@Consumes("application/json;charset=UTF-8")
 	@Produces("application/json;charset=UTF-8")
 	public Result logout(@Context final HttpServletRequest httpServletRequest, @Context final HttpServletResponse httpServletResponse) {
-		Result result = new Result(1, "登录失败", null, "");//1表示失败
+		Result result = new Result(0, "登出", null, "/login.jsp");//1表示失败
 		Cookie[] cookies = httpServletRequest.getCookies();
 		if(cookies != null) {
 			for(Cookie cookie : cookies) {
 				//将MaxAge设置为0，然后再添加进response，相当当于删除！
+				System.out.println(cookie.getName());
 				cookie.setMaxAge(0);
 				httpServletResponse.addCookie(cookie);
 			}
 		}
+		System.out.println("登出成功！");
 		return result;
 	}
 	

@@ -39,7 +39,7 @@ public class CheckCodeApi extends HttpServlet {
         g.fillRect(200,500,W,H);  
         drawLines(g);  
         drawCharacter(g);
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(true);
         
         /*String existedCheckCode = (String) session.getAttribute("checkcode");
         //若原先已存在验证码,则先将原来的内容清除，不然会和新内容产生叠加！
@@ -53,6 +53,7 @@ public class CheckCodeApi extends HttpServlet {
         session.setMaxInactiveInterval(10); // 设置session过期时间为10分钟！
         System.out.println("验证码生成成功 ： " + session.getAttribute("checkcode"));
         ImageIO.write(img, "jpg", response.getOutputStream());
+        builder.setLength(0);
         g.dispose();//释放资源！  
     }  
       
