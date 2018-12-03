@@ -82,8 +82,10 @@ public class UserApi {
 		if(cookies != null) {
 			for(Cookie cookie : cookies) {
 				//将MaxAge设置为0，然后再添加进response，相当当于删除！
-				System.out.println(cookie.getName());
+				System.out.println(cookie.getName() + " cookie 清除成功！");
 				cookie.setMaxAge(0);
+				cookie.setPath("/");
+				//记住啊！！！！！！！！这个要填写相同的路径然后才可以删除！！！！！！
 				httpServletResponse.addCookie(cookie);
 			}
 		}
