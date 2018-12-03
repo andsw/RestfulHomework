@@ -6,7 +6,7 @@
 	
 	<context-param>
 		<param-name>resteasy.resources</param-name>
-		<param-value>restful.api.UserApi, restful.api.UserOperationApi</param-value>
+		<param-value>restful.api.UserApi, restful.api.UserOperationApi, restful.api.ClothesTypeApi</param-value>
 	</context-param>
 
 	<context-param>
@@ -52,6 +52,10 @@
 	<servlet-mapping>
 		<servlet-name>Resteasy</servlet-name>
 		<url-pattern>/useroperate/*</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+		<servlet-name>Resteasy</servlet-name>
+		<url-pattern>/clothestype/operate</url-pattern>
 	</servlet-mapping>
 	<filter>
 		<filter-name>SetCharacterEncoding</filter-name>

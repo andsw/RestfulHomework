@@ -19,8 +19,8 @@ public class ClothesTypeApi {
 	
 	private ClothesTypeDao clothesTypeDao;
 	
-	public void setClothesTypeDao(ClothesTypeDao clothesTypeDao) {
-		this.clothesTypeDao = clothesTypeDao;
+	public ClothesTypeApi() {
+		clothesTypeDao = new ClothesTypeDao();
 	}
 	
 	@Path("/operate")
@@ -28,6 +28,7 @@ public class ClothesTypeApi {
 	@Consumes("application/json;charset=UTF-8")
 	@Produces("application/json;charset=UTF-8")
 	public Result addClothesType(ClothesType clothesType) {
+		System.out.println("/clothestype/operate post...");
 		Result result = new Result(1,"类别已存在", null,"");
 		if(clothesTypeDao.add(clothesType)) {
 			result.setDescription("添加成功");
@@ -38,13 +39,14 @@ public class ClothesTypeApi {
 	
 	@Path("/operate")
 	@GET
-	@Consumes("application/json;charset=UTF-8")
 	@Produces("application/json;charset=UTF-8")
 	public Result getAllClothesType() {
-		Result result = new Result(1,"类别已存在", null,"");
+		System.out.println("/clothestype/operate get...");
+		Result result = new Result(1, "获取失败", null,"");
 		List<ClothesType> clothesTypeList = clothesTypeDao.list();
 		if(clothesTypeList != null) {
 			result.setCode(0);
+			result.setDescription("获取成功");
 			result.setData(clothesTypeList);
 		}
 		return result;
@@ -55,6 +57,7 @@ public class ClothesTypeApi {
 	@Consumes("application/json;charset=UTF-8")
 	@Produces("application/json;charset=UTF-8")
 	public Result updateClothesType(ClothesType clothesType) {
+		System.out.println("/clothestype/operate put...");
 		Result result = new Result(1,"修改失败", null,"");
 		if(clothesTypeDao.update(clothesType)) {
 			result.setDescription("修改成功");
@@ -68,6 +71,7 @@ public class ClothesTypeApi {
 	@Consumes("application/json;charset=UTF-8")
 	@Produces("application/json;charset=UTF-8")
 	public Result deleteClothesType(ClothesType clothesType) {
+		System.out.println("/clothestype/operate delete...");
 		Result result = new Result(1,"删除失败", null, "");
 		if(clothesTypeDao.delete(clothesType)) {
 			result.setDescription("删除成功");

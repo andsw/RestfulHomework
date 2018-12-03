@@ -7,29 +7,29 @@ import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "tbl_clothesType")
+@Table(name = "tbl_clothes_type")
 @NamedQueries({
     @NamedQuery(name = "ClothesType.findAll", query = "SELECT clothesType FROM ClothesType clothesType"),
-    @NamedQuery(name = "ClothesType.listByName", query = "SELECT clothesType FROM ClothesType clothesType where clothesType.num like :num")
+    @NamedQuery(name = "ClothesType.listByName", query = "SELECT clothesType FROM ClothesType clothesType where clothesType.mark like :mark")
 })
 public class ClothesType extends IdEntity {
-	private String num;//最大长度为20的字符串
+	private String mark;//最大长度为20的字符串
 	private String name;//最大长度为10字符串
 	
 	public ClothesType() {}
 	
 	public ClothesType(String num, String name) {
 		super();
-		this.num = num;
+		this.mark = num;
 		this.name = name;
 	}
 
-	public String getNum() {
-		return num;
+	public String getMark() {
+		return mark;
 	}
 
-	public void setNum(String num) {
-		this.num = num;
+	public void setMark(String mark) {
+		this.mark = mark;
 	}
 
 	public String getName() {
@@ -42,6 +42,6 @@ public class ClothesType extends IdEntity {
 
 	@Override
 	public String toString() {
-		return "ClothesType [num=" + num + ", name=" + name + ", id=" + id + "]";
+		return "ClothesType [mark=" + mark + ", name=" + name + ", id=" + id + "]";
 	}
 }
