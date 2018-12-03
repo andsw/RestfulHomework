@@ -22,6 +22,9 @@ import javax.servlet.http.HttpServletResponse;
  * 而如果是已登录状态访问登录界面或是注
  * 册界面机会直接跳转到主页！想要访问的
  * 话必须先登出此用户
+ * 
+ * 有了这个就可以直接在登录成功后直接刷
+ * 新登录界面进入主页了！
  * */
 
 public class ToAllPageNormalFilter implements Filter {

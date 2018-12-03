@@ -50,7 +50,7 @@ public class CheckCodeApi extends HttpServlet {
         }*/
         
         session.setAttribute("checkcode", builder.toString());
-        session.setMaxInactiveInterval(10); // 设置session过期时间为10分钟！
+        //session.setMaxInactiveInterval(10); // 设置session过期时间为10分钟！
         System.out.println("验证码生成成功 ： " + session.getAttribute("checkcode"));
         ImageIO.write(img, "jpg", response.getOutputStream());
         builder.setLength(0);
