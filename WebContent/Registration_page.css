@@ -1,0 +1,189 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+container{
+	width: 880px;
+	height: 660px;
+	margin: 0 0 0 25%;
+}
+body{
+	background:url(images/background.png);
+	background-size: 1020px 765px;
+	background-position:center top;
+    background-repeat:no-repeat;
+}
+input{
+	width: 70%;
+	margin-top: 10%;
+	border-radius: 5px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: solid;
+	border-bottom-color: gray;
+	background-color: rgba(255,255,255,0.1);
+}
+
+.container .sign_in{
+   position: absolute; 
+   z-index: 6;
+   width: 18.2%;
+   left: 24%;
+   top: 65px;
+    height:32px;
+   border:0; 
+   background:url(images/sign_in.png) no-repeat left top
+   }
+   .container .ReturnLogin{
+   position: absolute;
+   z-index: 6;
+   top: 400px;
+   left: 27%;
+   width: 5%;
+   height: 2.7%;
+   background:url(images/ReturnLogin.jpg) no-repeat left top
+   }
+   .container .Click_registration{
+    position: absolute;
+    z-index: 6;
+   top: 400px;
+   left: 33%;
+   width: 5%;
+   height: 2.7%;
+    background:url(images/Click_registration.jpg) no-repeat left top
+   }
+     .container .box{
+       position: absolute;
+       z-index: 3;
+       background: #cdcdcd;
+       top: 10%;
+       left: 24%;
+       width: 18.2%;
+       height: 60%;
+  filter:alpha(opacity=60);
+  opacity:0.6;
+   } 
+   .container .InputName{
+    position: absolute;
+    z-index: 4;
+    top: 105px;
+    left: 26%;
+    font-family:"宋体";
+}
+   .container .InputTrueName{
+    position: absolute;
+    z-index: 4;
+    top: 135px;
+    left: 26%;
+    font-family:"宋体";
+}
+.container .PassWord{
+    position: absolute;
+    z-index: 4;
+    top: 165px;
+    left: 26%;
+    font-family:"宋体";
+}
+.container .Password_confirmation{
+    position: absolute;
+    z-index: 4;
+    top: 195px;
+    left: 26%;
+    font-family:"宋体";
+}
+.container .Sex{
+    position: absolute;
+    z-index: 4;
+    top: 225px;
+    left: 26%;
+    font-family:"宋体";
+}
+.container .Sex1{
+    position: absolute;
+    z-index: 5;
+    top: 225px;
+    left: 31%;
+    font-family:"宋体";
+}
+.container .Sex2{
+    position: absolute;
+    z-index: 5;
+    top: 225px;
+    left: 37%;
+    font-family:"宋体";
+}
+
+.container .woman1{
+    position: absolute;
+    z-index: 5;
+    top:140px;
+    left: 27%;
+    width:100px; 
+    height:100px;  
+    border:0; 
+  filter:alpha(opacity=60);
+  opacity:0.9;
+    background:url(images/woman1.png) no-repeat left top
+}
+.container .woman2{
+    position: absolute;
+    z-index: 5;
+    top: 140px;
+    left: 34%;
+    width:1000px; 
+    height:100px;  
+    border:0; 
+  filter:alpha(opacity=60);
+  opacity:0.9;
+    background:url(images/woman2.png) no-repeat left top
+}
+.container .man1{
+    position: absolute;
+    z-index: 5;
+    top:140px;
+    left: 27%;
+    width:1000px; 
+    height:100px;  
+    border:0; 
+  filter:alpha(opacity=60);
+  opacity:0.9;
+    background:url(images/man1.png) no-repeat left top
+}
+.container .man2{
+    position: absolute;
+    z-index: 5;
+    top: 140px;
+    left: 34%;
+    width:1000px; 
+    height:100px;  
+    border:0; 
+  filter:alpha(opacity=60);
+  opacity:0.9;
+    background:url(images/man2.png) no-repeat left top
+}
+.container .InputBox1{
+    position: absolute;
+    z-index: 5;
+    top:90px;
+    left: 31%;
+    
+}
+.container .InputBox2{
+    position: absolute;
+    z-index: 5;
+    top:120px;
+    left: 31%;
+}
+.container .InputBox3{
+    position: absolute;
+    z-index: 5;
+    top:150px;
+    left: 31%;
+}
+.container .InputBox4{
+    position: absolute;
+    z-index: 5;
+    top:180px;
+    left: 31%;
+}

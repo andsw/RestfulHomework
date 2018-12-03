@@ -1,0 +1,56 @@
+*{
+	padding: 0;
+	margin: 0;
+}
+body{
+	background:url(../img/loginWindowBg1920.png);
+	background-size: 1020px 765px;
+	background-position:center top;
+    background-repeat:no-repeat;
+}
+
+#wrapper{
+	width: 880px;
+	height: 660px;
+	margin: 0 0 0 25%;
+}
+.loginBox{
+	width: 27%;
+	height: 55%;
+	display: inline-block;
+	margin-top: 15%;
+	background-color: white;
+	background-color: rgba(255,255,255,0.3);
+	box-shadow: 4px 4px 10px black;
+	text-align: center;
+}
+.loginBox img{
+	width:50%;
+	height: 35%;
+	margin-top: 9%;
+}
+.loginBox input{
+	width: 90%;
+	margin-top: 10%;
+	border-radius: 5px;
+	border-top-style: none;
+	border-right-style: none;
+	border-left-style: none;
+	border-bottom-style: solid;
+	border-bottom-color: gray;
+	background-color: rgba(255,255,255,0.1);
+}
+.loginBox button{
+	width: 90%;
+	height:11%;
+	color: white;
+	border-radius: 10px;
+}
+#logoword{
+	display: inline-block;
+	text-align: center;
+}
+#logoword img{
+	width: 75%;
+	height: 75%;
+}
