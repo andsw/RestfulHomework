@@ -2,8 +2,10 @@
 	padding: 0;
 	margin: 0;
 }
-body{
-	background:url(../img/loginWindowBg1920.png);
+#container{
+	width: 1020px;
+	margin: 0 auto;
+	background:url(../img/ui/loginWindowBg1920.png);
 	background-size: 1020px 765px;
 	background-position:center top;
     background-repeat:no-repeat;
@@ -16,7 +18,7 @@ body{
 }
 .loginBox{
 	width: 27%;
-	height: 55%;
+	height: 65%;
 	display: inline-block;
 	margin-top: 15%;
 	background-color: white;
@@ -26,13 +28,14 @@ body{
 }
 .loginBox img{
 	width:50%;
-	height: 35%;
-	margin-top: 9%;
+	height: 28%;
+	margin-top: 0%;
 }
 .loginBox input{
 	width: 90%;
 	margin-top: 10%;
 	border-radius: 5px;
+	padding: 1px;
 	border-top-style: none;
 	border-right-style: none;
 	border-left-style: none;
@@ -40,11 +43,26 @@ body{
 	border-bottom-color: gray;
 	background-color: rgba(255,255,255,0.1);
 }
+#identifyingCode{
+	width: 40%;
+	height: 10%;
+	float: left;
+	margin-left: 5%;
+	padding: 1px;
+	font-size: 20px;
+}
 .loginBox button{
 	width: 90%;
 	height:11%;
 	color: white;
 	border-radius: 10px;
+	outline: none;
+	background: url(../img/btGlass.png)no-repeat;
+	background-size: 100% 100%;
+}
+#checkcode{
+	width: 45%;
+	height:11%;
 }
 #logoword{
 	display: inline-block;
