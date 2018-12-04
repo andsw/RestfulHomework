@@ -43,7 +43,7 @@
 	border-bottom-color: gray;
 	background-color: rgba(255,255,255,0.1);
 }
-#identifyingCode{
+#inputCheckCode{
 	width: 40%;
 	height: 10%;
 	float: left;
