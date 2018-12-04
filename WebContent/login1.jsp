@@ -59,15 +59,15 @@
 		user.password = $("#password").val();
 		var code = $("#inputCheckCode").val();
 		
-		request("POST","<%=basePath%>/user/login?checkcode=" + code, user, toMain, serverError, true);
+		request("POST","<%=basePath%>/user/login?checkcode=" + code, user, toMain(), serverError, true);
 	}
 	
 	function toRegisterPage(){
-		request("GET","<%=basePath%>/register.jsp", "", drawList, serverError, true);
+		request("GET","<%=basePath%>/register.jsp", "", "", "", true);
 	}
 	
 	function toMain(){
-		window.location.href="/suit/jsp/index.jsp";
+		window.location.href="./jsp/index.jsp";
 	}
 
     function request(method,url,data,successCallBack,errorCallBack,async){
