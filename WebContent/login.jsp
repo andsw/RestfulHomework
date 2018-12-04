@@ -7,24 +7,45 @@
                                       request.getServerName() + ":" +
                                       request.getServerPort() + path;
 %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<!DOCTYPE html>
 <html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>登录</title>
-<link rel="stylesheet" type="text/css" href="<%=basePath%>/css/main.css" />
-<script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
-</head>
-<body>
-	<h1>登录界面</h1>
-	<input id="id" type = "hidden"/>
-	账 号 ： <input type="text" id="username" placeholder="请输入你的用户名" name="username"><br>
-	密 码 ： <input type="password" id="password" name="password"><br>
-	验证码 ：<input type="text" id="checkCode"	name="checkCode">
-		<img src="<%=basePath%>/checkcode" width="120px" height="50px"/>
-	<button onclick="login()">登录</button>
-</body>
-<script>
+
+	<head>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="css/login.css" />
+		<script language="JavaScript" type="text/javascript" src="js/login.js"></script>
+		<title>登录</title>
+		<link rel="stylesheet" type="text/css" href="<%=basePath%>/css/main.css" />
+		<script type="text/javascript" src="<%=basePath%>/js/jquery.min.js"></script>
+		<script type="text/javascript">
+          function refresh(){
+        	  var time = new Date().getTime();
+        	  document.getElementById("checkcode").src="<%=basePath%>/checkcode?d="+time;
+          }
+        </script>
+	</head>
+
+	<body>
+		<div id="container">
+			<div id="wrapper">
+				<div class="loginBox">
+					<img src="img/ui/logo.png" />
+					<input type="text" placeholder="请输入用户名" id="username"></input>
+					<input type="password" placeholder="" id="password"></input><br/>
+					<input type="text" placeholder="验证码" id="inputCheckCode"></input><br/>
+					<img src="<%=basePath%>/checkcode" width="120px" height="50px" 
+					id="checkcode" onclick="refresh()"/>
+					<button onclick="login()" style="background-color: #575757;margin-top: 6%;">我要登录</button><br/>
+					<button onclick="toRegisterPage()" style="background-color: #C4C4C4;margin-top: 2%;">我要注册</button>
+				</div>
+				<div id="logoword">
+					<img src="img/ui/logoWord.png" />
+				</div>
+			</div>
+		</div>
+
+	</body>
+	<script>
 
 <!-- 可以试试加密！！！使用cookie存储密钥，将机密后的密码上传至服务器-->
 
@@ -36,13 +57,17 @@
 		var user = {};
 		user.username = $("#username").val();
 		user.password = $("#password").val();
-		var code = $("#checkCode").val();
+		var code = $("#inputCheckCode").val();
 		
-		request("POST","<%=basePath%>/user/login?checkcode=" + code, user, drawList, serverError, true);
+		request("POST","<%=basePath%>/user/login?checkcode=" + code, user, toMain(), serverError, true);
 	}
 	
-	function drawList(responseData){
-		showMessage(responseData);
+	function toRegisterPage(){
+		window.location.href="./register.jsp";
+	}
+	
+	function toMain(){
+		window.location.href="./jsp/index.jsp";
 	}
 
     function request(method,url,data,successCallBack,errorCallBack,async){
