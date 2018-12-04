@@ -30,7 +30,7 @@ public class PermissionValidateFilter implements ContainerRequestFilter{
 
 	@Override
 	public void filter(ContainerRequestContext context) throws IOException {
-		System.out.println("\n进入PermissionValidateFilter");
+		System.out.println("\n进入权限过滤器");
 		UriInfo uriInfo = context.getUriInfo();
 		String path = uriInfo.getPath();
 		
@@ -72,7 +72,7 @@ public class PermissionValidateFilter implements ContainerRequestFilter{
 				}
 			}
 		}
-		System.out.println("\n离开PermissionValidateFilter");
+		System.out.println("离开权限过滤器\n");
 	}
 
 }

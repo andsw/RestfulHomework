@@ -51,8 +51,6 @@ public class ToAllPageNormalFilter implements Filter {
 	public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain)
 			throws IOException, ServletException {
 		
-		System.out.println("\n进入ToAllPageNormalFilter");
-		
 		//先获取登录状态！
 		HttpServletRequest request = (HttpServletRequest)servletRequest;
 		HttpServletResponse response = (HttpServletResponse)servletResponse;
@@ -60,7 +58,6 @@ public class ToAllPageNormalFilter implements Filter {
 		String isLogged = "";//cookie或者没有登录信息这个都为空字符串！
 		Cookie[] cookies = request.getCookies();
 		if(cookies != null) {
-			System.out.println("Cookie length = " + cookies.length);
 			for(Cookie cookie : cookies) {
 				if("hasLogged".equals(cookie.getName())) {
 					isLogged = cookie.getValue() == null ? "" : cookie.getValue();
@@ -70,9 +67,14 @@ public class ToAllPageNormalFilter implements Filter {
 		
 		// 获得请求页面路径
 		String path = request.getRequestURI();
-		System.out.println("path =" + path);
-		System.out.println("isLogged =" + 
-		(isLogged.equals("") ? "空字符串" : isLogged));
+		
+		if(path != null && !path.endsWith(".js") && !path.endsWith(".css") 
+				&& !path.endsWith(".png") && !path.endsWith(".jpg")) {
+			System.out.println("\n进入页面过滤器");
+			System.out.println("path =" + path);
+			System.out.println("isLogged = " + 
+			(isLogged.equals("") ? "空字符串" : isLogged));
+		}
 		
 		if(path != null && path.endsWith(".jsp")) {
 			
@@ -83,6 +85,7 @@ public class ToAllPageNormalFilter implements Filter {
 				//未登录状态且访问的还不是登陆或注册页面！
 				System.out.println("未登录，跳转到登录界面");
 				response.sendRedirect("/suit/login.jsp");
+				System.out.println("离开页面过滤器\n");
 				return;
 			} else if("true".equals(isLogged) 
 					&& ("/suit/login.jsp".equals(path) 
@@ -91,11 +94,13 @@ public class ToAllPageNormalFilter implements Filter {
 				System.out.println("已登录，跳转到主页界面");
 				//request.getRequestDispatcher("/jsp/main.jsp").forward(request, response);
 				response.sendRedirect("/suit/jsp/index.jsp");
+				System.out.println("离开页面过滤器\n");
 				return;
 			} 
 		}
-		
-		System.out.println("\n离开ToAllPageNormalFilter\n");
+		if(path != null && !path.endsWith(".js") && !path.endsWith(".css") 
+				&& !path.endsWith(".png") && !path.endsWith(".jpg"))
+			System.out.println("离开页面过滤器\n");
 		filterChain.doFilter(request, response);
 	}
 

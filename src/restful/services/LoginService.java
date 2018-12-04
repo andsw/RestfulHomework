@@ -20,6 +20,7 @@ public class LoginService extends BaseService{
 		} else if(!user.getPassword().equals(users.get(0).getPassword())) {
 			result.setData("密码错误！");
 		} else {
+			System.out.println("'oldpw : '+ " + users.get(0).getPassword() + " == newpw : " + user.getPassword() +" 所以成功登录");
 			result.setDescription("成功登录");
 			result.setCode(0);//0表示成功
 			result.setData(users.get(0));

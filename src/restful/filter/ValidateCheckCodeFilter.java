@@ -20,7 +20,7 @@ public class ValidateCheckCodeFilter implements ContainerRequestFilter{
 	@Override
 	public void filter(final ContainerRequestContext context) throws IOException {
 		
-		System.out.println("\n进入ValidateCheckCodeFilter");
+		System.out.println("\n进入验证码核实过滤器");
 		
 		HttpSession session = httpServletRequest.getSession();
 		String checkCode = (String) session.getAttribute("checkcode");
@@ -44,7 +44,7 @@ public class ValidateCheckCodeFilter implements ContainerRequestFilter{
 			        .build());
 			}
 		}
-		System.out.println("\n离开ValidateCheckCodeFilter");
+		System.out.println("离开验证码核实过滤器\n");
 	}
 
 }

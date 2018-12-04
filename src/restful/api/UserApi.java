@@ -35,16 +35,13 @@ public class UserApi {
 	@Produces("application/json;charset=UTF-8")
 	//public Result login(@DefaultValue(" ") @QueryParam("checkcode") final String inputCheckCode, final User user, @Context final HttpServletRequest httpServletRequest)
 	public Result login(final User user, @Context HttpServletResponse httpServletResponse) {
+		System.out.println("访问到登录api方法");
 		Result result = new Result(1, "登录失败", null, "");//1表示失败, 返回的改成了null而非user是不想传输过多没用的数据影响速度！
 		loginService.service(user, result);
 		if(0 == result.getCode()) {
 			//用cookie记录登录状态和用户信息，以控制网站的登录用户状态和数据访问权限！不保存密码，保证安全！
 			User userIndatabase = (User)result.getData();
-
-			/*System.out.println("userIndatabase.getUsername() = " + userIndatabase.getUsername());
-			System.out.println("userIndatabase.getPermission() = " + userIndatabase.getPermission());
-			System.out.println("userIndatabase.getRealName() = " + userIndatabase.getRealName());
-			System.out.println("userIndatabase.getGender() = " + userIndatabase.getGender());*/
+			System.out.println("登录时正确用户信息：" + userIndatabase);
 			
 			Cookie[] cookies = new Cookie[5];
 			cookies[0] = new Cookie("hasLogged", "true");
@@ -56,6 +53,7 @@ public class UserApi {
 				System.out.println("放入cookie的中文转码失败！");
 			}
 			cookies[4] = new Cookie("isMan","" + userIndatabase.getGender());
+			System.out.println("用户信息已放入cookie");
 			
 			/*
 			 * 删除cookie的步骤！
@@ -70,6 +68,8 @@ public class UserApi {
 				httpServletResponse.addCookie(cookie);
 			}
 		}
+		System.out.println("result" + result.toString());
+		System.out.println("退出登录api方法");
 		return result;
 	}
 	
@@ -77,6 +77,7 @@ public class UserApi {
 	@Path("/logout")
 	@Produces("application/json;charset=UTF-8")
 	public Result logout(@Context final HttpServletRequest httpServletRequest, @Context final HttpServletResponse httpServletResponse) {
+		System.out.println("访问到登出api方法");
 		Result result = new Result(0, "登出", null, "/login.jsp");//1表示失败
 		Cookie[] cookies = httpServletRequest.getCookies();
 		if(cookies != null) {
@@ -90,6 +91,7 @@ public class UserApi {
 			}
 		}
 		System.out.println("登出成功！");
+		System.out.println("退出登出api方法");
 		return result;
 	}
 	
@@ -98,9 +100,11 @@ public class UserApi {
 	@Consumes("application/json;charset=UTF-8")
 	@Produces("application/json;charset=UTF-8")
 	public Result register(final User user) {
+		System.out.println("访问到注册api方法");
 		Result result = new Result(1, "注册失败", null, "");
 		registerService.service(user, result);
 		System.out.println("注册user：" + user);
+		System.out.println("退出注册api方法");
 		return result;
 	}
 }

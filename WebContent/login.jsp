@@ -67,7 +67,7 @@
 	}
 	
 	function toMain(){
-		window.location.href="./jsp/index.jsp";
+		//window.location.href="./jsp/index.jsp";
 	}
 
     function request(method,url,data,successCallBack,errorCallBack,async){
