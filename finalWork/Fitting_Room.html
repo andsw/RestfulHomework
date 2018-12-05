@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <title></title>
+    <script src="https://www.imooc.com/static/lib/jquery/1.9.1/jquery.js"></script>
+        		<script type="text/javascript">
+			window.onload = function() {
+				resetPage();
+			}
+
+			window.onresize = function() {
+				resetPage();
+			}
+
+			function resetPage() {
+				var deviceWidth = document.documentElement.clientWidth,
+					scale = deviceWidth / 1090;
+				document.body.style.zoom = scale;
+			}
+		</script>
+    <style>
+    	*{
+	padding: 0;
+	margin: 0;
+}
+    .content {
+        width: 800px;
+        height: 0px;
+        
+    }
+    input{
+    position: absolute;
+    top: 20px;
+
+	border-radius: 5px;
+	border-bottom-style: solid;
+	border-bottom-color: gray;
+	background-color: rgba(255,255,255,0.1);
+}
+			body {
+	background:url(img/ui/background.png);
+				background-size: 1020px 765px;
+				background-position: center top;
+				background-repeat: no-repeat;
+			}
+    .append1{
+
+            position: relative;
+            display: inline-block;
+            left: 30%;
+            top: 30px;
+            padding: 0 110px 0 0;
+            margin: 5px;
+            width: 120px;
+            height: 90px;
+            background:url(img/ui/Background_Div.jpg) no-repeat left top;
+           -moz-box-shadow: 2px 2px 10px #909090;
+           -webkit-box-shadow: 2px 2px 10px #909090;
+           box-shadow:2px 2px 10px #909090;
+    }
+    #bt1{
+    	position: absolute;
+    	top: 66px;
+    	left: 190px;
+    	border-radius: 2px;
+    	 color: white;
+    }
+        .bt2{
+    	position: absolute;
+    	top: 66px;
+    	left: 190px;
+    	border-radius: 2px;
+    	 color: white;
+    }
+    .bt3{
+    	position: absolute;
+    	top: 66px;
+    	left: 150px;
+    	border-radius: 2px;
+    	 color: white;
+    }
+    .Number{
+    	position:absolute;
+    	top:10px;
+    	left: 10px;
+    }
+    .Number1{
+    position:relative;
+    top:10px;
+    left:10px;
+    }
+    .Name{
+    	position:absolute;
+    	top:40px;
+    	left: 10px;
+    }
+        .Name1{
+    	position:absolute;
+    	top:40px;
+    	left: 10px;
+    }
+    .Input_Box1{
+    	position:relative;
+    	top:7px;
+    	left: 50px;
+    }
+    .Input_Box2{
+    position:absolute;
+    top:41px;
+    left: 50px;
+    }
+    .Input_Box3{
+    	position:absolute;
+    	top:11px;
+    	left: 50px;
+    }
+    .Input_Box4{
+    	position:absolute;
+    	top:41px;
+    	left: 50px;
+    }
+    </style>
+</head>
+
+<body>
+
+		
+	</div>
+	    <div class="content">
+<div class="append1">
+<div class="Number">编号：</div>
+<div class="Name">名称：</div>
+<input class="Input_Box1" type="text" name="" id="" value="" />
+<input class="Input_Box2" type="text" name="" id="" value="" />
+<!--	 <button id="bt1">添加</button>-->
+<button id="bt1"><img  src="img/ui/add1.png"/></button>
+</div>
+</div>
+    <script type="text/javascript">
+
+        $("#bt1").on('click', function() {
+    		//.append(), 内容在方法的后面，
+    		//参数是将要插入的内容。
+    		$(".content").append('<div class="append1"><div class="Number1">编号：</div><input class="Input_Box3" type="text" name="" id="" value="" /><div class="Name1">名称：</div><input class="Input_Box4" type="text" name="" id="" value="" /><button class="bt2"><img  src="img/ui/delete.png"/></button><button class="bt3"><img  src="img/ui/preservation.png"/></button></div>')
+    		console.log('插入成功')
+    	})
+    </script>
+   <script type="text/javascript">
+	$(".content").delegate('.bt2','click',function(){
+   var boo = confirm('确认删除？')
+           if(boo){
+            alert('删除成功');
+            $(this).parent().remove();
+        }else{
+            alert('删除失败')
+        }
+	});
+
+</script>
+</body>
+
+</html>
