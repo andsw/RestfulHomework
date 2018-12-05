@@ -29,14 +29,27 @@
 		showMessage(responseData);
 	}
 
-    function request(method,url,data,successCallBack,errorCallBack,async){
-        $.ajax({
+    function request(method,url,data,async){
+        myajax = $.ajax({
             url: url,
-            async:async,
+            async: async,
             contentType: "application/json",
-            data: JSON.stringify(data),
-            method: method
-        }).success(successCallBack).error(errorCallBack);
+            data: JSON.stringify(data), 
+            method: method,
+            timeout: 20000,
+            //记住不管是登录成功还是失败，都会走这个函数
+            success: function(result){
+            		alert(result.description);
+            		window.location.href="../login.jsp";
+            	},
+            //当url错误等找不到地址错误才走这个函数
+        	error: function(XMLHttpRequest, textStatus, errorThrown){
+        			alert("登录失败！"); 
+        			alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(textStatus);
+        	}
+        });
     }
     
     function showMessage(responseData){

@@ -15,10 +15,10 @@ public class LoginService extends BaseService{
 	@Override
 	public void service(User user, Result result) {
 		List<User> users =  userDao.findByUsernameEquals(user);
-		if(users == null) {
-			result.setData("用户" + user.getUsername() + "不存在！");
+		if(users == null || users.isEmpty()) {
+			result.setDescription("用户" + user.getUsername() + "不存在！");
 		} else if(!user.getPassword().equals(users.get(0).getPassword())) {
-			result.setData("密码错误！");
+			result.setDescription("密码错误！");
 		} else {
 			System.out.println("'oldpw : '+ " + users.get(0).getPassword() + " == newpw : " + user.getPassword() +" 所以成功登录");
 			result.setDescription("成功登录");

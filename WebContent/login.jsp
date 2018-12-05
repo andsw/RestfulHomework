@@ -58,39 +58,60 @@
 		user.username = $("#username").val();
 		user.password = $("#password").val();
 		var code = $("#inputCheckCode").val();
-		
-		request("POST","<%=basePath%>/user/login?checkcode=" + code, user, toMain(), serverError, true);
+		if(user.username.length == 0) {
+			alert("用户名不能为空！")
+		} else if (user.password.length == 0) {
+			alert("密码不能为空！")
+		} else if(code.length == 0) {
+			alert("验证码不能为空！")
+		} else {
+			//这个东西等待回应的时间很短，还没返回结果就直接判断错误！！怎么解！！
+			request("POST","<%=basePath%>/user/login?checkcode=" + code, user, false);	
+		}
 	}
 	
 	function toRegisterPage(){
+		alert("toRegisterPage")
 		window.location.href="./register.jsp";
 	}
 	
-	function toMain(){
-		//window.location.href="./jsp/index.jsp";
-	}
+	/*function toMain(){
+		//试着延时几秒等浏览器存储好cookie再跳转试试！
+		window.location.href="./jsp/index.jsp";
+		进入页面过滤器
+		path =/suit/jsp/index.jsp
+		isLogged = 空字符串
+		未登录，跳转到登录界面
+		离开页面过滤器
+		登录成功后也是一样我的原因，获取信息或写入cookie太慢，cookie
+		的状态还是未登录，导致过滤器拦截，好好到床上想想怎么办！！！
+	}*/
 
-    function request(method,url,data,successCallBack,errorCallBack,async){
-        $.ajax({
+    function request(method,url,data,async){
+        myajax = $.ajax({
             url: url,
-            async:async,
+            async: async,
             contentType: "application/json",
-            data: JSON.stringify(data),
-            method: method
-        }).success(successCallBack).error(errorCallBack);
+            data: JSON.stringify(data), 
+            method: method,
+            timeout: 20000,
+            //记住不管是登录成功还是失败，都会走这个函数
+            success: function(result){
+            		alert(result.description);
+            		window.location.href="./jsp/index.jsp";
+            	},
+            //当url错误等找不到地址错误才走这个函数
+        	error: function(XMLHttpRequest, textStatus, errorThrown){
+        			alert("登录失败！"); 
+        			alert(XMLHttpRequest.status);
+                    alert(XMLHttpRequest.readyState);
+                    alert(textStatus);
+        	}
+        });
     }
     
-    function showMessage(responseData){
-    	console.log("showMessage",responseData);
-    	alert(responseData.description);
-    }
-
-    function serverError(XMLHttpRequest, textStatus){
-        console.log("responseText:",XMLHttpRequest.responseText);
-        console.log("status:",XMLHttpRequest.status);
-        console.log("textStatus:",textStatus);
-        console.log("readyState:",XMLHttpRequest.readyState);
-        alert("服务器错误，请检查前后台控制台输出！");
+    function showMessage(){
+    	alert("登录失败！");
     }
 </script>
 </html>
