@@ -3,12 +3,12 @@
 
 	<head>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" type="text/css" href="css/main.css"/>
-		<link rel="stylesheet" type="text/css" href="css/homepage.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/main.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/homepage.css"/>
 		<title>首页</title>
 		<style>
 			body {
-				background-image: url(img/ui/loginWindowBg1920.png);
+				background-image: url(../img/ui/loginWindowBg1920.png);
 				background-size: 1020px 765px;
 				background-position: center top;
 				background-repeat: no-repeat;
@@ -28,23 +28,23 @@
 			<ul id="tabs">
 
 				<li class="selectTab">
-					<a href="javascript:void(0)" onclick="selectTab('tabContent0',this)"> <img src="img/ui/self.png" /> </a>
+					<a href="javascript:void(0)" onclick="selectTab('tabContent0',this)"> <img src="../img/ui/self.png" /> </a>
 				</li>
 
 				<li>
-					<a href="javascript:void(0)" onclick="selectTab('tabContent1',this)"><img src="img/ui/userList.png" /></a>
+					<a href="javascript:void(0)" onclick="selectTab('tabContent1',this)"><img src="../img/ui/userList.png" /></a>
 				</li>
 				<li>
-					<a href="page4.html" onclick="selectTab('tabContent2',this)"><img src="img/ui/catalog.png" /></a>
+					<a href="clothes_page.jsp" onclick="selectTab('tabContent2',this)"><img src="../img/ui/catalog.png" /></a>
 				</li>
 				<li>
-					<a href="javascript:void(0)" onclick="selectTab('tabContent3',this)"><img src="img/ui/suits.png" /></a>
+					<a href="javascript:void(0)" onclick="selectTab('tabContent3',this)"><img src="../img/ui/suits.png" /></a>
 				</li>
 				<li>
-					<a href="javascript:void(0)" onclick="selectTab('tabContent4',this)"><img src="img/ui/mySuits.png" /></a>
+					<a href="javascript:void(0)" onclick="selectTab('tabContent4',this)"><img src="../img/ui/mySuits.png" /></a>
 				</li>
 				<li>
-					<a href="login.html"><img src="img/ui/exit.png" /></a>
+					<a href="../login.jsp"><img src="../img/ui/exit.png" /></a>
 				</li>
 
 			</ul>
