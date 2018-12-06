@@ -10,7 +10,7 @@ public class RegisterService extends BaseService{
 	
 	public RegisterService() {
 		super();
-		accountValidationUtil = new AccountValidationUtil();
+		accountValidationUtil = AccountValidationUtil.getInstance();
 	}
 	
 	@Override

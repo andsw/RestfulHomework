@@ -6,6 +6,16 @@ import restful.bean.Result;
 import restful.entity.User;
 
 public class AccountValidationUtil {
+	
+	private AccountValidationUtil() {}
+	
+	public static AccountValidationUtil getInstance() {
+		return MyUtil.util;
+	}
+	
+	private static class MyUtil {
+		public static AccountValidationUtil util = new AccountValidationUtil();
+	}
 
 	// 用户名为4-16位的 '字母','数字','下划线' 的组合字符串
 	public boolean isUsernameInRightFormat(String username) {
