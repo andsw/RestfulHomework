@@ -1,15 +1,16 @@
+
 <!DOCTYPE html>
 <html>
 
 	<head>
 		<meta charset="utf-8" />
-		<link rel="stylesheet" type="text/css" href="css/main.css"/>
-		<link rel="stylesheet" type="text/css" href="css/homepage.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/main.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/homepage.css"/>
 		    <script src="https://www.imooc.com/static/lib/jquery/1.9.1/jquery.js"></script>
-		<title>首页</title>
+		<title>clothes_page</title>
 		<style>
 			body {
-				background-image: url(img/ui/loginWindowBg1920.png);
+				background-image: url(../img/ui/loginWindowBg1920.png);
 				background-size: 1020px 765px;
 				background-position: center top;
 				background-repeat: no-repeat;
@@ -22,31 +23,31 @@
 		<div id="con">
 			<div id="banner">
 				<div id="user">
-					当前用户：
+					当前用户：
 				</div>
-				<img src="img/ui/themeBanner.png" />
+				<img src="../img/ui/themeBanner.png" />
 			</div>
 
 			<ul id="tabs">
 
 				<li class="selectTab">
-					<a href="javascript:void(0)" onclick="selectTab('tabContent0',this)"> <img src="img/ui/self.png" /> </a>
+					<a href="javascript:void(0)" onclick="selectTab('tabContent0',this)"> <img src="../img/ui/self.png" /> </a>
 				</li>
 
 				<li>
-					<a href="javascript:void(0)" onclick="selectTab('tabContent1',this)"><img src="img/ui/userList.png" /></a>
+					<a href="javascript:void(0)" onclick="selectTab('tabContent1',this)"><img src="../img/ui/userList.png" /></a>
 				</li>
 				<li>
-					<a href="javascript:void(0)" onclick="selectTab('tabContent2',this)"><img src="img/ui/catalog.png" /></a>
+					<a href="javascript:void(0)" onclick="selectTab('tabContent2',this)"><img src="../img/ui/catalog.png" /></a>
 				</li>
 				<li>
-					<a href="javascript:void(0)" onclick="selectTab('tabContent3',this)"><img src="img/ui/suits.png" /></a>
+					<a href="javascript:void(0)" onclick="selectTab('tabContent3',this)"><img src="../img/ui/suits.png" /></a>
 				</li>
 				<li>
-					<a href="javascript:void(0)" onclick="selectTab('tabContent4',this)"><img src="img/ui/mySuits.png" /></a>
+					<a href="javascript:void(0)" onclick="selectTab('tabContent4',this)"><img src="../img/ui/mySuits.png" /></a>
 				</li>
 				<li>
-					<a href="login.html"><img src="img/ui/exit.png" /></a>
+					<a href="../login.jsp"><img src="../img/ui/exit.png" /></a>
 				</li>
 
 			</ul>
@@ -61,8 +62,8 @@
 <div class="Name">名称：</div>
 <input class="Input_Box1" type="text" name="" id="" value="" />
 <input class="Input_Box2" type="text" name="" id="" value="" />
-<!--	 <button id="bt1">添加</button>-->
-<button id="bt1"><img  src="img/ui/add1.png"/></button>
+<!--	 <button id="bt1">æ·»å </button>-->
+<button id="bt1"><img  src="../img/ui/add1.png"/></button>
 </div>
 </div>
 
@@ -94,7 +95,7 @@
 
 		</div>
 	</body>
-	<script type="text/javascript">
+		<script type="text/javascript">
 		function selectTab(thisContent, thisObj) {
 
 			thisObj.blur();
@@ -130,7 +131,7 @@
         $("#bt1").on('click', function() {
     		//.append(), 内容在方法的后面，
     		//参数是将要插入的内容。
-    		$(".content").append('<div class="append1"><div class="Number1">编号：</div><input class="Input_Box3" type="text" name="" id="" value="" /><div class="Name1">名称：</div><input class="Input_Box4" type="text" name="" id="" value="" /><button class="bt2"><img  src="img/ui/delete.png"/></button><button class="bt3"><img  src="img/ui/preservation.png"/></button></div>')
+    		$(".content").append('<div class="append1"><div class="Number1">编号：</div><input class="Input_Box3" type="text" name="" id="" value="" /><div class="Name1">名称：</div><input class="Input_Box4" type="text" name="" id="" value="" /><button class="bt2"><img  src="../img/ui/delete.png"/></button><button class="bt3"><img  src="../img/ui/preservation.png"/></button></div>')
     		console.log('插入成功')
     	})
     </script>
@@ -146,5 +147,4 @@
 	});
 
 </script>
-
 </html>
