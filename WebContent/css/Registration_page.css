@@ -3,13 +3,13 @@
 	margin: 0;
 }
 container{
-	width: 880px;
-	height: 660px;
+	width: 100%;
+	height: auto;
 	margin: 0 0 0 25%;
 }
 body{
 	background:url(../img/register/loginWindowBg1920.png);
-	background-size: 1020px 765px;
+	background-size: 100% auto;
 	background-position:center top;
     background-repeat:no-repeat;
 }
@@ -57,7 +57,7 @@ input{
        position: absolute;
        z-index: 3;
        background: #cdcdcd;
-       top: 12%;
+       top: 5%;
        left: 19.82%;
        width: 26%;
        height: 70%;
