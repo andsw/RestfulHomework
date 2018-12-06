@@ -26,13 +26,24 @@
 #siderbar {
 	width: 7%;
 	height: 95%;
+	border: 0px solid #FFF;
     background:rgba(255,255,255,0.1);
-    margin: -20px 0;
+    margin: -100px 0;
+}
+
+
+#siderbar_ul {
+	width: 100%;
+	height: auto;
+	border:0 solid #FFF;
+	margin: 30px auto;
 }
 
 .siderbar_selector { 
-	margin: 20px auto;
-	list-style:none;
+	width: 64px;
+	height: 64px;
+	margin: 75% auto;
+	list-style: none;
     position: relative;
    //Òþ²ØÒç³öµÄ¾¶Ïò½¥±ä±³¾°
    overflow: hidden;
@@ -64,4 +75,15 @@
     transform: scale(0, 0);
     opacity: .3;
     transition: 0s;
+}
+
+
+#info_page {
+	width:75%;
+	height:82%;
+	background:rgba(255,255,255,0.6);
+	position:absolute;
+	left:17%;
+	top:12%;
+	border-radius:50px;
 }

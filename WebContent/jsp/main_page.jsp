@@ -24,13 +24,13 @@
 	</div>
 
 	<div id="siderbar">
-		<ul>
-		<li class="siderbar_selector"><img alt="" src="../img/ui/self.png"></li>
-		<li class="siderbar_selector"><img alt="" src="../img/ui/user_list.png"></li>
-		<li class="siderbar_selector"><img alt="" src="../img/ui/catalog.png"></li>
-		<li class="siderbar_selector"><img alt="" src="../img/ui/all_clothes.png"></li>
-		<li class="siderbar_selector"><img alt="" src="../img/ui/mine.png"></li>
-		<li class="siderbar_selector"><img alt="" src="../img/ui/logout.png"></li>
+		<ul id="siderbar_ul">
+		<li class="siderbar_selector"><img style="width:64px;height=64px;" src="../img/ui/self.png"></li>
+		<li class="siderbar_selector"><img style="width:64px;height=64px;" src="../img/ui/user_list.png"></li>
+		<li class="siderbar_selector"><img style="width:64px;height=64px;" src="../img/ui/catalog.png"></li>
+		<li class="siderbar_selector"><img style="width:64px;height=64px;" src="../img/ui/all_clothes.png"></li>
+		<li class="siderbar_selector"><img style="width:64px;height=64px;" src="../img/ui/mine.png"></li>
+		<li class="siderbar_selector"><img style="width:64px;height=64px;" src="../img/ui/logout.png"></li>
 		</ul>
 	</div>
 	
@@ -39,7 +39,9 @@
 	</div>
 </div>
 </body>
+
 <script>
 
 </script>
+
 </html>
