@@ -14,151 +14,8 @@
 	<meta charset="utf-8" />
 	<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/homepage.css"/>
+			<link rel="stylesheet" type="text/css" href="../css/change_user_info.css"/>
 	<script src="https://www.imooc.com/static/lib/jquery/1.9.1/jquery.js"></script>
-	
-	<style type="text/css">
-		.change_user_info {
-			width: 60%;
-			height: 53%;
-			margin: 180px auto;
-			border: 2px solid #000;
-			border-radius: 10px;
-		}
-		.change_user_info table {
-			width: 90%;
-			height: auto;
-			margin: 20px auto;
-			border:1;
-			cellspacing:0;
-		}
-		.change_user_info table th{
-			font-size:1.1em;
-		    padding-top:10px;
-		    padding-bottom:10px;
-		    background-color:#000;
-		    color:#ffffff;
-		    text-align:center;
-		}
-		.words{
-			height: 50px;
-			width: 30%;
-			font-color: #AFB2B6;
-			font-size: 25px;
-			text-align: center;
-		}
-		.texts{
-			box-sizing: border-box;
-			text-align:center;
-			font-size:1em;
-			height:2em;
-			border-radius:4px;
-			border:1px solid #c8cccf; 
-			color:#6a6f77;
-			-web-kit-appearance:none;
-			-moz-appearance: none;
-			display:block;
-			outline:0;
-			padding:0 1em;
-			text-decoration:none;
-			width:100%;
-		}
-		.gender_radio{
-			width: 1.2rem;
-            height: 1.2rem;
-            background-color: #ffffff;
-            border: solid 1px #dddddd;
-            -webkit-border-radius: 0.6rem;
-            border-radius: 0.6rem;
-            font-size: 0.8rem;
-            margin: 0;
-            padding: 0;
-            position: relative;
-            display: inline-block;
-            vertical-align: top;
-            cursor: default;
-            -webkit-appearance: none;
-            margin-left: 20px;
-            cursor:pointer;
-		}
-		.gender_radio:checked{
-            background-color: #04c9e8;
-            border: solid 1px #00adc8;
-            box-shadow: 0 1px 1px rgba(0,0,0,.1);
-            text-align: center;
-            background-clip: padding-box;
-        }
-         /**选择后 里面小对勾样式**/
-        .gender_radio:checked:before{
-            content: '';
-            width: 0.5rem;
-            height: 0.3rem;
-            border: 1px solid #ffffff;
-            border-top: none;
-            border-right: none;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            margin-left: -0.25rem;
-            margin-top: -0.25rem;
-            -webkit-transform: rotate(-45deg);
-                    transform: rotate(-45deg);
-        }
-		.save_button{
-			width:79%;
-			background-color: #4CAF50; /* Green */
-			border: none;
-			color: white;
-			padding: 15px 32px;
-			text-align: center;
-			text-decoration: none;
-			display: inline-block;
-			font-size: 16px;
-			margin: 0 auto;
-			border-radius:4px;
-			margin-left: 50px;
-			cursor:pointer;
-		}
-		.save_button:hover{
-			background-color: #04C9E8; /* Green */
-		}
-		#model_select{
-			width:388px;
-			height: 100px;
-			background-color:transparent;
-			margin: 9px -70px 0px 0;
-		}
-		.model_label {
-			display: inline-block;
-			width:40%;
-			height:100%;
-    		cursor: pointer;
-    		
-		}
-		#first_label {
-			margin-left:10%;
-			float: left;
-			background: url(../img/register/man1.png) no-repeat;
-		}
-		#second_label {
-			margin-left:10%;
-			float: left	;
-			background: url(../img/register/man2.png) no-repeat;
-		}
-		
-		.model_select_radio {
-			
-		}
-		
-		.model_select_radio:checked {
-			border: 1px solid blue;
-		}
-		#first_head_radio{
-			
-		}
-		
-		#second_head_radio {
-		}
-	</style>
 </head>
 <body>
 <div id="content" style="height: 966px">
@@ -174,7 +31,7 @@
 		<li class="siderbar_selector_li" onclick=""><img style="width:64px;height=64px;" src="../img/ui/catalog.png"></li>
 		<li class="siderbar_selector_li" onclick=""><img style="width:64px;height=64px;" src="../img/ui/all_clothes.png"></li>
 		<li class="siderbar_selector_li" onclick=""><img style="width:64px;height=64px;" src="../img/ui/mine.png"></li>
-		<li class="siderbar_selector_li" onclick=""><img style="width:64px;height=64px;" src="../img/ui/logout.png"></li>
+		<li class="siderbar_selector_li" onclick="sixthExit()"><img style="width:64px;height=64px;" src="../img/ui/logout.png"></li>
 		</ul>
 	</div>
 	
@@ -227,7 +84,80 @@
 </body>
 
 <script>
+$(document).ready(function () {
+	alert("开启")
+});
+
+function firstChangeInfo(){
 	
+}
+
+function secondLlistUsers(){
+	
+}
+
+function thirdClothesType(){
+	
+}
+
+function forth(){}
+
+function fifth(){}
+
+function sixthExit() {
+	alert("退出")
+	var errorMethod = function(XMLHttpRequest, textStatus, errorThrown){
+		alert("登录失败！"); 
+		alert(XMLHttpRequest.status);
+        alert(XMLHttpRequest.readyState);
+        alert(textStatus);
+	}	
+	var successMethod = function(result){
+		alert(result.description);
+		window.location.href="../login.jsp";
+	}
+	request("POST","<%=basePath%>/user/logout", "", true, successMethod, errorMethod);
+}
+
+
+function request(method,url,data,async,successMethod,errorMethod){
+    $.ajax({
+        url: url,
+        async: async,
+        contentType: "application/json",
+        data: JSON.stringify(data), 
+        method: method,
+        timeout: 20000,
+        //记住不管是登录成功还是失败，都会走这个函数
+        success: successMethod,
+        //当url错误等找不到地址错误才走这个函数
+    	error: errorMethod
+    });
+}
+/*
+function request(method,url,data,async){
+    myajax = $.ajax({
+        url: url,
+        async: async,
+        contentType: "application/json",
+        data: JSON.stringify(data), 
+        method: method,
+        timeout: 20000,
+        //记住不管是登录成功还是失败，都会走这个函数
+        success: function(result){
+        		alert(result.description);
+        		window.location.href="./jsp/index.jsp";
+        	},
+        //当url错误等找不到地址错误才走这个函数
+    	error: function(XMLHttpRequest, textStatus, errorThrown){
+    			alert("登录失败！"); 
+    			alert(XMLHttpRequest.status);
+                alert(XMLHttpRequest.readyState);
+                alert(textStatus);
+    	}
+    });
+}
+*/
 </script>
 
 </html>

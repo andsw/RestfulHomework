@@ -98,7 +98,7 @@
             //记住不管是登录成功还是失败，都会走这个函数
             success: function(result){
             		alert(result.description);
-            		window.location.href="./jsp/index.jsp";
+            		window.location.href="./jsp/main_page.jsp";
             	},
             //当url错误等找不到地址错误才走这个函数
         	error: function(XMLHttpRequest, textStatus, errorThrown){
