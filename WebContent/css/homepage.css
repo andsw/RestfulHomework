@@ -39,7 +39,7 @@
 	margin: 30px auto;
 }
 
-.siderbar_selector { 
+.siderbar_selector_li { 
 	width: 64px;
 	height: 64px;
 	margin: 75% auto;
@@ -49,13 +49,13 @@
    overflow: hidden;
 }
 
-.siderbar_selector:hover{
+.siderbar_selector_li:hover{
 	cursor:pointer;
 	transform: rotate(-10deg) translateZ(150px);
     transition-duration: 300ms;
     -moz-transform: rotate(-10deg) translateZ(150px);
 }
-.siderbar_selector:after {
+.siderbar_selector_li:after {
    content: "";
    display: block;
    position: absolute;
@@ -71,7 +71,7 @@
    opacity: 0;
    transition: transform .3s, opacity .5s;
 } 
-.siderbar_selector:active:after {
+.siderbar_selector_li:active:after {
     transform: scale(0, 0);
     opacity: .3;
     transition: 0s;
