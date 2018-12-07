@@ -36,60 +36,28 @@
 	</div>
 	
 	<div id="info_page">
-		<div class="change_user_info">
-			<table>
-				<tr>
-					<th colspan=4>修改用户信息</th>
-				</tr>
-				<tr>
-					<td class="words">用户名称：</td>
-					<td colspan="3"><input type="text" class="texts" id="username" readonly="readonly"></input></td>
-				</tr>
-				<tr>
-					<td class="words">用户实名：</td>
-					<td colspan="3"><input type="text" placeholder="请输入用户名" class="texts" id="username"></input></td>
-				</tr>
-				<tr>
-					<td class="words">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
-					<td colspan="3"><input type="password" class="texts" placeholder="不需修改请留空" id="password"></input></td>
-				</tr>
-				<tr>
-					<td class="words">密码确认：</td>
-					<td colspan="3"><input type="password" class="texts" placeholder="不需修改请留空" id="password_confirming"></input></td>
-				</tr>
-				<tr>
-					<td class="words">性&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别：</td>
-					<td><input type="radio" class="gender_radio" name="gender" value="true"/>男
-						<input type="radio" class="gender_radio" name="gender" value="false"/>女
-					</td>
-					<!-- 这里放置模特头像 -->
-					<td colspan="2" rowspan="2">
-						<div  id="model_select">
-							<label for="first_head_radio" class="model_label" id="first_label">
-								<input type="radio" id="first_head_radio" class="model_select_radio" name="model"/>
-							</label>
-							<label for="second_head_radio" class="model_label" id="second_label">
-								<input type="radio" id="second_head_radio" class="model_select_radio" name="model"/>
-							</label>
-						</div>
-					</td>
-				</tr>
-				<tr>
-					<td colspan=2><button class="save_button">保存信息</button></td>
-				</tr>
-			</table>
-		</div>
+		
 	</div>
 </div>
 </body>
 
 <script>
 $(document).ready(function () {
-	alert("开启")
+	firstChangeInfo()
 });
 
 function firstChangeInfo(){
-	
+	$('#info_page').load("change_user_info.jsp");
+	alert("sss");
+	alert(getCookie("realName"));
+	$("#username").attr("readonly", "readonly");
+	$('#username').val(getCookie("username"));
+	$('#realName').val(getCookie("realName"));
+	if(getCookie("isMan") === true) {
+		$('#man_radio').attr("checked","true");
+	} else {
+		$('#woman_radio').attr("checked","true");
+	}
 }
 
 function secondLlistUsers(){
@@ -119,6 +87,18 @@ function sixthExit() {
 	request("POST","<%=basePath%>/user/logout", "", true, successMethod, errorMethod);
 }
 
+function getCookie(c_name) {
+	if(document.cookie.length > 0) {
+		c_start = document.cookie.indexOf(c_name + "=");//获取字符串的起点
+		if(c_start != -1) {
+			c_start = c_start + c_name.length + 1;//获取值的起点
+			c_end = document.cookie.indexOf(";", c_start);//获取结尾处
+			if(c_end == -1) c_end = document.cookie.length;//如果是最后一个，结尾就是cookie字符串的结尾
+			return decodeURI(document.cookie.substring(c_start, c_end));//截取字符串返回
+		}
+	}
+	return "";
+}
 
 function request(method,url,data,async,successMethod,errorMethod){
     $.ajax({
@@ -134,30 +114,6 @@ function request(method,url,data,async,successMethod,errorMethod){
     	error: errorMethod
     });
 }
-/*
-function request(method,url,data,async){
-    myajax = $.ajax({
-        url: url,
-        async: async,
-        contentType: "application/json",
-        data: JSON.stringify(data), 
-        method: method,
-        timeout: 20000,
-        //记住不管是登录成功还是失败，都会走这个函数
-        success: function(result){
-        		alert(result.description);
-        		window.location.href="./jsp/index.jsp";
-        	},
-        //当url错误等找不到地址错误才走这个函数
-    	error: function(XMLHttpRequest, textStatus, errorThrown){
-    			alert("登录失败！"); 
-    			alert(XMLHttpRequest.status);
-                alert(XMLHttpRequest.readyState);
-                alert(textStatus);
-    	}
-    });
-}
-*/
 </script>
 
 </html>
