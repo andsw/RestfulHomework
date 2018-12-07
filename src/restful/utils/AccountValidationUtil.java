@@ -45,8 +45,7 @@ public class AccountValidationUtil {
 		List<User> list = userDao.list();
 		boolean validationResult = true;
 		for(User user0 : list) {
-			if(user0.getUsername().equals(user.getUsername()) 
-				&& user0.getId() == user.getId()) {
+			if(user0.getUsername().equals(user.getUsername())) {
 				validationResult = false;
 			}
 		}

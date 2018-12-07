@@ -87,6 +87,13 @@ public class UserOperationApi {
 	@Produces("application/json;charset=UTF-8")
 	public Result updateStu(User user) {
 		Result result = new Result(1, "更新失败", null, "");
+		
+		// 这里解决前台未填入密码时会误将其密码设为空的错误！
+		List<User> users =  userDao.findByUsernameEquals(user);
+		if("".equals(user.getPassword())) {
+			user.setPassword(users.get(0).getPassword());
+		}
+		
 		if(userDao.update(user)) {
 			result.setCode(0);
 			result.setDescription("更新成功");

@@ -95,7 +95,7 @@ public class ToAllPageNormalFilter implements Filter {
 				//已登录但访问的是登录界面或注册界面
 				System.out.println("已登录，跳转到主页界面");
 				//request.getRequestDispatcher("/jsp/main.jsp").forward(request, response);
-				response.sendRedirect("/suit/jsp/index.jsp");
+				response.sendRedirect("/suit/jsp/main_page.jsp");
 				System.out.println("离开页面过滤器\n");
 				return;
 			} 

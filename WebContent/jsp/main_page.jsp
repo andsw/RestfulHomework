@@ -67,8 +67,10 @@ function saveUser(){
 	} else {
 		user.id=getCookie("id");
 		user.username=$('#username').val();
-		user.gender=$('#gender').val();
-		user.model=$('#model').val();
+		user.gender=$('[name=isMan]').val();
+		alert(user.gender);
+		user.model=$('[name=model]').val();
+		alert(user.model);
 		user.permission=getCookie("isAdmin");
 		var successMethod = function(result){
 			alert(result.description)
