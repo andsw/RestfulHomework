@@ -65,6 +65,7 @@ function saveUser(){
 	} else if(user.realName.length == 0) {
 		alert("用户实名为空，不可修改！")
 	} else {
+		user.id=getCookie("id");
 		user.username=$('#username').val();
 		user.gender=$('#gender').val();
 		user.model=$('#model').val();

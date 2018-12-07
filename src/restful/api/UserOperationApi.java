@@ -9,10 +9,13 @@ import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.Context;
+import javax.servlet.http.HttpServletResponse;
 
 import restful.bean.Result;
 import restful.dao.UserDao;
 import restful.entity.User;
+import restful.utils.CookieUtil;
 
 @Path("/useroperate")
 public class UserOperationApi {
@@ -75,6 +78,9 @@ public class UserOperationApi {
 		return result;
 	}
 	
+	@Context
+	private HttpServletResponse httpServletResponse;
+	
 	@PUT 
 	@Path("/operate") 
 	@Consumes("application/json;charset=UTF-8")
@@ -84,6 +90,10 @@ public class UserOperationApi {
 		if(userDao.update(user)) {
 			result.setCode(0);
 			result.setDescription("更新成功");
+			
+			// 更新成功的话就更新cookie！
+			CookieUtil cookieUtil = CookieUtil.getInstance();
+			cookieUtil.addUserInfoIntoResponse(httpServletResponse, user);
 		}
 		return result;
 	}

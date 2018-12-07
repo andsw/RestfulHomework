@@ -17,6 +17,7 @@ import restful.entity.User;
 import restful.services.BaseService;
 import restful.services.LoginService;
 import restful.services.RegisterService;
+import restful.utils.CookieUtil;
 
 @Path("/user")
 public class UserApi {
@@ -43,31 +44,11 @@ public class UserApi {
 			User userIndatabase = (User)result.getData();
 			System.out.println("登录时正确用户信息：" + userIndatabase);
 			
-			Cookie[] cookies = new Cookie[6];
-			cookies[0] = new Cookie("hasLogged", "true");
-			cookies[1] = new Cookie("isAdmin", "" + userIndatabase.getPermission());
-			cookies[2] = new Cookie("username", userIndatabase.getUsername());
-			try {
-				cookies[3] = new Cookie("realName", URLEncoder.encode(userIndatabase.getRealName(), "UTF-8"));
-			} catch (UnsupportedEncodingException e) {
-				System.out.println("放入cookie的中文转码失败！");
-			}
-			cookies[4] = new Cookie("isMan","" + userIndatabase.getGender());
-			cookies[5] = new Cookie("whichModel","" + userIndatabase.getModel());
-			System.out.println("用户信息已放入cookie");
+			System.out.println(userIndatabase.getId());
 			
-			/*
-			 * 删除cookie的步骤！
-			 * userCookie.setMaxAge(0);
-			 * userCookie.setPath("/"); //路径一定要写上，不然干不掉的
-			 * response.addCookie(userCookie);
-			 * */
-			
-			for(Cookie cookie : cookies) {
-				cookie.setPath("/");
-				cookie.setMaxAge(60*60*24*7);
-				httpServletResponse.addCookie(cookie);
-			}
+			// 使用cookie工具类添加cookie！
+			CookieUtil cookieUtil = CookieUtil.getInstance();
+			cookieUtil.addUserInfoIntoResponse(httpServletResponse, userIndatabase);
 		}
 		System.out.println("result" + result.toString());
 		System.out.println("退出登录api方法");
@@ -80,17 +61,11 @@ public class UserApi {
 	public Result logout(@Context final HttpServletRequest httpServletRequest, @Context final HttpServletResponse httpServletResponse) {
 		System.out.println("访问到登出api方法");
 		Result result = new Result(0, "登出", null, "/login.jsp");//1表示失败
-		Cookie[] cookies = httpServletRequest.getCookies();
-		if(cookies != null) {
-			for(Cookie cookie : cookies) {
-				//将MaxAge设置为0，然后再添加进response，相当当于删除！
-				System.out.println(cookie.getName() + " cookie 清除成功！");
-				cookie.setMaxAge(0);
-				cookie.setPath("/");
-				//记住啊！！！！！！！！这个要填写相同的路径然后才可以删除！！！！！！
-				httpServletResponse.addCookie(cookie);
-			}
-		}
+		
+		// 使用cookie工具类去除cookie！
+		CookieUtil cookieUtil = CookieUtil.getInstance();
+		cookieUtil.removeCookieFromResponse(httpServletRequest, httpServletResponse);
+		
 		System.out.println("登出成功！");
 		System.out.println("退出登出api方法");
 		return result;

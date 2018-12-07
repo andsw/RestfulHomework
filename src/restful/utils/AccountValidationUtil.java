@@ -1,13 +1,19 @@
 package restful.utils;
 
+import java.util.List;
 import java.util.regex.Pattern;
 
 import restful.bean.Result;
+import restful.dao.UserDao;
 import restful.entity.User;
 
 public class AccountValidationUtil {
 	
-	private AccountValidationUtil() {}
+	private UserDao userDao;
+	
+	private AccountValidationUtil() {
+		userDao = new UserDao();
+	}
 	
 	public static AccountValidationUtil getInstance() {
 		return MyUtil.util;
@@ -35,8 +41,7 @@ public class AccountValidationUtil {
 				, password);
 	}
 	
-	//因为有触发器！所以不需要这个！
-	/*public boolean isSomeoneExitsInDB(User user) {
+	public boolean isSomeoneExitsInDB(User user) {
 		List<User> list = userDao.list();
 		boolean validationResult = true;
 		for(User user0 : list) {
@@ -46,7 +51,7 @@ public class AccountValidationUtil {
 			}
 		}
 		return list.size() == 0 || validationResult;
-	}*/
+	}
 	
 	public boolean isAccountInfoRight(User user, Result result) {
 		if(!isUsernameInRightFormat(user.getUsername())) {
@@ -55,11 +60,13 @@ public class AccountValidationUtil {
 			result.setDescription("实名为2-5位的中文字符串");
 		} else if(!isPasswordInRightFormat(user.getPassword())) {
 			result.setDescription("密码为4-16位的 '字母'、'数字'或'下划线' 的字符串");
+		} else if(!isSomeoneExitsInDB(user)) {
+			result.setDescription("用户已存在！");
 		} else {
 			result.setCode(0);
 			result.setDescription("注册成功");
 		}
 		return result.getCode() == 0;
-		//&& isSomeoneExitsInDB(user)
+		//&& 
 	}
 }
