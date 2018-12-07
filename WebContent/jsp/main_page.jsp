@@ -19,7 +19,7 @@
 	<style type="text/css">
 		.change_user_info {
 			width: 60%;
-			height: 50%;
+			height: 53%;
 			margin: 180px auto;
 			border: 2px solid #000;
 			border-radius: 10px;
@@ -28,7 +28,8 @@
 			width: 90%;
 			height: auto;
 			margin: 20px auto;
-			border-collapse: collapse;
+			border:1;
+			cellspacing:0;
 		}
 		.change_user_info table th{
 			font-size:1.1em;
@@ -103,7 +104,7 @@
                     transform: rotate(-45deg);
         }
 		.save_button{
-			width:38%;
+			width:79%;
 			background-color: #4CAF50; /* Green */
 			border: none;
 			color: white;
@@ -117,26 +118,45 @@
 			margin-left: 50px;
 			cursor:pointer;
 		}
-		.save_button:after {
-		   content: "";
-		   display: block;
-		   position: absolute;
-		   width: 100%;
-		   height: 100%;
-		   top: 0;
-		   left: 0;
-		   pointer-events: none;
-		   background-image: radial-gradient(circle, #666 10%, transparent 10.01%);
-		   background-repeat: no-repeat;
-		   background-position: 50%;
-		   transform: scale(10, 10);
-		   opacity: 0;
-		   transition: transform .3s, opacity .5s;
-		} 
-		.save_button:active:after {
-		    transform: scale(0, 0);
-		    opacity: .3;
-		    transition: 0s;
+		.save_button:hover{
+			background-color: #04C9E8; /* Green */
+		}
+		#model_select{
+			width:388px;
+			height: 100px;
+			background-color:transparent;
+			margin: 9px -70px 0px 0;
+		}
+		.model_label {
+			display: inline-block;
+			width:40%;
+			height:100%;
+    		cursor: pointer;
+    		
+		}
+		#first_label {
+			margin-left:10%;
+			float: left;
+			background: url(../img/register/man1.png) no-repeat;
+		}
+		#second_label {
+			margin-left:10%;
+			float: left	;
+			background: url(../img/register/man2.png) no-repeat;
+		}
+		
+		.model_select_radio {
+			
+		}
+		
+		.model_select_radio:checked {
+			border: 1px solid blue;
+		}
+		#first_head_radio{
+			
+		}
+		
+		#second_head_radio {
 		}
 	</style>
 </head>
@@ -162,7 +182,7 @@
 		<div class="change_user_info">
 			<table>
 				<tr>
-					<th colspan=2>修改用户信息</th>
+					<th colspan=4>修改用户信息</th>
 				</tr>
 				<tr>
 					<td class="words">用户名称：</td>
@@ -185,7 +205,17 @@
 					<td><input type="radio" class="gender_radio" name="gender" value="true"/>男
 						<input type="radio" class="gender_radio" name="gender" value="false"/>女
 					</td>
-					<td colspan="2" rowspan="2"></td>
+					<!-- 这里放置模特头像 -->
+					<td colspan="2" rowspan="2">
+						<div  id="model_select">
+							<label for="first_head_radio" class="model_label" id="first_label">
+								<input type="radio" id="first_head_radio" class="model_select_radio" name="model"/>
+							</label>
+							<label for="second_head_radio" class="model_label" id="second_label">
+								<input type="radio" id="second_head_radio" class="model_select_radio" name="model"/>
+							</label>
+						</div>
+					</td>
 				</tr>
 				<tr>
 					<td colspan=2><button class="save_button">保存信息</button></td>
