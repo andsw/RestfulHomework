@@ -37,16 +37,16 @@
 			<td colspan="2" rowspan="2">
 				<div  id="model_select">
 					<label for="first_head_radio" class="model_label" id="first_label">
-						<input type="radio" id="first_head_radio" class="model_select_radio" name="model"/>
+						<input type="radio" id="first_head_radio" class="model_select_radio" name="model" value='false'/>
 					</label>
 					<label for="second_head_radio" class="model_label" id="second_label">
-						<input type="radio" id="second_head_radio" class="model_select_radio" name="model"/>
+						<input type="radio" id="second_head_radio" class="model_select_radio" name="model" value='true'/>
 					</label>
 				</div>
 			</td>
 		</tr>
 		<tr>
-			<td colspan=2><button class="save_button">保存信息</button></td>
+			<td colspan=2><button class="save_button" onclick="saveUser()">保存信息</button></td>
 		</tr>
 	</table>
 </div>

@@ -21,12 +21,12 @@
 <div id="content" style="height: 966px">
 	<div id="top_tab">
 		<img src="../img/ui/themeBanner.png" id="dream_words"/>
-		<p id="identity">当前用户：<strong id="permission"></strong></p>
+		<p class="identity">身份：<strong class="identity" id="permission"></strong></p>
 	</div>
 
 	<div id="siderbar">
 		<ul id="siderbar_ul">
-		<li class="siderbar_selector_li" onclick=""><img style="width:64px;height=64px;" src="../img/ui/self.png"></li>
+		<li class="siderbar_selector_li" onclick="firstChangeInfo()"><img style="width:64px;height=64px;" src="../img/ui/self.png"></li>
 		<li class="siderbar_selector_li" onclick=""><img style="width:64px;height=64px;" src="../img/ui/user_list.png"></li>
 		<li class="siderbar_selector_li" onclick=""><img style="width:64px;height=64px;" src="../img/ui/catalog.png"></li>
 		<li class="siderbar_selector_li" onclick=""><img style="width:64px;height=64px;" src="../img/ui/all_clothes.png"></li>
@@ -42,21 +42,72 @@
 </body>
 
 <script>
+var whichPage = 0;
+var errorMethod = function(XMLHttpRequest, textStatus, errorThrown){
+	alert("登录失败！"); 
+	alert(XMLHttpRequest.status);
+    alert(XMLHttpRequest.readyState);
+    alert(textStatus);
+}
+
+
 $(document).ready(function () {
 	firstChangeInfo()
 });
 
-function firstChangeInfo(){
-	$('#info_page').load("change_user_info.jsp");
-	alert("sss");
-	alert(getCookie("realName"));
-	$("#username").attr("readonly", "readonly");
-	$('#username').val(getCookie("username"));
-	$('#realName').val(getCookie("realName"));
-	if(getCookie("isMan") === true) {
-		$('#man_radio').attr("checked","true");
+function saveUser(){
+	var password_confirming = $('#password_confirming').val();
+	var user = {};
+	user.password=$('#password').val();
+	user.realName=$('#realName').val();
+	if(user.password != password_confirming) {
+		alert("密码两次输入不匹配！")
+	} else if(user.realName.length == 0) {
+		alert("用户实名为空，不可修改！")
 	} else {
-		$('#woman_radio').attr("checked","true");
+		user.username=$('#username').val();
+		user.gender=$('#gender').val();
+		user.model=$('#model').val();
+		user.permission=getCookie("isAdmin");
+		var successMethod = function(result){
+			alert(result.description)
+		}
+		alert(user);
+		request("PUT", "<%=basePath%>/useroperate/operate", user, true, successMethod, errorMethod)
+	}
+}
+
+function firstChangeInfo(){
+	if(whichPage!=1){
+		whichPage = 1;
+		$('#info_page').load("change_user_info.jsp");
+		alert(getCookie("realName"));
+		$("#username").attr("readonly", "readonly");
+		$('#username').val(getCookie("username"));
+		$('#realName').val(getCookie("realName"));
+		if(getCookie("isMan") === true) {
+			$('#man_radio').attr("checked","true");
+		} else {
+			$('#woman_radio').attr("checked","true");
+		}
+		if(getCookie("whichModel") === true) {
+			$('#second_head_radio').attr("checked","true");
+		} else {
+			$('#first_head_radio').attr("checked","true");
+		}
+		
+		//显示身份：
+		alert(getCookie("isAdmin"));
+		if(getCookie("isAdmin") === true){
+			alert("管理员")
+			$("#permission").text("管理员");
+		} else {
+			alert("普通用户")
+			$("#permission").text("普通用户");
+		}
+		$("#permission").attr("color", "#25B80C")
+	} else {
+		alert("已经是第一个页面哦！")
 	}
 }
 
@@ -74,12 +125,6 @@ function fifth(){}
 
 function sixthExit() {
 	alert("退出")
-	var errorMethod = function(XMLHttpRequest, textStatus, errorThrown){
-		alert("登录失败！"); 
-		alert(XMLHttpRequest.status);
-        alert(XMLHttpRequest.readyState);
-        alert(textStatus);
-	}	
 	var successMethod = function(result){
 		alert(result.description);
 		window.location.href="../login.jsp";

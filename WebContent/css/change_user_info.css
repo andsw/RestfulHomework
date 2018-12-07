@@ -68,22 +68,22 @@
           text-align: center;
           background-clip: padding-box;
       }
-       /**选择后 里面小对勾样式**/
-      .gender_radio:checked:before{
-          content: '';
-          width: 0.5rem;
-          height: 0.3rem;
-          border: 1px solid #ffffff;
-          border-top: none;
-          border-right: none;
-          position: absolute;
-          top: 50%;
-          left: 50%;
-          margin-left: -0.25rem;
-          margin-top: -0.25rem;
-          -webkit-transform: rotate(-45deg);
-                  transform: rotate(-45deg);
-      }
+/**选择后 里面小对勾样式**/
+.gender_radio:checked:before{
+    content: '';
+    width: 0.5rem;
+    height: 0.3rem;
+    border: 1px solid #ffffff;
+    border-top: none;
+    border-right: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -0.25rem;
+    margin-top: -0.25rem;
+    -webkit-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+}
 .save_button{
 	width:79%;
 	background-color: #4CAF50; /* Green */

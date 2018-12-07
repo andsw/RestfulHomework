@@ -43,7 +43,7 @@ public class UserApi {
 			User userIndatabase = (User)result.getData();
 			System.out.println("登录时正确用户信息：" + userIndatabase);
 			
-			Cookie[] cookies = new Cookie[5];
+			Cookie[] cookies = new Cookie[6];
 			cookies[0] = new Cookie("hasLogged", "true");
 			cookies[1] = new Cookie("isAdmin", "" + userIndatabase.getPermission());
 			cookies[2] = new Cookie("username", userIndatabase.getUsername());
@@ -53,6 +53,7 @@ public class UserApi {
 				System.out.println("放入cookie的中文转码失败！");
 			}
 			cookies[4] = new Cookie("isMan","" + userIndatabase.getGender());
+			cookies[5] = new Cookie("whichModel","" + userIndatabase.getModel());
 			System.out.println("用户信息已放入cookie");
 			
 			/*

@@ -16,11 +16,16 @@
 	box-shadow: 2px 2px 2px #8BC8C3;
 }
 
-#identity {	
+.identity {	
 	float:right;
 	font:bold 24px/40px arial,sans-serif;
-	margin-right: 180px;
+	margin-right: 20px;
 	margin-top: 5px;
+}
+
+#permission {
+	margin-top:-1px;
+	margin-left: 20px;
 }
 
 #siderbar {
