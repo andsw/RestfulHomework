@@ -26,7 +26,7 @@ public class UserOperationApi {
 		userDao = new UserDao();
 	}
 	
-	@GET
+	@POST
 	@Path("/list")
 	@Produces("application/json;charset=UTF-8")
 	public Result list() {

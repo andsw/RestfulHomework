@@ -1,5 +1,3 @@
-
-
 function saveUser(){
 	var password_confirming = $('#password_confirming').val();
 	var user = {};

@@ -65,19 +65,16 @@ function firstChangeInfo(){
 }
 
 function ListUsers(result){
-	$.each(result.data,function(){
-		
-		$("#users_table_tbody").append("")
+	$.each(result.data,function(idx, obj){
+		alert(obj.username);
 	})
 }
 
 function secondListUsers(){
 	if(whichPage!=2) {
 		empty();
-		
 		$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss2.css"/>');
-		//request("GET", "http://localhost:8080/suit/useroperation/list","",true,ListUsers,errorMethod);
-		
+		request("POST", "http://localhost:8080/suit/useroperate/list",null,true,ListUsers,errorMethod);
 		whichPage = 2;
 	} else {
 		alert("已经是第二个页面哦！")
