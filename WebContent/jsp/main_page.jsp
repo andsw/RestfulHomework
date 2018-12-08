@@ -26,7 +26,7 @@
 	<div id="siderbar">
 		<ul id="siderbar_ul">
 		<li class="siderbar_selector_li" onclick="firstChangeInfo()"><img style="width:64px;height=64px;" src="../img/ui/self.png"></li>
-		<li class="siderbar_selector_li" onclick=""><img style="width:64px;height=64px;" src="../img/ui/user_list.png"></li>
+		<li class="siderbar_selector_li" onclick="secondListUsers()"><img style="width:64px;height=64px;" src="../img/ui/user_list.png"></li>
 		<li class="siderbar_selector_li" onclick=""><img style="width:64px;height=64px;" src="../img/ui/catalog.png"></li>
 		<li class="siderbar_selector_li" onclick=""><img style="width:64px;height=64px;" src="../img/ui/all_clothes.png"></li>
 		<li class="siderbar_selector_li" onclick=""><img style="width:64px;height=64px;" src="../img/ui/mine.png"></li>
@@ -63,7 +63,6 @@ function firstChangeInfo(){
 		$('head').append('<script src="../js/infoPage/pageJs1.js"><\/script>');
 		$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss1.css"/>');
 		
-		alert(getCookie("username"))
 		$('#username').val(getCookie("username"));
 		//设置为只读！
 		$("#username").attr("readonly", "readonly");
@@ -71,8 +70,8 @@ function firstChangeInfo(){
 		
 		var isMan = getCookie("isMan");
 		var isRightModel = getCookie("whichModel");
-		alert("isMan :" + isMan);
-		alert("is right model : " + isRightModel)
+		/*alert("isMan :" + isMan);
+		alert("is right model : " + isRightModel)*/
 		
 		if(isMan === "true") {
 			$('#man_radio').attr("checked","checked");
@@ -107,8 +106,13 @@ function firstChangeInfo(){
 	}
 }
 
-function secondLlistUsers(){
-	
+function secondListUsers(){
+	if(whichPage != 2) {
+		alert("second")
+		empty();
+	} else {
+		alert("已经是第二个页面哦！")
+	}
 }
 
 function thirdClothesType(){
@@ -154,6 +158,10 @@ function request(method,url,data,async,successMethod,errorMethod){
         //当url错误等找不到地址错误才走这个函数
     	error: errorMethod
     });
+}
+
+function empty(){
+	$("#first").hide();
 }
 </script>
 
