@@ -23,7 +23,7 @@
 
 #second .table tr {
 	width:auto;
-	height: 40px;
+	height: 70px;
 	padding: 5px;
 	border-bottom: 1px solid #FFF;
 	/*border-top: 1px solid #FFF;*/
@@ -43,4 +43,24 @@
 #second .tabel tbody tr:hover {
 	background: linear-gradient(#fff,#aaa);
 	font-size: 17px;
+}
+
+/*修改删除键的样式！*/
+.operate_button{
+	width: 80px;
+	height: 30px;
+	background-color: #4CAF50; /* Green */
+	border: none;
+	color: white;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 16px;
+	margin: 0 auto;
+	border-radius: 2px;
+	margin-left: 5px;
+	cursor:pointer;
+}	
+.operate_button:hover{
+	background-color: #04C9E8; /* Green */
 }

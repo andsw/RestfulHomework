@@ -62,12 +62,12 @@
     cursor:pointer;
 }
 .gender_radio:checked{
-          background-color: #04c9e8;
-          border: solid 1px #00adc8;
-          box-shadow: 0 1px 1px rgba(0,0,0,.1);
-          text-align: center;
-          background-clip: padding-box;
-      }
+    background-color: #04c9e8;
+    border: solid 1px #00adc8;
+    box-shadow: 0 1px 1px rgba(0,0,0,.1);
+    text-align: center;
+    background-clip: padding-box;
+}
 /**选择后 里面小对勾样式**/
 .gender_radio:checked:before{
     content: '';

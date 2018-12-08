@@ -60,15 +60,7 @@
         	<div style="width: 100%;height: 579px;overflow-y: scroll;" id="table-body">
 	           <table class="table" style="width: 100%;table-layout: fixed">
 	               <tbody>
-	               		<tr>
-	               			<td colspan="7">sssssss</td>
-	               		</tr>
-	               		<tr>
-	               			<td colspan="7">sssssss</td>
-	               		</tr>
-	               		<tr>
-	               			<td colspan="7">sssssss</td>
-	               		</tr>
+	               		<!-- 这里填充数据！ -->
 	               </tbody>
 	           </table>
         	</div>
