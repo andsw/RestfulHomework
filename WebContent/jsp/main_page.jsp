@@ -56,13 +56,12 @@ $(document).ready(function () {
 
 function firstChangeInfo(){
 	if(whichPage!=1){
+		//加载html码
+		$('#info_page').load("change_user_info.jsp");
 		
 		//动态加载css/js！
 		$('head').append('<script src="../js/infoPage/pageJs1.js"><\/script>');
 		$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss1.css"/>');
-		
-		//加载html码
-		$('#info_page').load("change_user_info.jsp");
 		
 		alert(getCookie("username"))
 		$('#username').val(getCookie("username"));
