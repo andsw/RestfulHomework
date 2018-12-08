@@ -8,7 +8,8 @@ var errorMethod = function(XMLHttpRequest, textStatus, errorThrown){
 }
 
 $(document).ready(function () {
-	firstChangeInfo()
+	//firstChangeInfo()
+	secondListUsers();
 });
 
 function firstChangeInfo(){
@@ -63,11 +64,20 @@ function firstChangeInfo(){
 	}
 }
 
+function ListUsers(result){
+	$.each(result.data,function(){
+		
+		$("#users_table_tbody").append("")
+	})
+}
+
 function secondListUsers(){
-	alert(whichPage)
 	if(whichPage!=2) {
-		alert("second");
 		empty();
+		
+		$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss2.css"/>');
+		//request("GET", "http://localhost:8080/suit/useroperation/list","",true,ListUsers,errorMethod);
+		
 		whichPage = 2;
 	} else {
 		alert("已经是第二个页面哦！")

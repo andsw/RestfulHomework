@@ -1,24 +1,46 @@
-table {
-     border-collapse: collapse;
-     font-family: Futura, Arial, sans-serif;
+#second {
+	width: 90%;
+	height: 80%;
+	margin: 5% auto;
+	border: 2px solid #000;
+	border-radius: 10px;
+	overflow: hidden;
 }
- 
-caption {
-     font-size: larger;
-     margin: 1em auto;
+#second .table {
+    border-collapse: collapse;
+    font-family: Futura, Arial, sans-serif;
+    cursor:pointer;
+    overflow: scroll;
 }
- 
-th,td {
-     padding: .65em;
-}
- 
-th,td {
-	border-bottom: 1px solid #ddd;
-	border-top: 1px solid #ddd;
+#second .table th {
+	width:auto;
+	height: 45px;
+	padding: 5px;
+	border-bottom: 3px solid #FFF;
+	/*border-top: 1px solid #FFF;*/
 	text-align: center;
 }
 
-tbody tr:hover {
+#second .table tr {
+	width:auto;
+	height: 40px;
+	padding: 5px;
+	border-bottom: 1px solid #FFF;
+	/*border-top: 1px solid #FFF;*/
+	text-align: center;
+}
+
+#second .table td {
+	border-bottom: 1px solid #FFF;
+	/*border-top: 1px solid #FFF;*/
+	text-align: center;
+}
+
+#second .tabel tbody tr:nth-child(odd) {
+    background: rgba(255,255,255,0.3);
+}
+
+#second .tabel tbody tr:hover {
 	background: linear-gradient(#fff,#aaa);
 	font-size: 17px;
 }

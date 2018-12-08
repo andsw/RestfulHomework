@@ -14,8 +14,12 @@
 	<meta charset="utf-8" />
 	<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/homepage.css"/>
+	<link rel="stylesheet" type="text/css" href="../css/pageCss2.css"/>
 	<script src="https://www.imooc.com/static/lib/jquery/1.9.1/jquery.js"></script>
 	<script src="../js/homepage.js"></script>
+	<style type="text/css">
+		
+	</style>
 </head>
 <body>
 <div id="content" style="height: 966px">
@@ -36,7 +40,126 @@
 	</div>
 	
 	<div id="info_page">
-		
+		<div id="second">
+			<div style="width: calc(100% - 17px);overflow-x: hidden;" id="table-head">
+	            <table class="table" style="width: 100%;table-layout: fixed;">
+	                <thead>
+		                <tr>
+		                    <th>id</th>
+							<th>用户名</th>
+							<th>用户实名</th>
+							<th>性别</th>
+							<th>模型选择</th>
+							<th>是否为管理员</th>
+							<th>操作</th>
+		                </tr>
+	                </thead>
+	            </table>
+        	</div>
+        	
+        	<div style="width: 100%;height: 579px;overflow-y: scroll;" id="table-body">
+	           <table class="table" style="width: 100%;table-layout: fixed">
+	               <tbody>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               		<tr>
+	               			<td colspan="7">sssssss</td>
+	               		</tr>
+	               </tbody>
+	           </table>
+        	</div>
+        </div>
 	</div>
 </div>
 </body>
