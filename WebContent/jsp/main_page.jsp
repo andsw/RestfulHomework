@@ -67,15 +67,25 @@ function saveUser(){
 	} else {
 		user.id=getCookie("id");
 		user.username=$('#username').val();
-		user.gender=$('[name=isMan]').val();
-		alert(user.gender);
-		user.model=$('[name=model]').val();
-		alert(user.model);
+		// 试验一番发现这个以name为属性获取的永远都是第一个即男的和左边的值。所以要两个分开获取然后ifelse判断！
+		if($('#man_radio').attr("checked") === 'true') {// 获得一个就行了，非此即彼！！
+			user.gender='true';
+		} else {
+			user.gender='false';
+		}
+		if($('#first_head_radio').attr("checked")) {
+			user.model='false';
+		} else {
+			user.model='right';
+		}
+		
+		alert("in saveUser username = " + user.username);
+		alert("in saveUser is Man? " + user.gender);
+		alert("in saveUser is right model?  " + user.model);
 		user.permission=getCookie("isAdmin");
 		var successMethod = function(result){
 			alert(result.description)
 		}
-		alert(user);
 		request("PUT", "<%=basePath%>/useroperate/operate", user, true, successMethod, errorMethod)
 	}
 }
@@ -88,27 +98,32 @@ function firstChangeInfo(){
 		$("#username").attr("readonly", "readonly");
 		$('#username').val(getCookie("username"));
 		$('#realName').val(getCookie("realName"));
-		if(getCookie("isMan") === true) {
+		
+		var isMan = getCookie("isMan");
+		var isRightModel = getCookie("whichModel");
+		alert("isMan :" + isMan);
+		alert("is right model : " + isRightModel)
+		
+		if(isMan === "true") {
+			alert("isMan");
 			$('#man_radio').attr("checked","true");
-		} else {
+		} else if(isMan === "false") {
+			alert("isWoman");
 			$('#woman_radio').attr("checked","true");
 		}
-		if(getCookie("whichModel") === true) {
+		
+		if(isRightModel === "true") {
 			$('#second_head_radio').attr("checked","true");
-		} else {
+		} else if(isRightModel === "false") {
 			$('#first_head_radio').attr("checked","true");
 		}
 		
-		//显示身份：
-		alert(getCookie("isAdmin"));
+		
 		if(getCookie("isAdmin") === true){
-			alert("管理员")
 			$("#permission").text("管理员");
 		} else {
-			alert("普通用户")
 			$("#permission").text("普通用户");
 		}
-		$("#permission").attr("color", "#25B80C")
 	} else {
 		alert("已经是第一个页面哦！")
 	}

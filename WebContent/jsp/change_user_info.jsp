@@ -18,7 +18,7 @@
 		</tr>
 		<tr>
 			<td class="words">用户实名：</td>
-			<td colspan="3"><input type="text" placeholder="请输入用户名" class="texts" id="realName"></input></td>
+			<td colspan="3"><input type="text" placeholder="请输入用户实名" class="texts" id="realName"></input></td>
 		</tr>
 		<tr>
 			<td class="words">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码：</td>
