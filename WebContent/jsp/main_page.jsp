@@ -14,7 +14,7 @@
 	<meta charset="utf-8" />
 	<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/homepage.css"/>
-			<link rel="stylesheet" type="text/css" href="../css/change_user_info.css"/>
+			
 	<script src="https://www.imooc.com/static/lib/jquery/1.9.1/jquery.js"></script>
 </head>
 <body>
@@ -42,6 +42,7 @@
 </body>
 
 <script>
+// 算了算了，性别和头像就用一个全局变量来代表吧！
 var whichPage = 0;
 var errorMethod = function(XMLHttpRequest, textStatus, errorThrown){
 	alert("登录失败！"); 
@@ -62,22 +63,20 @@ function saveUser(){
 	user.realName=$('#realName').val();
 	if(user.password != password_confirming) {
 		alert("密码两次输入不匹配！")
-	} else if(user.realName.length == 0) {
+	} else if(user.realName.length === 0) {
 		alert("用户实名为空，不可修改！")
 	} else {
 		user.id=getCookie("id");
 		user.username=$('#username').val();
 		// 试验一番发现这个以name为属性获取的永远都是第一个即男的和左边的值。所以要两个分开获取然后ifelse判断！
-		if($('#man_radio').attr("checked") === 'true') {// 获得一个就行了，非此即彼！！
+		/*if($('#man_radio').attr("checked") === 'checked') {// 获得一个就行了，非此即彼！！
 			user.gender='true';
 		} else {
 			user.gender='false';
-		}
-		if($('#first_head_radio').attr("checked")) {
-			user.model='false';
-		} else {
-			user.model='right';
-		}
+		}*/
+		
+		user.gender = man;
+		user.model=whichModel;
 		
 		alert("in saveUser username = " + user.username);
 		alert("in saveUser is Man? " + user.gender);
@@ -90,13 +89,43 @@ function saveUser(){
 	}
 }
 
+var man = false;
+function changeModelImage() {
+	if(whichPage===1){
+		man = !man;
+	}
+	//alert(man)
+	if(man === true) {
+		$("#first_label").css("background", "url(../img/register/man1.png) no-repeat")
+		$("#second_label").css("background", "url(../img/register/man2.png) no-repeat")
+	} 
+	if(man===false) {
+		//alert("change to girl");
+		$("#first_label").css("background", "url(../img/register/woman1.png) no-repeat")
+		$("#second_label").css("background", "url(../img/register/woman2.png) no-repeat")
+	}
+}
+
+var whichModel = false;
+function changeModelNumber() {
+	if(whichPage===1){
+		whichModel = !whichModel;
+	}
+}
+
 function firstChangeInfo(){
 	if(whichPage!=1){
-		whichPage = 1;
+		
+		//动态加载css！
+		$('head').append('<link rel="stylesheet" type="text/css" href="../css/change_user_info.css"/>');
+		
+		//加载html码
 		$('#info_page').load("change_user_info.jsp");
-		alert(getCookie("realName"));
-		$("#username").attr("readonly", "readonly");
+		
+		alert(getCookie("username"))
 		$('#username').val(getCookie("username"));
+		//设置为只读！
+		$("#username").attr("readonly", "readonly");
 		$('#realName').val(getCookie("realName"));
 		
 		var isMan = getCookie("isMan");
@@ -105,25 +134,33 @@ function firstChangeInfo(){
 		alert("is right model : " + isRightModel)
 		
 		if(isMan === "true") {
-			alert("isMan");
-			$('#man_radio').attr("checked","true");
+			$('#man_radio').attr("checked","checked");
+			man=true;
 		} else if(isMan === "false") {
-			alert("isWoman");
-			$('#woman_radio').attr("checked","true");
+			$('#woman_radio').attr("checked","checked");
+			man=false;
 		}
+		changeModelImage();
+		$('#man_radio').change(changeModelImage);
+		$('#woman_radio').change(changeModelImage);
 		
 		if(isRightModel === "true") {
-			$('#second_head_radio').attr("checked","true");
+			$('#second_head_radio').attr("checked","checked");
+			whichModel = true;
 		} else if(isRightModel === "false") {
-			$('#first_head_radio').attr("checked","true");
+			$('#first_head_radio').attr("checked","checked");
+			whichModel = false;
 		}
-		
+		$('#first_head_radio').change(changeModelNumber);
+		$('#second_head_radio').change(changeModelNumber);
 		
 		if(getCookie("isAdmin") === true){
 			$("#permission").text("管理员");
 		} else {
 			$("#permission").text("普通用户");
 		}
+		//此时页面为第一个
+		whichPage = 1;
 	} else {
 		alert("已经是第一个页面哦！")
 	}
