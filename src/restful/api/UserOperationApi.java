@@ -10,6 +10,8 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.Context;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import restful.bean.Result;
@@ -85,7 +87,7 @@ public class UserOperationApi {
 	@Path("/operate") 
 	@Consumes("application/json;charset=UTF-8")
 	@Produces("application/json;charset=UTF-8")
-	public Result updateStu(User user) {
+	public Result updateStu(User user, @Context HttpServletRequest httpServletRequest) {
 		Result result = new Result(1, "更新失败", null, "");
 		
 		// 这里解决前台未填入密码时会误将其密码设为空的错误！
@@ -97,6 +99,9 @@ public class UserOperationApi {
 		if(userDao.update(user)) {
 			result.setCode(0);
 			result.setDescription("更新成功");
+			
+			//不是每一次修改用户信息都要更新cookie，如管理员修改他人密码！！！
+			//现在要做的是判断cookie中原有的用户名是否和更改后的用户名相同，相同则修改cookie！
 			
 			// 更新成功的话就更新cookie！
 			CookieUtil cookieUtil = CookieUtil.getInstance();

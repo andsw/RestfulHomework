@@ -141,23 +141,45 @@ function saveChange(self) {
 	var row = self.parentNode;
 	var tableBody = row.parentNode;
 	$tableBodyj = $(tableBody);
+	
+	// 获取用户id
+	$idTd = $tableBodyj.children("td").eq(0);
+	user.id = $idTd.text();
+	
+	// 获取用户实名
+	$usernameTd = $tableBodyj.children("td").eq(1);
+	user.username = $usernameTd.text();
+	
 	// 获取用户实名
 	$realNameTd = $tableBodyj.children("td").eq(2);
 	user.realName = $realNameTd.children("input").eq(0).val();
 	
-	// 性别变成下拉框
+	// 获取性别
 	$genderTd = $tableBodyj.children("td").eq(3);
 	user.gender = $genderTd.children("select").eq(0).find("option:selected").text();
 	
-	//模型选择
+	// 获取模型选择
 	// TODO
+	$modelTd = $tableBodyj.children("td").eq(4);
+	user.model = $modelTd.text();
 	
-	//是否为管理员变为下拉框
+	//获取身份
 	$isAdminTd = $tableBodyj.children("td").eq(5);
 	user.permission = $isAdminTd.children("select").eq(0).find("option:selected").text();
 	
 	//点击保存后传入修改后的数据再还原
 	cancelChange(self, user)
+	
+	// 提交到后台的需要修改为正确格式！
+	user.gender = user.gender === '男' ? true : false;
+	user.permission = user.permission === '管理员' ? true : false;
+	alert(user.id + " " + user.username + " " + user.realName + " " + user.gender + " " + user.model + " " + user.permission);
+	//后台会检验密码是否为空字符串！
+	user.password="";
+	
+	//提交后台请求
+	request("PUT", "http://localhost:8080/suit/useroperate/operate",user,true,
+			function(){alert("保存成功")},errorMethod);
 }
 
 function cancelChange(self, user) {
