@@ -1,5 +1,6 @@
 // 算了算了，性别和头像就用一个全局变量来代表吧！
 var whichPage = 0;
+const pageSet = new Set();
 var errorMethod = function(XMLHttpRequest, textStatus, errorThrown){
 	alert("更新失败！"); 
 	alert(XMLHttpRequest.status);
@@ -15,8 +16,8 @@ $(document).ready(function () {
 	$("#four").hide();
 	$("#five").hide();
 	
-	firstChangeInfo()
-	//secondListUsers();
+	//firstChangeInfo()
+	secondListUsers();
 });
 
 function firstChangeInfo(){
@@ -26,47 +27,52 @@ function firstChangeInfo(){
 		
 		//加载html码
 		$('#one').show();
-		$('#one').load("change_user_info.jsp");
 		
-		//动态加载css/js！
-		$('head').append('<script src="../js/infoPage/pageJs1.js"><\/script>');
-		$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss1.css"/>');
-		
-		$('#username').val(getCookie("username"));
-		//设置为只读！
-		$("#username").attr("readonly", "readonly");
-		$('#realName').val(getCookie("realName"));
-		
-		var isMan = getCookie("isMan");
-		var isRightModel = getCookie("whichModel");
-		/*alert("isMan :" + isMan);
-		alert("is right model : " + isRightModel)*/
-		
-		if(isMan === "true") {
-			$('#man_radio').attr("checked","checked");
-			man=true;
-		} else if(isMan === "false") {
-			$('#woman_radio').attr("checked","checked");
-			man=false;
-		}
-		changeModelImage();
-		$('#man_radio').change(changeModelImage);
-		$('#woman_radio').change(changeModelImage);
-		
-		if(isRightModel === "true") {
-			$('#second_head_radio').attr("checked","checked");
-			whichModel = true;
-		} else if(isRightModel === "false") {
-			$('#first_head_radio').attr("checked","checked");
-			whichModel = false;
-		}
-		$('#first_head_radio').change(changeModelNumber);
-		$('#second_head_radio').change(changeModelNumber);
-		
-		if(getCookie("isAdmin") === true){
-			$("#permission").text("管理员");
-		} else {
-			$("#permission").text("普通用户");
+		if(!pageSet.has(1)){
+			$('#one').load("change_user_info.jsp");
+			
+			//动态加载css/js！
+			$('head').append('<script src="../js/infoPage/pageJs1.js"><\/script>');
+			$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss1.css"/>');
+			
+			$('#username').val(getCookie("username"));
+			//设置为只读！
+			$("#username").attr("readonly", "readonly");
+			$('#realName').val(getCookie("realName"));
+			
+			var isMan = getCookie("isMan");
+			var isRightModel = getCookie("whichModel");
+			/*alert("isMan :" + isMan);
+			alert("is right model : " + isRightModel)*/
+			
+			if(isMan === "true") {
+				$('#man_radio').attr("checked","checked");
+				man=true;
+			} else if(isMan === "false") {
+				$('#woman_radio').attr("checked","checked");
+				man=false;
+			}
+			changeModelImage();
+			$('#man_radio').change(changeModelImage);
+			$('#woman_radio').change(changeModelImage);
+			
+			if(isRightModel === "true") {
+				$('#second_head_radio').attr("checked","checked");
+				whichModel = true;
+			} else if(isRightModel === "false") {
+				$('#first_head_radio').attr("checked","checked");
+				whichModel = false;
+			}
+			$('#first_head_radio').change(changeModelNumber);
+			$('#second_head_radio').change(changeModelNumber);
+			
+			if(getCookie("isAdmin") === true){
+				$("#permission").text("管理员");
+			} else {
+				$("#permission").text("普通用户");
+			}
+			//记录已加载
+			pageSet.add(1)
 		}
 		//此时页面为第一个
 		whichPage = 1;
@@ -79,6 +85,17 @@ function deleteUserFromTable(self){
 	var row = self.parentNode;
 	var tableBody = row.parentNode;
 	$tableBodyj = $(tableBody);
+	
+	var user = {};
+	//记住获取jquery对象的子节点是这样的！！！
+	user.id = $tableBodyj.children("td").eq(0).text();
+	user.username = $tableBodyj.children("td").eq(1).text()
+	//删除数据库信息
+	request("DELETE", "http://localhost:8080/suit/useroperate/operate",user,true,
+			function(){
+				alert("删除用户 " + $tableBodyj.children("td").eq(1).text() + "成功！");
+			},errorMethod);
+	
 	$tableBodyj.fadeOut(800);
 }
 
@@ -102,9 +119,11 @@ function secondListUsers(){
 		empty();
 		
 		$('#two').show();
-		
-		$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss2.css"/>');
-		request("POST", "http://localhost:8080/suit/useroperate/list",null,true,ListUsers,errorMethod);
+		if(!pageSet.has(2)){
+			$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss2.css"/>');
+			request("POST", "http://localhost:8080/suit/useroperate/list",null,true,ListUsers,errorMethod);
+			pageSet.add(2);
+		}
 		whichPage = 2;
 	} else {
 		alert("已经是第二个页面哦！")
