@@ -21,6 +21,17 @@ public class CookieUtil {
 		return MyClass.cookieUtil;
 	}
 	
+	public String getCookieByName(HttpServletRequest request, String cookieName) {
+		String cookieValue = "";
+		Cookie[] cookies = request.getCookies();
+		for(Cookie cookie : cookies) {
+			if(cookieName.equals(cookie.getName())) {
+				cookieValue = cookie.getValue();
+			}
+		}
+		return cookieValue;
+	}
+	
 	public void addUserInfoIntoResponse(HttpServletResponse response, User user) {
 		Cookie[] cookies = new Cookie[7];
 		cookies[0] = new Cookie("hasLogged", "true");
@@ -50,8 +61,8 @@ public class CookieUtil {
 		}
 	}
 	
-	public void removeCookieFromResponse(HttpServletRequest Request, HttpServletResponse response) {
-		Cookie[] cookies = Request.getCookies();
+	public void removeCookieFromResponse(HttpServletRequest request, HttpServletResponse response) {
+		Cookie[] cookies = request.getCookies();
 		if(cookies != null) {
 			for(Cookie cookie : cookies) {
 				//将MaxAge设置为0，然后再添加进response，相当当于删除！

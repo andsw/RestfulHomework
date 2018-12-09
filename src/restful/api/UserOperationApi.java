@@ -100,12 +100,18 @@ public class UserOperationApi {
 			result.setCode(0);
 			result.setDescription("更新成功");
 			
+			CookieUtil cookieUtil = CookieUtil.getInstance();
+			
 			//不是每一次修改用户信息都要更新cookie，如管理员修改他人密码！！！
 			//现在要做的是判断cookie中原有的用户名是否和更改后的用户名相同，相同则修改cookie！
+			String username = cookieUtil.getCookieByName(httpServletRequest, "username");
 			
 			// 更新成功的话就更新cookie！
-			CookieUtil cookieUtil = CookieUtil.getInstance();
-			cookieUtil.addUserInfoIntoResponse(httpServletResponse, user);
+			
+			if(username.equals(user.getUsername())) {
+				System.out.println("-----------------------------------------------\n---------------------------------------");
+				cookieUtil.addUserInfoIntoResponse(httpServletResponse, user);
+			}
 		}
 		return result;
 	}
