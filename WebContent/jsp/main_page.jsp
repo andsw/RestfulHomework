@@ -41,33 +41,7 @@
 	
 	<div class="info_page" id="one"></div>
 	
-	<div class="info_page" id="two">
-		<div id="second">
-			<div style="width: calc(100% - 17px);overflow-x: hidden;" id="table-head">
-	            <table class="table" style="width: 100%;table-layout: fixed;">
-	                <thead>
-		                <tr>
-		                    <th>id</th>
-							<th>用户名</th>
-							<th>用户实名</th>
-							<th>性别</th>
-							<th>模型选择</th>
-							<th>用户身份</th>
-							<th>操作</th>
-		                </tr>
-	                </thead>
-	            </table>
-        	</div>
-        	
-        	<div style="width: 100%;height: 579px;overflow-y: scroll;" id="table-body">
-	           <table class="table" style="width: 100%;table-layout: fixed">
-	               <tbody>
-	               		<!-- 这里填充数据！ -->
-	               </tbody>
-	           </table>
-        	</div>
-        </div>
-	</div>
+	<div class="info_page" id="two"></div>
 	
 	<div class="info_page" id="three"></div>
 	<div class="info_page" id="four"></div>

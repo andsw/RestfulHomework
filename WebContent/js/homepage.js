@@ -240,6 +240,7 @@ function secondListUsers(){
 		
 		$('#two').show();
 		if(!pageSet.has(2)){
+			$('#two').load("user_list_page.jsp");
 			$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss2.css"/>');
 			request("POST", "http://localhost:8080/suit/useroperate/list",null,true,ListUsers,errorMethod);
 			pageSet.add(2);
