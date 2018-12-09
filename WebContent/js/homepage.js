@@ -64,18 +64,24 @@ function firstChangeInfo(){
 	}
 }
 
+function deleteUserFromTable(self){
+	var row = self.parentNode;
+	var tableBody = row.parentNode;
+	$tableBodyj = $(tableBody);
+	$tableBodyj.fadeOut(800);
+}
+
 function ListUsers(result){
 	$.each(result.data,function(idx, obj){
-		alert(obj.username);
 		$("#table-body tbody").append("<tr><td>" + obj.id
 				+ "</td><td>" + obj.username
 				+ "</td><td>" + obj.realName
-				+ "</td><td>" + (obj.gender === 'true' ? '男' : '女')
+				+ "</td><td>" + (obj.gender === true ? '男' : '女')
 				+ "</td><td>" + obj.model
-				+ "</td><td>" + (obj.permission === 'true' ? '管理员' : "普通用户")
-				+ "</td><td>" + "<button class=\"operate_button\">修改</button><button class=\"operate_button\">删除</button>"
-				+ "</td></tr>"
-				)
+				+ "</td><td>" + (obj.permission === true ? '管理员' : "普通用户")
+				+ "</td><td>" + "<button class=\"operate_button\" onclick=\" \">修改</button>" 
+							  + "<button class=\"operate_button\" onclick=\"deleteUserFromTable(this) \">删除</button>"
+				+ "</td></tr>")
 	})
 }
 
