@@ -17,7 +17,8 @@ $(document).ready(function () {
 	$("#five").hide();
 	
 	//firstChangeInfo()
-	secondListUsers();
+	//secondListUsers();
+	thirdClothesType();
 });
 
 function firstChangeInfo(){
@@ -82,6 +83,7 @@ function firstChangeInfo(){
 }
 
 function secondListUsers(){
+
 	if(whichPage!=2) {
 		
 		empty();
@@ -101,8 +103,52 @@ function secondListUsers(){
 	}
 }
 
+function addClothesType(obj){
+	//放在添加卡片的卡片后面
+	$("#add_card").after("<div class=\"card\">"+
+			"<label class=\"green_title\" for=\"id_input\">"+
+				"<h1 class=\"title_style\">服饰类别</h1>"+
+			"</label>"+
+			"<table>"+
+				"<tr>"+
+					"<td><label for=\"mark_input\">编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</label></td>"+
+					"<td><input type=\"text\" name=\"mark\" id=\"mark_input\" value=\"" + obj.mark +"\"/></td>"+
+				"</tr>"+
+				"<tr>"+
+					"<td><label for=\"name_input\">名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：</label></td>"+
+					"<td><input type=\"text\" name=\"mark\" id=\"name_input\" value=\"" + obj.name +"\"/></td>"+
+				"</tr>"+
+				"<tr>"+
+					"<td colspan=\"2\"><button>保存</button><button>删除</button></td>"+	
+				"</tr>"+
+			"</table>"+
+		"</div>");
+}
+
 function thirdClothesType(){
-	
+	if(whichPage!=3) {
+		
+		empty();
+		
+		$('#three').show();
+		
+		if(!pageSet.has(3)){
+			//$('#two').load("user_list_page.jsp");
+			//$('head').append('<script src="../js/infoPage/pageJs2.js"><\/script>');
+			$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss3.css"/>');
+			
+			request("GET", "http://localhost:8080/suit/clothestype/operate",null,true,function(result){
+				$.each(result.data,function(idx, obj){
+					addClothesType(obj);
+				})
+			},errorMethod);
+			
+			pageSet.add(3);
+		}
+		whichPage = 3;
+	} else {
+		alert("已经是第三个页面哦！")
+	}
 }
 
 function forth(){}

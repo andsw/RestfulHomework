@@ -1,0 +1,100 @@
+#third {
+	width: 90%;
+	height: 80%;
+	margin: 5% auto;
+	border: 2px solid #000;
+	border-radius: 10px;
+	overflow-y: auto;
+    
+     /*相当于设置摄像头的高度，从摄像头看下去，真的会有tranformz（）离得越近的越显得大！*/
+    perspective: 1000px;
+    /*设置样式改变类型为3d类型*/
+	transform-style: preserve-3d;
+}
+
+#third .card {
+	display:inline-block;
+	width: 295px;
+    height: 200px;
+    margin: 20px 0 0 20px;
+    border-radius: 10px;
+    background-image: url("../img/ui/3dBackGround.jpg");
+    box-shadow: 1px 1px 13px 2px #000;
+    -webkit-transform-origin: bottom;
+    /*设置旋转点的位置为下边缘中心*/
+    -moz-transform-origin: bottom;
+    -ms-transform-origin: bottom;
+    -o-transform-origin: bottom;
+    transform-origin: bottom;
+    
+    transform: rotate(0deg) translateZ(-8px);
+    -moz-transform: rotate(0deg) translateZ(-8px);
+}
+
+#third .card:hover {
+	transform: rotate(0) translateZ(0px);
+	   /*设置旋转角度和z轴便宜量！*/	
+	transition-duration: 300ms;
+	-moz-transform: rotate(0) translateZ(0px);
+}
+
+/*label*/
+#third .green_title {
+	width: 295px;
+	height: 50px;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background: #9DC45F;
+	display: block;
+}
+
+/*h1*/
+#third .title_style {
+	color: #d6d1d1;
+    font-size: 20px;
+    text-align: center;
+    text-shadow: 2px 2px 1px #000;
+    line-height: 48px;
+}
+
+#third .card table {
+	width:250px;
+	height:auto;
+	margin: 10px auto;
+	align: center;
+}
+
+#third .card table label {
+	font: 12px Arial, Helvetica, sans-serif;
+	display: inline-block;
+	font-size: 20px;
+	color: #6a6b79;
+}
+
+#third .card table input {
+	width: 160px;
+	height: 30px;
+	padding-left:5px;
+}
+
+#third .card table button{
+	padding: 10px 30px 10px 30px;
+	background: #9DC45F;
+	border: none;
+	color: #FFF;
+	box-shadow: 1px 1px 1px #4C6E91;
+	-webkit-box-shadow: 1px 1px 1px #4C6E91;
+	-moz-box-shadow: 1px 1px 1px #4C6E91;
+	text-shadow: 1px 1px 1px #5079A3;
+	border-radius: 5px;
+	margin-top: 10px;
+	margin-left:30px;
+}
+
+#sole_button {
+	width:80%
+}
+
+#third .card table button:hover{
+	background: #3EB1DD;
+}
