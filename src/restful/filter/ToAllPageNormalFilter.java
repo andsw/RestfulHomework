@@ -12,6 +12,8 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import restful.utils.CookieUtil;
+
 /*
  * 这个过滤器是用来过滤页面而非api请求！
  * 比如当用户未登录访问主页或其他页面时，
@@ -55,15 +57,17 @@ public class ToAllPageNormalFilter implements Filter {
 		HttpServletRequest request = (HttpServletRequest)servletRequest;
 		HttpServletResponse response = (HttpServletResponse)servletResponse;
 		
-		String isLogged = "";//cookie或者没有登录信息这个都为空字符串！
-		Cookie[] cookies = request.getCookies();
+		String hasLogged = "";//cookie或者没有登录信息这个都为空字符串！
+		/*Cookie[] cookies = request.getCookies();
 		if(cookies != null) {
 			for(Cookie cookie : cookies) {
 				if("hasLogged".equals(cookie.getName())) {
 					isLogged = cookie.getValue() == null ? "" : cookie.getValue();
 				}
 			}
-		}
+		}*/
+		CookieUtil cookieUtil = CookieUtil.getInstance();
+		hasLogged = cookieUtil.getCookieByName(request, "hasLogged");
 		
 		// 获得请求页面路径
 		String path = request.getRequestURI();
@@ -73,13 +77,13 @@ public class ToAllPageNormalFilter implements Filter {
 			System.out.println("\n进入页面过滤器");
 			System.out.println("path =" + path);
 			System.out.println("isLogged = " + 
-			(isLogged.equals("") ? "空字符串" : isLogged));
+			(hasLogged.equals("") ? "空字符串" : hasLogged));
 		}
 		
 		if(path != null && path.endsWith(".jsp")) {
 			
 			//未登录 访问的是非loing和register界面！！！
-			if("".equals(isLogged) 
+			if("".equals(hasLogged) 
 					&& !"/suit/login.jsp".equals(path) 
 					&& !"/suit/register.jsp".equals(path)
 					&& !"/suit/jsp/main_page.jsp".equals(path)
@@ -89,7 +93,7 @@ public class ToAllPageNormalFilter implements Filter {
 				response.sendRedirect("/suit/login.jsp");
 				System.out.println("离开页面过滤器\n");
 				return;
-			} else if("true".equals(isLogged) 
+			} else if("true".equals(hasLogged) 
 					&& ("/suit/login.jsp".equals(path) 
 					|| "/suit/register.jsp".equals(path))) {
 				//已登录但访问的是登录界面或注册界面
