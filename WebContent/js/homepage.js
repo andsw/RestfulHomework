@@ -8,14 +8,25 @@ var errorMethod = function(XMLHttpRequest, textStatus, errorThrown){
 }
 
 $(document).ready(function () {
-	//firstChangeInfo()
-	secondListUsers();
+	
+	$("#one").hide();
+	$("#two").hide();
+	$("#three").hide();
+	$("#four").hide();
+	$("#five").hide();
+	
+	firstChangeInfo()
+	//secondListUsers();
 });
 
 function firstChangeInfo(){
 	if(whichPage!=1){
+		
+		empty();
+		
 		//加载html码
-		$('#info_page').load("change_user_info.jsp");
+		$('#one').show();
+		$('#one').load("change_user_info.jsp");
 		
 		//动态加载css/js！
 		$('head').append('<script src="../js/infoPage/pageJs1.js"><\/script>');
@@ -87,7 +98,11 @@ function ListUsers(result){
 
 function secondListUsers(){
 	if(whichPage!=2) {
+		
 		empty();
+		
+		$('#two').show();
+		
 		$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss2.css"/>');
 		request("POST", "http://localhost:8080/suit/useroperate/list",null,true,ListUsers,errorMethod);
 		whichPage = 2;
@@ -142,9 +157,15 @@ function request(method,url,data,async,successMethod,errorMethod){
 }
 
 function empty() {
-	if(whichPage === 1) {
-		$("#first").hide();
-		alert("empty")
+	if(whichPage === 1){
+		$('#one').hide();
+	} else if(whichPage === 2){
+		$('#two').hide();
+	} else if(whichPage === 3){
+		$('#three').hide();
+	} else if(whichPage === 4){
+		$('#four').hide();
+	} else if(whichPage === 5){
+		$('#five').hide();
 	}
-	
 }

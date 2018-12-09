@@ -86,7 +86,7 @@ body{
 }
 
 
-#info_page {
+.info_page {
 	width:75%;
 	height:82%;
 	background:rgba(255,255,255,0.6);

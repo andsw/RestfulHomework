@@ -39,7 +39,9 @@
 		</ul>
 	</div>
 	
-	<div id="info_page">
+	<div class="info_page" id="one"></div>
+	
+	<div class="info_page" id="two">
 		<div id="second">
 			<div style="width: calc(100% - 17px);overflow-x: hidden;" id="table-head">
 	            <table class="table" style="width: 100%;table-layout: fixed;">
@@ -66,6 +68,10 @@
         	</div>
         </div>
 	</div>
+	
+	<div class="info_page" id="three"></div>
+	<div class="info_page" id="four"></div>
+	<div class="info_page" id="five"></div>
 </div>
 </body>
 </html>
