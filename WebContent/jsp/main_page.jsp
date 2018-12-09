@@ -14,7 +14,6 @@
 	<meta charset="utf-8" />
 	<link rel="stylesheet" type="text/css" href="../css/main.css"/>
 	<link rel="stylesheet" type="text/css" href="../css/homepage.css"/>
-	<link rel="stylesheet" type="text/css" href="../css/pageCss2.css"/>
 	<script src="https://www.imooc.com/static/lib/jquery/1.9.1/jquery.js"></script>
 	<script src="../js/homepage.js"></script>
 	<style type="text/css">
@@ -40,9 +39,7 @@
 	</div>
 	
 	<div class="info_page" id="one"></div>
-	
 	<div class="info_page" id="two"></div>
-	
 	<div class="info_page" id="three"></div>
 	<div class="info_page" id="four"></div>
 	<div class="info_page" id="five"></div>
