@@ -44,6 +44,15 @@ public class ClothesTypeApi {
 			if(clothesTypeDao.add(clothesType)) {
 				result.setDescription("添加成功");
 				result.setCode(0);
+				@SuppressWarnings("unchecked")
+				List<ClothesType> list = (List<ClothesType>) getAllClothesType().getData();
+				if(list != null) {
+					for(ClothesType clothesType0 : list) {
+						if(clothesType0.getMark().equals(clothesType.getMark())) {
+							clothesType.setId(clothesType0.getId());
+						}
+					}
+				}
 				result.setData(clothesType);
 			}
 		}

@@ -2,7 +2,7 @@
 function addClothesTypeCard(obj){
 	//放在添加卡片的卡片后面
 	$("#add_card").after("<div class=\"card\">"+
-			"<input type=\"hidden\" value=\""+ obj.id +"\" name=\"id\"/>"+
+			"<input type=\"hidden\" value=\""+ obj.id +"\" name=\"typeId\"/>"+
 			"<label class=\"green_title\" for=\"id_input\">"+
 				"<h1 class=\"title_style\">服饰类别</h1>"+
 			"</label>"+
@@ -31,6 +31,7 @@ function addClothesType() {
 		request("POST", "http://localhost:8080/suit/clothestype/operate",type,true,function(result){
 			if(result.code === 0) {
 				addClothesTypeCard(result.data);
+				$("[name=typeId]").val(result.data.id)
 			} else {
 				alert(result.description);
 			}
@@ -52,7 +53,7 @@ function deleteClothestype(self) {
 	var card = self.parentNode.parentNode.parentNode.parentNode.parentNode;
 	$cardj = $(card);
 	//删除也别忘了要加上id！！
-	clothesType.id = $cardj.find('[name=id]').val();
+	clothesType.id = $cardj.find('[name=typeId]').val();
 	clothesType.mark = $cardj.find('[name=mark]').val();
 	clothesType.name = $cardj.find('[name=name]').val();
 	
@@ -69,7 +70,7 @@ function updateClothesType(self) {
 	var clothesType = {}; 
 	var card = self.parentNode.parentNode.parentNode.parentNode.parentNode;
 	$cardj = $(card);
-	clothesType.id = $cardj.find('[name=id]').val();
+	clothesType.id = $cardj.find('[name=typeId]').val();
 	clothesType.mark = $cardj.find('[name=mark]').val();
 	clothesType.name = $cardj.find('[name=name]').val();
 	if(clothesType.name != '') {

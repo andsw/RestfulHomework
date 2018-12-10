@@ -27,7 +27,7 @@
 		}
 		#forth #forthHead {
 			width: 100%;
-			height: 44px;
+			height: 47px;
 			border-bottom: 2px solid #FFF;
 		}
 		#forth .input_label {
