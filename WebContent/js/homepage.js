@@ -16,9 +16,9 @@ $(document).ready(function () {
 	$("#four").hide();
 	$("#five").hide();
 	
-	//firstChangeInfo()
+	firstChangeInfo()
 	//secondListUsers();
-	thirdClothesType();
+	//thirdClothesType();
 });
 
 function firstChangeInfo(){
