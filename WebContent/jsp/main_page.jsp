@@ -17,7 +17,77 @@
 	<script src="https://www.imooc.com/static/lib/jquery/1.9.1/jquery.js"></script>
 	<script src="../js/homepage.js"></script>
 	<style type="text/css">
+		#forth {
+			width: 90%;
+			height: 80%;
+			margin: 5% auto;
+			border: 2px solid #000;
+			border-radius: 10px;
+			overflow-y: auto;
+		}
+		#forth #forthHead {
+			width: 100%;
+			height: 44px;
+			border-bottom: 2px solid #FFF;
+		}
+		#forth .input_label {
+			width: 300px;
+			height: auto;
+			display: inline-block;
+			margin: 9px -60px 0 17px;
+			font-family: SimHei;
+            font-size: 14pt;
+            font-weight: 500;
+            color: RGBA(102,102,102,0.7);
+            padding-top: 3px;
+		}
+		#forth .gender_select_class {
+			width: 108px;
+            height: 29px;
+            line-height: 30pt;
+            padding-right: 15pt;
+            text-indent: 4pt;
+            text-align: center;
+            vertical-align: middle;
+            border: 1px solid #94c1e7;
+            -moz-border-radius: 4px;
+            -webkit-border-radius: 4px;
+            border-radius: 4px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            font-family: SimHei;
+            font-size: 14pt;
+            font-weight: 500;
+            color: RGBA(102,102,102,0.7);
+            cursor: pointer;
+            outline: none;
+            margin-left: 10px;
+            margin-top: -4px;
+		}
+		#forth .forth_button {
+			width:90px;
+			height: 30px;
+			padding: 10px 30px 27px 30px;
+			background: #9DC45F;
+			border: none;
+			color: #FFF;
+			box-shadow: 1px 1px 1px #4C6E91;
+			-webkit-box-shadow: 1px 1px 1px #4C6E91;
+			-moz-box-shadow: 1px 1px 1px #4C6E91;
+			text-shadow: 1px 1px 1px #5079A3;
+			border-radius: 5px;
+			margin-left:-20px;
+			margin-top: 3px;
+			margin-right: 24px;
+		}
 		
+		#forth .forth_button:hover {
+			background: #3EB1DD;
+		}
+		#forth #add_button {
+			float: right;
+		}
 	</style>
 </head>
 <body>
@@ -32,7 +102,7 @@
 		<li class="siderbar_selector_li" onclick="firstChangeInfo()"><img style="width:64px;height=64px;" src="../img/ui/self.png"></li>
 		<li class="siderbar_selector_li" onclick="secondListUsers()"><img style="width:64px;height=64px;" src="../img/ui/user_list.png"></li>
 		<li class="siderbar_selector_li" onclick="thirdClothesType()"><img style="width:64px;height=64px;" src="../img/ui/catalog.png"></li>
-		<li class="siderbar_selector_li" onclick=""><img style="width:64px;height=64px;" src="../img/ui/all_clothes.png"></li>
+		<li class="siderbar_selector_li" onclick="forthClothes()"><img style="width:64px;height=64px;" src="../img/ui/all_clothes.png"></li>
 		<li class="siderbar_selector_li" onclick=""><img style="width:64px;height=64px;" src="../img/ui/mine.png"></li>
 		<li class="siderbar_selector_li" onclick="sixthExit()"><img style="width:64px;height=64px;" src="../img/ui/logout.png"></li>
 		</ul>
@@ -41,7 +111,29 @@
 	<div class="info_page" id="one"></div>
 	<div class="info_page" id="two"></div>
 	<div class="info_page" id="three"></div>
-	<div class="info_page" id="four"></div>
+	<div class="info_page" id="four">
+		<div id="forth">
+		
+			<div id="forthHead">
+				<label class="input_label" for="gender_select_class">性&nbsp;&nbsp;&nbsp;&nbsp;别:
+					<select id="gender_select" class="gender_select_class">
+						<option>男</option>
+						<option>女</option>
+					</select>
+				 </label>
+				 <label class="input_label" for="gender_select_class" style="margin-left:-20px;" placeholder="请选择：">服饰类别:
+					<select id="gender_select" class="gender_select_class">
+					</select>
+				 </label>
+				<button class="forth_button" onclick="">查询</button>
+				<button class="forth_button" id="add_button" onclick="">添加</button>
+			</div>
+			<div id="body">
+				
+			</div>
+			
+		</div>
+	</div>
 	<div class="info_page" id="five"></div>
 </div>
 </body>

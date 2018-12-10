@@ -1,0 +1,11 @@
+insert into tbl_clothes_type values('accessory','饰品'),
+('bag','包'),
+('belt','皮带'),
+('jeans','裤子'),
+('outwear','外套'),
+('shirt','衬衫'),
+('shoes','鞋'),
+('skirt','裙子'),
+('suit','西装'),
+('sweater','毛衣'),
+('underwear','内衣');

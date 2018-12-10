@@ -16,12 +16,13 @@ $(document).ready(function () {
 	$("#four").hide();
 	$("#five").hide();
 	
-	firstChangeInfo()
+	//firstChangeInfo()
 	//secondListUsers();
 	//thirdClothesType();
+	forthClothes()
 });
 
-function firstChangeInfo(){
+function firstChangeInfo() {
 	if(whichPage!=1){
 		
 		empty();
@@ -82,7 +83,7 @@ function firstChangeInfo(){
 	}
 }
 
-function secondListUsers(){
+function secondListUsers() {
 
 	if(whichPage!=2) {
 		
@@ -129,7 +130,31 @@ function thirdClothesType() {
 	}
 }
 
-function forth(){}
+function forthClothes() {
+	if(whichPage!=4) {
+		
+		empty();
+		
+		$('#four').show();
+		
+		if(!pageSet.has(4)){
+			//$('#three').load("clothes_type_page.jsp");
+			//$('head').append('<script src="../js/infoPage/pageJs3.js"><\/script>');
+			//$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss3.css"/>');
+			
+			/*request("GET", "http://localhost:8080/suit/clothestype/operate",null,true,function(result){
+				$.each(result.data,function(idx, obj){
+					addClothesTypeCard(obj);
+				})
+			},errorMethod);*/
+			
+			pageSet.add(4);
+		}
+		whichPage = 4;
+	} else {
+		alert("已经是第四个页面哦！")
+	}
+}
 
 function fifth(){}
 
