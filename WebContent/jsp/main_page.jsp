@@ -49,14 +49,14 @@
 				<table>
 					<tr>
 						<td><label for="mark_input">编&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号：</label></td>
-						<td><input type="text" name="mark" id="mark_input"/></td>
+						<td><input type="text" name="mark" id="mark_input_add"/></td>
 					</tr>
 					<tr>
 						<td><label for="name_input">名&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称：</label></td>
-						<td><input type="text" name="mark" id="name_input"/></td>
+						<td><input type="text" name="mark" id="name_input_add"/></td>
 					</tr>
 					<tr>
-						<td colspan="2"><button id="sole_button">添加</button></td>	
+						<td colspan="2"><button id="sole_button" onclick="addClothesType()">添加</button></td>	
 					</tr>
 				</table>
 			</div>

@@ -28,11 +28,24 @@ public class ClothesTypeApi {
 	@Consumes("application/json;charset=UTF-8")
 	@Produces("application/json;charset=UTF-8")
 	public Result addClothesType(ClothesType clothesType) {
+		
+		@SuppressWarnings("unchecked")
+		List<ClothesType> clothesTypeList = (List<ClothesType>) getAllClothesType().getData();
+		
 		System.out.println("/clothestype/operate post...");
 		Result result = new Result(1,"类别已存在", null,"");
-		if(clothesTypeDao.add(clothesType)) {
-			result.setDescription("添加成功");
-			result.setCode(0);
+		boolean isExisted = true;
+		for(ClothesType clothesType0 : clothesTypeList) {
+			if(clothesType0.getMark().equals(clothesType.getMark())) {
+				isExisted = false;
+			}
+		}
+		if(isExisted) {
+			if(clothesTypeDao.add(clothesType)) {
+				result.setDescription("添加成功");
+				result.setCode(0);
+				result.setData(clothesType);
+			}
 		}
 		return result;
 	}
