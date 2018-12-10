@@ -13,10 +13,18 @@ import javax.persistence.Table;
     @NamedQuery(name = "Clothes.listByName", query = "SELECT clothes FROM Clothes clothes where Clothes.name like :name")
 })
 public class Clothes extends IdEntity{
+	private String mark;
 	private String name;
 	private int price;
 	private boolean gender;
 	private String type;
+	
+	public String getMark() {
+		return mark;
+	}
+	public void setMark(String mark) {
+		this.mark = mark;
+	}
 	public String getName() {
 		return name;
 	}
@@ -43,7 +51,7 @@ public class Clothes extends IdEntity{
 	}
 	@Override
 	public String toString() {
-		return "Clothes [name=" + name + ", price=" + price + ", gender=" + gender + ", type=" + type + ", id=" + id
-				+ "]";
+		return "Clothes [mark=" + mark + ", name=" + name + ", price=" + price + ", gender=" + gender + ", type=" + type
+				+ ", id=" + id + "]";
 	}
 }
