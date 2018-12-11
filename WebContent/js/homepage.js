@@ -163,18 +163,29 @@ function addClothesCard(obj) {
 	
 }
 
+function addOptionIntoSelect(){
+	request("GET", "http://localhost:8080/suit/clothestype/operate",null,true,function(result){
+		$("[name=clothes_type]").html("");
+		$.each(result.data,function(idx, obj){
+			$("[name=clothes_type]").append("<option>" + obj.name + "</option>");
+		})
+	},errorMethod);
+}
+
 function forthClothes() {
+	addOptionIntoSelect();
 	if(whichPage!=4) {
 		
 		empty();
 		
-		$('#four').fadeIn("slow");;
+		$('#four').fadeIn("slow");
 		
 		if(!pageSet.has(4)){
 			//$('#three').load("clothes_type_page.jsp");
 			//$('head').append('<script src="../js/infoPage/pageJs3.js"><\/script>');
 			//$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss3.css"/>');
 			$("#popup_add_form").hide();
+			
 			request("GET", "http://localhost:8080/suit/clothesoperate/operate",null,true,function(result){
 				$.each(result.data,function(idx, obj){
 					addClothesCard(obj);

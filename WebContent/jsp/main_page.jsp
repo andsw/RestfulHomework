@@ -42,7 +42,7 @@
             color: RGBA(102,102,102,0.7);
             padding-top: 3px;
 		}
-		#forth .gender_select_class {
+		#forth .select_class {
 			width: 108px;
             height: 29px;
             line-height: 30pt;
@@ -186,13 +186,13 @@
 		
 			<div id="forthHead">
 				<label class="input_label" for="gender_select_class">性&nbsp;&nbsp;&nbsp;&nbsp;别:
-					<select id="gender_select" class="gender_select_class">
+					<select id="gender_select" class="select_class">
 						<option>男</option>
 						<option>女</option>
 					</select>
 				 </label>
-				 <label class="input_label" for="gender_select_class" style="margin-left:-20px;" placeholder="请选择：">服饰类别:
-					<select id="gender_select" class="gender_select_class">
+				 <label class="input_label" for="gender_select" style="margin-left:-20px;">服饰类别:
+					<select id="type_select" class="select_class" name="clothes_type">
 					</select>
 				 </label>
 				<button class="forth_button" onclick="">查询</button>
@@ -211,12 +211,12 @@
 				<label for="pop_price_input">价格：</label>
 				<input type="text" name="clothes_price" id="pop_price_input"/><br>
 				<select id="pop_gender_select" name="clothes_gender" 
-				class="gender_select_class" style="margin-top: 10px;">
+				class="select_class" style="margin-top: 10px;">
 					<option>男</option>
 					<option>女</option>
 				</select><br>
 				<select id="pop_type_select" name="clothes_type" 
-				class="gender_select_class" style="margin-top: 10px;">
+				class="select_class" style="margin-top: 10px;">
 				</select>
 				<button onclick="addClothesFrompopupForm(this)">添加</button>
 			</div>
