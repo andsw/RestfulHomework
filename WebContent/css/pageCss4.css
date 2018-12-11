@@ -166,6 +166,7 @@
 	margin-top: 10px;
 	overflow: hidden;
 	display: inline-block;
+	position: relative;
 }
 
 #forth #forthBody .list_add_form:hover .save_change_button {
@@ -241,4 +242,12 @@
 	height: 25px;
 	padding-left:5px;
 	margin-top: 16px;
+}
+
+#forth #forthBody .list_add_form .clothes_img {
+	width: 138px;
+	height: auto;
+	position: absolute;
+	left: 213px;
+	top: 55px;
 }
