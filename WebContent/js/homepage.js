@@ -203,7 +203,7 @@ function forthClothes() {
 		if(!pageSet.has(4)){
 			//$('#three').load("clothes_type_page.jsp");
 			//$('head').append('<script src="../js/infoPage/pageJs3.js"><\/script>');
-			//$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss3.css"/>');
+			$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss4.css"/>');
 			$("#popup_add_form").hide();
 			
 			request("GET", "http://localhost:8080/suit/clothesoperate/operate",null,true,function(result){
