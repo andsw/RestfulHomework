@@ -54,7 +54,7 @@ body{
 	margin: 75% auto;
 	list-style: none;
     position: relative;
-   //隐藏溢出的径向渐变背景
+   /*隐藏溢出的径向渐变背景*/
    	overflow: hidden;
 }
 

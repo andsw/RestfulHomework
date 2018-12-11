@@ -130,6 +130,21 @@ function thirdClothesType() {
 	}
 }
 
+function popupForm() {
+	if($("#add_button").text() === '添加') {
+		$("#popup_add_form").show();
+		$("#add_button").text("取消");
+	} else {
+		$("#popup_add_form").hide();
+		$("#add_button").text("添加");
+	}
+}
+
+function addClothesCard(obj) {
+	//这里添加遍历返回的所有衣服类型，先睡明天写！
+	//TODO
+}
+
 function forthClothes() {
 	if(whichPage!=4) {
 		
@@ -141,12 +156,12 @@ function forthClothes() {
 			//$('#three').load("clothes_type_page.jsp");
 			//$('head').append('<script src="../js/infoPage/pageJs3.js"><\/script>');
 			//$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss3.css"/>');
-			
-			/*request("GET", "http://localhost:8080/suit/clothestype/operate",null,true,function(result){
+			$("#popup_add_form").hide();
+			request("GET", "http://localhost:8080/suit/clothesoperate/operate",null,true,function(result){
 				$.each(result.data,function(idx, obj){
-					addClothesTypeCard(obj);
+					addClothesCard(obj);
 				})
-			},errorMethod);*/
+			},errorMethod);
 			
 			pageSet.add(4);
 		}

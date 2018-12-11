@@ -29,6 +29,7 @@
 			width: 100%;
 			height: 47px;
 			border-bottom: 2px solid #FFF;
+			z-index: 0;
 		}
 		#forth .input_label {
 			width: 300px;
@@ -85,8 +86,77 @@
 		#forth .forth_button:hover {
 			background: #3EB1DD;
 		}
+		
 		#forth #add_button {
 			float: right;
+		}
+		
+		/*pop*/
+		 #forth #popup_add_form {
+			width: 273px;
+			height: 410px;
+			position:absolute;
+			left: 39%;
+			top: 23%;
+			z-index: 1004;
+			background: #FFF;
+			padding-left: 30px;
+		}
+		#forth #popup_add_form h1 {
+			width: 100%+30px;
+			height: 47px;
+			color: #d6d1d1;
+		    font-size: 20px;
+		    text-align: center;
+		    text-shadow: 2px 2px 1px #000;
+		    line-height: 48px;
+		    background: #9DC45F;
+		    margin-left: -30px;
+		}
+		
+		#forth #popup_add_form input {
+			width: 160px;
+			height: 30px;
+			padding-left:5px;
+			margin-top: 26px;
+		}
+		#forth #popup_add_form label {
+			padding-left:6px;
+			margin-top: 10px;
+			color: #d6d1d1;
+		    font-size: 20px;
+		    text-align: center;
+		    text-shadow: 2px 2px 1px #000;
+		    line-height: 48px;
+		}
+		
+		#forth #popup_add_form select {
+			width: 231px;
+			display: inline-block;
+			margin-left: 7px;
+			margin-top: 10px;
+			border: 2px solid #94c1e7;
+			/*background: #3EB1DD;*/
+		}
+		
+		#forth #popup_add_form button {
+			width: 231px;
+			height: 50px;
+			background-color: #9DC45F;
+			border: none;
+			color: white;
+			text-align: center;
+			text-decoration: none;
+			display: inline-block;
+			font-size: 22px;
+			margin: 24px auto;
+			border-radius: 2px;
+			margin-left: 7px;
+			cursor: pointer;
+		}
+		
+		#forth #popup_add_form button:hover {
+			background: #3EB1DD;
 		}
 	</style>
 </head>
@@ -126,12 +196,30 @@
 					</select>
 				 </label>
 				<button class="forth_button" onclick="">查询</button>
-				<button class="forth_button" id="add_button" onclick="">添加</button>
+				<button class="forth_button" id="add_button" onclick="popupForm()">添加</button>
 			</div>
 			<div id="body">
 				
 			</div>
 			
+			<div id="popup_add_form">
+				<h1>添加服装</h1>
+				<label for="pop_mark_input">编号：</label>
+				<input type="text" name="clothes_mark" id="pop_mark_input"/><br>
+				<label for="pop_name_input">名称：</label>
+				<input type="text" name="clothes_name" id="pop_name_input"/><br>
+				<label for="pop_price_input">价格：</label>
+				<input type="text" name="clothes_price" id="pop_price_input"/><br>
+				<select id="pop_gender_select" name="clothes_gender" 
+				class="gender_select_class" style="margin-top: 10px;">
+					<option>男</option>
+					<option>女</option>
+				</select><br>
+				<select id="pop_type_select" name="clothes_type" 
+				class="gender_select_class" style="margin-top: 10px;">
+				</select>
+				<button>添加</button>
+			</div>
 		</div>
 	</div>
 	<div class="info_page" id="five"></div>
