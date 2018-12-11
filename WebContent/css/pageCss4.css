@@ -7,13 +7,17 @@
 	overflow-y: auto;
 }
 #forth #forthHead {
-	width: 100%;
+	width: 89%;
 	height: 47px;
 	border-bottom: 2px solid #FFF;
+	z-index: 5000;
+	position: absolute;
+	backgound: rgba(255,255,255,0.6);
 }
 
 #forth #forthBody {
-	
+	overflow: hidden;
+	margin-top: 57px;
 }
 
 #forth .input_label {
