@@ -177,7 +177,16 @@ function addClothesFrompopupForm(self) {
 
 function addClothesCard(obj) {
 	//这里添加遍历返回的所有衣服类型，先睡明天写！
-	
+	$card = $("#first_card").clone();
+	$card.find("[name=list_clothes_mark]").val(obj.mark);
+	$card.find("[name=list_clothes_name]").val(obj.name);
+	$card.find("[name=list_clothes_price]").val(obj.price);
+	$card.find("[name=clothes_gender]").children("option").eq(obj.gender ? 1 : 2).attr("selected", true);
+	//$card.find("[name=clothes_type]").val(obj.mark);
+	//alert("sss")
+	$card.show();
+	$card.css("display", "inline-block");
+	$("#forthBody").append($card);
 }
 
 function addOptionIntoSelect(){
@@ -198,14 +207,47 @@ function forthClothes() {
 		
 		empty();
 		
+		//界面渐渐浮现！
 		$('#four').fadeIn("slow");
 		
 		if(!pageSet.has(4)){
+			
 			//$('#three').load("clothes_type_page.jsp");
 			//$('head').append('<script src="../js/infoPage/pageJs3.js"><\/script>');
 			$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss4.css"/>');
+			//弹出式的表单先是隐藏的
 			$("#popup_add_form").hide();
+			//第一个卡片用作克隆对象，没有数据显示所以隐藏！
+			$("#first_card").hide(); 
 			
+			//获得forthBody窗口滑到顶端时滚动条上部离顶部的距离
+			//var scroll_top=$("#forthBody").scrollTop();
+			//下面是文档高度
+			//var doc_height=$(document).height();
+			
+			
+			/*
+			 * scrollTop    为滚动条在Y轴上的滚动距离。
+			 * clientHeight 为内容可视区域的高度。
+			 * scrollHeight 为内容可视区域的高度加上溢出（滚动）的距离。
+			 * */
+			
+			//给显示服饰数据区域绑定滑动事件！
+			$("#forth").bind('scroll', function(){    //绑定滚动事件
+		        /*if($("#forth").scrollTop() >= 10){ //如果远离顶端
+		        	if($("#forthHead").css("background"))
+		        	//$("#forthHead").css("","")
+		        }*/
+				if($("#forth").scrollTop() >= 40) {
+					$("#forthHead").slideUp('slow');
+				}
+				
+				if($("#forth").scrollTop() < 40) {
+					$("#forthHead").slideDown('slow');
+				}
+		    });     
+			
+			//获取所有衣服数据！
 			request("GET", "http://localhost:8080/suit/clothesoperate/operate",null,true,function(result){
 				$.each(result.data,function(idx, obj){
 					addClothesCard(obj);

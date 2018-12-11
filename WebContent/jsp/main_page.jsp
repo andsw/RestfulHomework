@@ -53,7 +53,7 @@
 				<button class="forth_button" id="add_button" onclick="popupForm()">添加</button>
 			</div>
 			<div id="forthBody">
-				<div class="list_add_form">
+				<div class="list_add_form" id="first_card">
 					<div class="list_add_form_head">
 						<button class="save_change_button" onclick="">保存</button>
 						<h1>服饰细目</h1>
@@ -66,10 +66,10 @@
 					<p>价格：</p>
 					<input type="text" name="list_clothes_price"/><br>
 					
-					<select id="list_gender_select" name="clothes_gender" 
+					<select name="clothes_gender" 
 					class="select_class" style="margin-top: 0px;  margin-left:0px; width: 160px;">
 					</select>
-					<select id="pop_type_select" name="clothes_type" 
+					<select name="clothes_type" 
 					class="select_class" style="margin-top: 0px; width: 160px;">
 					</select>
 					<img class="clothes_img" src="../img/data/suits/unknown.png"/>
