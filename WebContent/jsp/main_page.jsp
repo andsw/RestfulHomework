@@ -218,7 +218,7 @@
 				<select id="pop_type_select" name="clothes_type" 
 				class="gender_select_class" style="margin-top: 10px;">
 				</select>
-				<button>添加</button>
+				<button onclick="addClothesFrompopupForm(this)">添加</button>
 			</div>
 		</div>
 	</div>

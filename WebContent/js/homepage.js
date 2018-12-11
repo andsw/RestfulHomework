@@ -28,7 +28,7 @@ function firstChangeInfo() {
 		empty();
 		
 		//加载html码
-		$('#one').show();
+		$('#one').slideDown(500);
 		
 		if(!pageSet.has(1)){
 			$('#one').load("change_user_info.jsp");
@@ -89,7 +89,7 @@ function secondListUsers() {
 		
 		empty();
 		
-		$('#two').show();
+		$('#two').fadeIn("slow");
 		
 		if(!pageSet.has(2)){
 			$('#two').load("user_list_page.jsp");
@@ -109,7 +109,7 @@ function thirdClothesType() {
 		
 		empty();
 		
-		$('#three').show();
+		$('#three').fadeIn("slow");
 		
 		if(!pageSet.has(3)){
 			$('#three').load("clothes_type_page.jsp");
@@ -132,17 +132,35 @@ function thirdClothesType() {
 
 function popupForm() {
 	if($("#add_button").text() === '添加') {
-		$("#popup_add_form").show();
+		$("#pop_mark_input").val("");
+		$("#pop_name_input").val("");
+		$("#pop_price_input").val("");
+		//$("#popup_add_form").fadeIn("slow");
+		$("#popup_add_form").slideDown(500);
 		$("#add_button").text("取消");
 	} else {
-		$("#popup_add_form").hide();
+		//$("#popup_add_form").fadeOut('slow');
+		$("#popup_add_form").slideUp(500);
 		$("#add_button").text("添加");
 	}
 }
 
+function addClothesFrompopupForm(self) {
+	var clothes = {};
+	$d = $(self.parentNode);
+	clothes.mark = $d.children("#pop_mark_input").val();
+	clothes.name = $d.children("#pop_name_input").val();
+	clothes.price = $d.children("#pop_price_input").val();
+	alert(clothes.mark)
+	
+	$d.children("#pop_mark_input").val("");
+	$d.children("#pop_name_input").val("");
+	$d.children("#pop_price_input").val("");
+}
+
 function addClothesCard(obj) {
 	//这里添加遍历返回的所有衣服类型，先睡明天写！
-	//TODO
+	
 }
 
 function forthClothes() {
@@ -150,7 +168,7 @@ function forthClothes() {
 		
 		empty();
 		
-		$('#four').show();
+		$('#four').fadeIn("slow");;
 		
 		if(!pageSet.has(4)){
 			//$('#three').load("clothes_type_page.jsp");
