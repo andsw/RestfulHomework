@@ -182,8 +182,7 @@ function addClothesCard(obj) {
 	$card.find("[name=list_clothes_name]").val(obj.name);
 	$card.find("[name=list_clothes_price]").val(obj.price);
 	$card.find("[name=clothes_gender]").children("option").eq(obj.gender ? 1 : 2).attr("selected", true);
-	//$card.find("[name=clothes_type]").val(obj.mark);
-	//alert("sss")
+	$card.find("[name=clothes_type]").find("." + obj.type).attr("selected", true);
 	$card.show();
 	$card.css("display", "inline-block");
 	$("#forthBody").append($card);
@@ -196,7 +195,8 @@ function addOptionIntoSelect(){
 	request("GET", "http://localhost:8080/suit/clothestype/operate",null,true,function(result){
 		$("[name=clothes_type]").html("<option value=\"\" disabled selected>选择类别</option>");
 		$.each(result.data,function(idx, obj){
-			$("[name=clothes_type]").append("<option value=\"" + obj.mark + "\">" + obj.name + "</option>");
+			$("[name=clothes_type]").append("<option value=\"" + obj.mark 
+					+ "\" class=\"" + obj.mark +"\">" + obj.name + "</option>");
 		})
 	},errorMethod);
 }
