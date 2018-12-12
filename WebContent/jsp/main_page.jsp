@@ -72,7 +72,10 @@
 					<select name="clothes_type" 
 					class="select_class" style="margin-top: 0px; width: 160px;">
 					</select>
-					<img class="clothes_img" src=""/>
+					<div>
+						<input type="file" name="img_file" class="img_file"/>
+						<img class="clothes_img" src="" onclick="image_click(this)"/>
+					</div>
 				</div>
 			</div>
 			
@@ -82,7 +85,7 @@
 				<input type="text" name="clothes_mark" id="pop_mark_input"/><br>
 				<label for="pop_name_input">名称：</label>
 				<input type="text" name="clothes_name" id="pop_name_input"/><br>
-				<label for="pop_price_input">价格：</label>
+				<label for="pop_price_input">价格：</label>	
 				<input type="text" name="clothes_price" id="pop_price_input"/><br>
 				<select id="pop_gender_select" name="clothes_gender" 
 				class="select_class" style="margin-top: 10px;">

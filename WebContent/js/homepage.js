@@ -130,6 +130,8 @@ function thirdClothesType() {
 	}
 }
 
+
+
 function forthClothes() {
 	if(!pageSet.has(4))
 	//因为每次都要动态地更新select中的选项，所以要先加载js文件

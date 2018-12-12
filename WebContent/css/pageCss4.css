@@ -244,10 +244,20 @@
 	margin-top: 16px;
 }
 
+#forth #forthBody .list_add_form .img_file {
+	width: 155px;
+	height: auto;
+	position: absolute;
+	left: 209px;
+	top: 33px;
+	display: none;
+}
+
 #forth #forthBody .list_add_form .clothes_img {
-	width: 88px;
+	width: 71px;
 	height: auto;
 	position: absolute;
 	left: 240px;
-	top: 47px;
+	top: 77px;
+	cursor: pointer;
 }

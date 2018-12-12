@@ -52,17 +52,30 @@ function addClothesCard(obj) {
 	$card.find("[name=clothes_gender]").children("option").eq(obj.gender ? 1 : 2).attr("selected", true);
 	$card.find("[name=clothes_type]").find("." + obj.type).attr("selected", true);
 	//if(obj.imgUrl != "../img/data/suits/unknown.png")
-		alert(obj.imgUrl);
+		//alert(obj.imgUrl);
 	/*alert($card.find(".clothes_img").attr("src"));*/
 	//alert("change");
 	$card.find(".clothes_img").attr("src", obj.imgUrl);
+	
+	$card.find(".img_file").bind("change", function() {
+		var fileName = $(this).val();	
+		//alert(fileName);
+		$(this.parentNode).find(".clothes_img").attr("src", "../img/data/suits/"
+				+ getFileName(fileName));
+	})
 	
 	$card.show();
 	$card.css("display", "inline-block");
 	$("#forthBody").append($card);
 }
 
-function addOptionIntoSelect(){
+//从路径中获取文件名！
+function getFileName(all){
+    var pos=all.lastIndexOf("\\");
+    return all.substring(pos+1);  
+}
+
+function addOptionIntoSelect() {
 	$("[name=clothes_gender]").html("<option value=\"\" disabled selected>选择性别</option>" +
 			"<option value=\"true\">男</option>"+
 			"<option value=\"false\">女</option>");
@@ -73,4 +86,10 @@ function addOptionIntoSelect(){
 					+ "\" class=\"" + obj.mark +"\">" + obj.name + "</option>");
 		})
 	},errorMethod);
+}
+
+function image_click(self) {
+	var card = self.parentNode;
+	$cardj = $(card);
+	$cardj.find(".img_file").click();
 }
