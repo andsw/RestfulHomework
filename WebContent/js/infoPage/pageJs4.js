@@ -51,8 +51,12 @@ function addClothesCard(obj) {
 	$card.find("[name=list_clothes_price]").val(obj.price);
 	$card.find("[name=clothes_gender]").children("option").eq(obj.gender ? 1 : 2).attr("selected", true);
 	$card.find("[name=clothes_type]").find("." + obj.type).attr("selected", true);
-	if(obj.img_url != '../img/data/suits/unknown.png');
-		$card.find(".clothes_img").attr("src", obj.img_url);
+	//if(obj.imgUrl != "../img/data/suits/unknown.png")
+		alert(obj.imgUrl);
+	/*alert($card.find(".clothes_img").attr("src"));*/
+	//alert("change");
+	$card.find(".clothes_img").attr("src", obj.imgUrl);
+	
 	$card.show();
 	$card.css("display", "inline-block");
 	$("#forthBody").append($card);

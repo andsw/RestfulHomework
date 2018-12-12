@@ -72,7 +72,7 @@
 					<select name="clothes_type" 
 					class="select_class" style="margin-top: 0px; width: 160px;">
 					</select>
-					<img class="clothes_img" src="../img/data/suits/unknown.png"/>
+					<img class="clothes_img" src=""/>
 				</div>
 			</div>
 			

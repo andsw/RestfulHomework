@@ -18,6 +18,7 @@ public class Clothes extends IdEntity{
 	private int price;
 	private boolean gender;
 	private String type;
+	private String imgUrl;
 	
 	public String getMark() {
 		return mark;
@@ -49,9 +50,15 @@ public class Clothes extends IdEntity{
 	public void setType(String type) {
 		this.type = type;
 	}
+	public String getImgUrl() {
+		return imgUrl;
+	}
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
+	}
 	@Override
 	public String toString() {
 		return "Clothes [mark=" + mark + ", name=" + name + ", price=" + price + ", gender=" + gender + ", type=" + type
-				+ ", id=" + id + "]";
+				+ ", imgUrl=" + imgUrl + ", id=" + id + "]";
 	}
 }
