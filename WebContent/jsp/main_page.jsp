@@ -72,9 +72,9 @@
 					<select name="clothes_type" 
 					class="select_class" style="margin-top: 0px; width: 160px;">
 					</select>
-					<div>
-						<input type="file" name="img_file" class="img_file"/>
-						<img class="clothes_img" src="" onclick="image_click(this)"/>
+					<div id="uploaderContainer">
+						<input type="file" name="files[]" class="img_file" multiple data-url="/uploadImg/upload"/>
+						<img id="suitImage" class="clothes_img" src="" onclick="image_click(this)"/>
 					</div>
 				</div>
 			</div>

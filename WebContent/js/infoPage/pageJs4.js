@@ -62,11 +62,26 @@ function addClothesCard(obj) {
 		//alert(fileName);
 		$(this.parentNode).find(".clothes_img").attr("src", "../img/data/suits/"
 				+ getFileName(fileName));
+		
+		uploadFileRequest(this.parentNode,'../img/data/suits/');
 	})
 	
 	$card.show();
 	$card.css("display", "inline-block");
 	$("#forthBody").append($card);
+}
+
+function uploadFileRequest(suit,urlPrefix){
+    suit.find("input").fileupload({
+            dataType: 'json',
+            done: function (e, data) {
+                suit.find("imageUrl").val(data.result.description);
+                suit.find("#uploaderContainer img")
+                      .attr("src",urlPrefix+data.result.description);
+
+                showMessage({"code":0,"description":data.result.description+"上传成功！"});
+            }
+    });
 }
 
 //从路径中获取文件名！
@@ -93,3 +108,4 @@ function image_click(self) {
 	$cardj = $(card);
 	$cardj.find(".img_file").click();
 }
+

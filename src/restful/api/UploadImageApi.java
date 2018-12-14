@@ -21,7 +21,7 @@ import restful.bean.Result;
 import restful.dao.ClothesDao;
 import restful.entity.Clothes;
 
-@Path("uploadImg")
+@Path("/uploadImg")
 public class UploadImageApi {
 	
 	@Context 
@@ -32,6 +32,8 @@ public class UploadImageApi {
 	@Produces("application/json;charset=UTF-8")
 	//@Permission("admin")
 	public Result uploadImage(@QueryParam("code") String suitCode) {
+		
+		System.out.println("uploadImage getting...");
 		
 		Result result = new Result(1, null, "上传失败", "");
 		

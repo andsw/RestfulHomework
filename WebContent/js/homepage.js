@@ -130,8 +130,6 @@ function thirdClothesType() {
 	}
 }
 
-
-
 function forthClothes() {
 	if(!pageSet.has(4))
 	//因为每次都要动态地更新select中的选项，所以要先加载js文件
@@ -152,12 +150,6 @@ function forthClothes() {
 			$("#popup_add_form").hide();
 			//第一个卡片用作克隆对象，没有数据显示所以隐藏！
 			$("#first_card").hide(); 
-			
-			//获得forthBody窗口滑到顶端时滚动条上部离顶部的距离
-			//var scroll_top=$("#forthBody").scrollTop();
-			//下面是文档高度
-			//var doc_height=$(document).height();
-			
 			
 			/*
 			 * scrollTop    为滚动条在Y轴上的滚动距离。

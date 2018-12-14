@@ -27,19 +27,25 @@ public class ClothesApi {
 	@POST
 	@Consumes("application/json;charset=UTF-8")
 	@Produces("application/json;charset=UTF-8")
-	public Result addClothesType(Clothes clothes) {
+	public Result addClothes(Clothes clothes) {
 		
 		@SuppressWarnings("unchecked")
 		List<Clothes> clothesList = (List<Clothes>) getAllClothes().getData();
-		
+		System.out.println(clothesList);
 		Result result = new Result(1, "衣服已存在", null, "");
 		boolean isExisted = true;
-		for(Clothes clothes0 : clothesList) {
-			if(clothes0.getMark().equals(clothes.getMark())) {
-				isExisted = false;
+		if(clothesList != null) {
+			for(Clothes clothes0 : clothesList) {
+				if(clothes0.getMark().equals(clothes.getMark())) {
+					isExisted = false;
+				}
 			}
+		} else {
+			isExisted = true;
 		}
 		if(isExisted) {
+			if("".equals(clothes.getImgUrl()) || clothes.getImgUrl() == null)
+				clothes.setImgUrl("../img/data/suits/unknown.png");
 			if(clothesDao.add(clothes)) {
 				result.setDescription("添加成功");
 				result.setCode(0);
