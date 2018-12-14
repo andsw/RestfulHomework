@@ -1,3 +1,4 @@
+//弹出弹出菜单的按钮点击事件！
 function popupForm() {
 	if($("#add_button").text() === '添加') {
 		$("#pop_mark_input").val("");
@@ -15,6 +16,7 @@ function popupForm() {
 	}
 }
 
+//从弹出菜单中添加衣服信息
 function addClothesFrompopupForm(self) {
 	var clothes = {};
 	$d = $(self.parentNode);
@@ -43,6 +45,7 @@ function addClothesFrompopupForm(self) {
 	}
 }
 
+//添加衣服细目卡片
 function addClothesCard(obj) {
 	//这里添加遍历返回的所有衣服类型，先睡明天写！
 	$card = $("#first_card").clone();
@@ -65,12 +68,12 @@ function addClothesCard(obj) {
 		
 		uploadFileRequest(this.parentNode,'../img/data/suits/');
 	})
-	
-	$card.show();
 	$card.css("display", "inline-block");
+	$card.show();
 	$("#forthBody").append($card);
 }
 
+//提交上传图片请求
 function uploadFileRequest(suit,urlPrefix){
     suit.find("input").fileupload({
             dataType: 'json',
@@ -90,6 +93,7 @@ function getFileName(all){
     return all.substring(pos+1);  
 }
 
+//写入select上方查询select和弹出菜单的select的内容
 function addOptionIntoSelect() {
 	$("[name=clothes_gender]").html("<option value=\"\" disabled selected>选择性别</option>" +
 			"<option value=\"true\">男</option>"+
@@ -103,9 +107,27 @@ function addOptionIntoSelect() {
 	},errorMethod);
 }
 
+//图片的点击事件
 function image_click(self) {
 	var card = self.parentNode;
 	$cardj = $(card);
 	$cardj.find(".img_file").click();
 }
 
+//查询按钮的点击事件方法
+function searchCard() {
+	//获取要查询的性别
+	var sgender = $("#forth").find("#gender_select").find("option:selected").text();
+	var stype = $("#forth").find("#type_select").find("option:selected").text();
+	//alert($("#forthBody").children(".list_add_form").length);
+	for(var i = 1; i<$("#forthBody").children(".list_add_form").length; i++) {
+		$card = $("#forthBody").find(".list_add_form").eq(i);
+		var gender = $card.find("[name=clothes_gender]").children("option:selected").text();
+		var type = $card.find("[name=clothes_type]").children("option:selected").text();
+		if(gender === sgender && type === stype) {
+			$card.fadeIn('1000');
+		} else {
+			$card.fadeOut('1000');
+		}
+	}
+}

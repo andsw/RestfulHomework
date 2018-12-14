@@ -49,7 +49,7 @@
 					<select id="type_select" class="select_class" name="clothes_type">
 					</select>
 				 </label>
-				<button class="forth_button" onclick="">查询</button>
+				<button class="forth_button" onclick="searchCard()">查询</button>
 				<button class="forth_button" id="add_button" onclick="popupForm()">添加</button>
 			</div>
 			<div id="forthBody">
