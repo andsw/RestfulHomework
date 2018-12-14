@@ -56,10 +56,11 @@
 			<div id="forthBody">
 				<div class="list_add_form" id="first_card">
 					<div class="list_add_form_head">
-						<button class="save_change_button" onclick="">保存</button>
+						<button class="save_change_button" onclick="saveCard(this)">保存</button>
 						<h1>服饰细目</h1>
-						<button class="delete_button" onclick="">删除</button>
+						<button class="delete_button" onclick="deleteCard(this)">删除</button>
 					</div>
+					<input type="hidden" name="list_clothes_id"/>
 					<p>编号：</p>
 					<input type="text" name="list_clothes_mark"/><br>
 					<p>名称：</p>
