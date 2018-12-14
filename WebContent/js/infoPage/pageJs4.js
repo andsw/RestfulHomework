@@ -131,3 +131,11 @@ function searchCard() {
 		}
 	}
 }
+//前端所有按钮点击事件处理方法，即显示所有衣服细目
+function showAll() {
+	//获取要查询的性别
+	for(var i = 1; i<$("#forthBody").children(".list_add_form").length; i++) {
+		$card = $("#forthBody").find(".list_add_form").eq(i);
+		$card.fadeIn('1000');
+	}
+}

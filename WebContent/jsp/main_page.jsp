@@ -50,6 +50,7 @@
 					</select>
 				 </label>
 				<button class="forth_button" onclick="searchCard()">查询</button>
+				<button class="forth_button" onclick="showAll()">所有</button>
 				<button class="forth_button" id="add_button" onclick="popupForm()">添加</button>
 			</div>
 			<div id="forthBody">
