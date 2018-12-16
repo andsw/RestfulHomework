@@ -120,7 +120,7 @@
 	width: 544px;
 	height: auto;
 	position: absolute;
-	left: 34px;
+	left: 25px;
 	top: 170px;
 }
 
@@ -214,4 +214,22 @@
 	position: absolute;
 	left: 67px;
 	top: 91px;
+}
+
+#sum_price {
+	width: 100px;
+	height: 53px;
+	position: absolute;
+	left: 440px;
+	top: 175px;
+	background: #9DC45F;
+	border: 3px solid #000;
+}
+
+#sum_price p{
+	border-bottom: 2px solid #000;
+	color: #d6d1d1;
+    font-size: 20px;
+    text-shadow: 2px 2px 1px #000;
+    text-align: center;
 }

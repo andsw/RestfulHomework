@@ -106,7 +106,7 @@
 			</div>
 			<div id="fifth_body" >
 				<div id="wearing">
-					<div class="clothes_dressed_on">
+					<div class="clothes_dressed_on" id="first_dressed_on">
 						<h1>已穿</h1>
 						<table class="dressed_on_info_table">
 							<tr><td>编号：</td><td></td></tr>
@@ -115,9 +115,9 @@
 							<tr><td colspan="2">
 								<img src="../img/ui/zIndex24.png" style="display:inline-block; margin-bottom: -6px;">
 								<p class="zindex" style="display:inline-block;">0</p>
-								<img src="../img/ui/up.png" style="" class="dedup zindex_up">
-								<img src="../img/ui/down.png" style="" class="dedup zindex_down">
-								<img src="../img/ui/delete.png" style="" class="dedup remove_from_model">
+								<img src="../img/ui/up.png" onclick="zindexUp()" class="dedup zindex_up">
+								<img src="../img/ui/down.png" onclick="zindexDown()" class="dedup zindex_down">
+								<img src="../img/ui/delete.png" onclick="takeOffClothes(this)" class="dedup remove_from_model">
 							</td></tr>
 						</table>
 					</div>
@@ -127,7 +127,10 @@
 					<img src="../img/ui/ground.png" id="floor_img"/>
 					<img src="../img/data/model/modelShadow.png" id="shadow_img"/>
 					<img src="" id="all_model_img"/>
-					<img alt="" src="../img/data/suits/mShirt02.png" class="clothes_on_model">
+					<div id="sum_price">
+						<p>总价</p>
+						<p>0</p>
+					</div>
 				</div>
 				
 				<div id="all_clothes">
@@ -136,7 +139,7 @@
 					</div>
 					<div id="search_clothes_body">
 						<div class="clothes_card" id="first_clothes_card">
-							<img src="../img/ui/add.png" class="dress_up_button" onclick="ware_clothes(this)"/>
+							<img src="../img/ui/add.png" class="dress_up_button" onclick="putOnClothes(this)"/>
 							<img src="../img/data/suits/mShirt01.png" class="clothes_img_ds">
 							<table class="dressed_on_info_table" style="margin-left:10px;margin-top:5px;">
 								<tr><td>编号：</td><td></td></tr>

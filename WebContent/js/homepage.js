@@ -206,6 +206,56 @@ function filterClothesType(self) {
 	}
 }
 
+//定义一个set类型的全局变量来记录已经穿了的衣服，并保证一件衣服不重复穿！
+var dressedSet = new Set();
+
+function putOnClothes(self) {
+	$cardj = $(self.parentNode);
+	var mark = $cardj.find(".dressed_on_info_table").children().children().eq(0).children().eq(1).text();
+	//判断是否已经穿了！
+	if(dressedSet.has(mark)){
+		alert("已经穿了哦！")
+		return;
+	}
+	dressedSet.add(mark);
+	
+	var url = $cardj.find("img.clothes_img_ds").attr("src");
+	var name = $cardj.find(".dressed_on_info_table").children().children().eq(1).children().eq(1).text();
+	var price = $cardj.find(".dressed_on_info_table").children().children().eq(2).children().eq(1).text();
+	//在模特身上先穿上
+	$("#model").append("<img src=\""+ url +"\" name=\"" + mark + "\" class=\"clothes_on_model\">");
+	
+	//然后写入已穿列表中
+	$firstDressed = $("#first_dressed_on").clone();
+	$firstDressed.attr("id", "");
+	$firstDressed.find(".dressed_on_info_table").children().children().eq(0).children().eq(1).text(mark);
+	$firstDressed.find(".dressed_on_info_table").children().children().eq(1).children().eq(1).text(name);
+	$firstDressed.find(".dressed_on_info_table").children().children().eq(2).children().eq(1).text(price);
+	$firstDressed.show();
+	$("#wearing").append($firstDressed)
+	
+	//改变价格
+	var origin_price = $("#sum_price").children().eq(1).text();
+	var sum = parseInt(origin_price) + parseInt(price);
+	$("#sum_price").children().eq(1).text(sum)
+}
+
+function takeOffClothes(self) {
+	$cardj = $(self).parents(".clothes_dressed_on");
+	var mark = $cardj.find(".dressed_on_info_table").children().children().eq(0).children().eq(1).text();
+	var price = $cardj.find(".dressed_on_info_table").children().children().eq(2).children().eq(1).text();
+	//去除已穿卡片
+	$cardj.fadeOut('slow');
+	//从模特身上脱下衣服
+	$("#model").find("[name=" + mark+ "]").remove();
+	//从总价中减去该衣服的价格
+	var origin_price = $("#sum_price").children().eq(1).text();
+	var sum = parseInt(origin_price) - parseInt(price);
+	$("#sum_price").children().eq(1).text(sum)
+	//从set中去除
+	dressedSet.delete(mark);
+}
+
 function addAllClothes_try(obj) { 
 	var isMan = getCookie("isMan");
 	$newCard = $("#first_clothes_card").clone();
@@ -242,6 +292,7 @@ function fifthTryOnClothes() {
 			
 			//第一张没有内容的卡片设置为隐藏
 			$("#search_clothes_body").children().eq(0).hide();
+			$("#first_dressed_on").hide();//同理
 			request("GET", "http://localhost:8080/suit/clothesoperate/operate",null,true,function(result){
 				$("#all_clothes_type_select").append("<option value=\"all\">所有</option>");
 				$.each(result.data,function(idx, obj){
