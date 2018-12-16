@@ -4,12 +4,23 @@ function ListUsers(result){
 				+ "</td><td>" + obj.username
 				+ "</td><td>" + obj.realName
 				+ "</td><td>" + (obj.gender === true ? '男' : '女')
-				+ "</td><td>" + obj.model
-				+ "</td><td>" + (obj.permission === true ? '管理员' : "普通用户")
+				+ "</td><td><img src=\"" +  getImgUrlByGenderAndModel(obj.gender, obj.model)
+				+ "\" style=\"width:54px; height: auto;\"/></td><td>" + (obj.permission === true ? '管理员' : "普通用户")
 				+ "</td><td>" + "<button class=\"operate_button\" onclick=\"changeUserFromTable(this)\">修改</button>" 
 							  + "<button class=\"operate_button\" onclick=\"deleteUserFromTable(this) \">删除</button>"
 				+ "</td></tr>")
 	})
+}
+
+//上述添加的每一行的头像显示所需的api
+function getImgUrlByGenderAndModel(gender,model){
+	var result = "";
+	if(gender === true) {//男
+		result = model ? "../img/data/model/mheadA.png" : "../img/data/model/mheadB.png";
+	} else {
+		result = model ? "../img/data/model/wheadA.png" : "../img/data/model/wheadB.png"
+	}//男
+	return result;
 }
 
 function deleteUserFromTable(self){
@@ -65,6 +76,9 @@ function changeUserFromTable(self){
 	$deleteButton = $tableBodyj.children("td").eq(6).children().eq(1);
 	$deleteButton.attr("onclick", "cancelChange(this, null)")
 	$deleteButton.text("取消");
+	
+	//头像旁边出现更换按钮
+	//emmmm 实在太复杂了，现在代码都写好了，变动有些麻烦。。。
 }
 
 function saveChange(self) {
