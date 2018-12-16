@@ -223,7 +223,8 @@ function putOnClothes(self) {
 	var name = $cardj.find(".dressed_on_info_table").children().children().eq(1).children().eq(1).text();
 	var price = $cardj.find(".dressed_on_info_table").children().children().eq(2).children().eq(1).text();
 	//在模特身上先穿上
-	$("#model").append("<img src=\""+ url +"\" name=\"" + mark + "\" class=\"clothes_on_model\">");
+	$("#model").append("<img src=\""+ url +"\" name=\"" + mark + "\" class=\"clothes_on_model\"" +
+			" style=\"z-index:0;\">");
 	
 	//然后写入已穿列表中
 	$firstDressed = $("#first_dressed_on").clone();
@@ -254,6 +255,24 @@ function takeOffClothes(self) {
 	$("#sum_price").children().eq(1).text(sum)
 	//从set中去除
 	dressedSet.delete(mark);
+}
+
+function zindexUp(self){
+	$cardj = $(self).parents(".clothes_dressed_on");
+	var mark = $cardj.find(".dressed_on_info_table").children().children().eq(0).children().eq(1).text();
+	var index = parseInt($("#model").find("[name=" + mark+ "]").css("z-index"));
+	$("#model").find("[name=" + mark+ "]").css("z-index", index + 1);
+	$cardj.find(".zindex").text(index+1)
+}
+
+function zindexDown(self){
+	$cardj = $(self).parents(".clothes_dressed_on");
+	var mark = $cardj.find(".dressed_on_info_table").children().children().eq(0).children().eq(1).text();
+	var index = parseInt($("#model").find("[name=" + mark+ "]").css("z-index"));
+	if(index > 0) {
+		$("#model").find("[name=" + mark+ "]").css("z-index",parseInt(index) - 1);
+		$cardj.find(".zindex").text(index-1)
+	}
 }
 
 function addAllClothes_try(obj) { 

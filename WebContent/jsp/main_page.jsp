@@ -115,8 +115,8 @@
 							<tr><td colspan="2">
 								<img src="../img/ui/zIndex24.png" style="display:inline-block; margin-bottom: -6px;">
 								<p class="zindex" style="display:inline-block;">0</p>
-								<img src="../img/ui/up.png" onclick="zindexUp()" class="dedup zindex_up">
-								<img src="../img/ui/down.png" onclick="zindexDown()" class="dedup zindex_down">
+								<img src="../img/ui/up.png" onclick="zindexUp(this)" class="dedup zindex_up">
+								<img src="../img/ui/down.png" onclick="zindexDown(this)" class="dedup zindex_down">
 								<img src="../img/ui/delete.png" onclick="takeOffClothes(this)" class="dedup remove_from_model">
 							</td></tr>
 						</table>
