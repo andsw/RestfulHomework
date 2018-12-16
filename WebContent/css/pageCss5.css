@@ -100,7 +100,15 @@
 	z-index: -1px;
 }
 
-#fifth #model_img {
+#fifth #all_model_img {
+	width: 300px;
+	height: auto;
+	position: absolute;
+	left: 147px;
+	top: 137px;
+}
+
+.clothes_on_model {
 	width: 300px;
 	height: auto;
 	position: absolute;

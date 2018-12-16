@@ -126,7 +126,8 @@
 				<div id="model">
 					<img src="../img/ui/ground.png" id="floor_img"/>
 					<img src="../img/data/model/modelShadow.png" id="shadow_img"/>
-					<img src="../img/data/model/wheadAModel.png" id="model_img"/>
+					<img src="" id="all_model_img"/>
+					<img alt="" src="../img/data/suits/mShirt02.png" class="clothes_on_model">
 				</div>
 				
 				<div id="all_clothes">
@@ -135,13 +136,14 @@
 					</div>
 					<div id="search_clothes_body">
 						<div class="clothes_card" id="first_clothes_card">
-							<img src="../img/ui/add.png" class="dress_up_button"/>
+							<img src="../img/ui/add.png" class="dress_up_button" onclick="ware_clothes(this)"/>
 							<img src="../img/data/suits/mShirt01.png" class="clothes_img_ds">
 							<table class="dressed_on_info_table" style="margin-left:10px;margin-top:5px;">
 								<tr><td>编号：</td><td></td></tr>
 								<tr><td>名称：</td><td></td></tr>
 								<tr><td>单价：</td><td></td></tr>
 							</table>
+							<input type="hidden" name="type" value=""/>
 						</div>
 					</div>
 				</div>

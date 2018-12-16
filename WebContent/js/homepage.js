@@ -171,11 +171,16 @@ function forthClothes() {
 				if($("#forth").scrollTop() < 40) {
 					$("#forthHead").slideDown('slow');
 				}
-		    });     
+		    }); 
 			
 			//获取所有衣服数据！
 			request("GET", "http://localhost:8080/suit/clothesoperate/operate",null,true,function(result){
-				$.each(result.data,function(idx, obj){
+				/*$.each(result.data,function(idx, obj){
+					alert(idx);
+					addClothesCard(obj);
+				})*/
+				var data= result.data;
+				$.each(data,function(idx, obj){
 					addClothesCard(obj);
 				})
 			},errorMethod);
@@ -189,18 +194,31 @@ function forthClothes() {
 }
 
 function filterClothesType(self) { 
-	
+	$selector = $(self);
+	var type = $selector.find("option:selected").val();
+	var $allSon = $("#search_clothes_body").find(".clothes_card");
+	for(var i = 1; i<$allSon.length;i++){
+		if(type === $allSon.eq(i).find("[name=type]").val() || 'all' === type) {
+			$allSon.eq(i).show();
+		} else {
+			$allSon.eq(i).hide();
+		}
+	}
 }
 
-function addAllClothes(obj) { 
+function addAllClothes_try(obj) { 
+	var isMan = getCookie("isMan");
 	$newCard = $("#first_clothes_card").clone();
-	$newCard.find(".dressed_on_info_table").children().children().eq(0).children().eq(1).text(obj.mark);
-	$newCard.find(".dressed_on_info_table").children().children().eq(1).children().eq(1).text(obj.name);
-	$newCard.find(".dressed_on_info_table").children().children().eq(2).children().eq(1).text(obj.price);
-	$newCard.find(".clothes_img_ds").attr("src",obj.imgUrl);
-	$newCard.show();
 	
-	$("#search_clothes_body").append($newCard);
+	if((isMan === 'true' && obj.gender === true) || (!(isMan === 'true') && !(obj.gender === true))){
+		$newCard.find(".dressed_on_info_table").children().children().eq(0).children().eq(1).text(obj.mark);
+		$newCard.find(".dressed_on_info_table").children().children().eq(1).children().eq(1).text(obj.name);
+		$newCard.find(".dressed_on_info_table").children().children().eq(2).children().eq(1).text(obj.price);
+		$newCard.find(".clothes_img_ds").attr("src",obj.imgUrl);
+		$newCard.find("[name=type]").val(obj.type);
+		$newCard.show();
+		$("#search_clothes_body").append($newCard);
+	}
 }
 
 var clothesSet = new Set();
@@ -216,20 +234,29 @@ function fifthTryOnClothes() {
 			//$('#three').load("clothes_type_page.jsp");
 			//$('head').append('<script src="../js/infoPage/pageJs3.js"><\/script>');
 			$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss5.css"/>');
+			if(getCookie("isMan") === 'true') {
+				$("#all_model_img").attr("src", "../img/data/model/mheadAModel.png");
+			} else if(getCookie("isMan") === 'false'){
+				$("#all_model_img").attr("src", "../img/data/model/wheadAModel.png");
+			}
 			
+			//第一张没有内容的卡片设置为隐藏
 			$("#search_clothes_body").children().eq(0).hide();
 			request("GET", "http://localhost:8080/suit/clothesoperate/operate",null,true,function(result){
-				$("#all_clothes_type_select").append("<option>所有</option>");
+				$("#all_clothes_type_select").append("<option value=\"all\">所有</option>");
 				$.each(result.data,function(idx, obj){
-					addAllClothes(obj);
+					addAllClothes_try(obj);
 					if(!clothesSet.has(obj.type)){
-						$("#all_clothes_type_select").append("<option>" + obj.name +"</option>");
+						$("#all_clothes_type_select")
+						.append("<option value=\"" + obj.type +"\">" + obj.name +"</option>");
 						clothesSet.add(obj.type);
 					} 
 				});
 			},errorMethod);
 			//给衣服类别选择框设置监听选中事件
-			$("#all_clothes_type_select").change(filterClothesType(this));
+			$("select#all_clothes_type_select").change(function(){
+				filterClothesType(this)
+			});
 			
 			pageSet.add(5);
 		}
