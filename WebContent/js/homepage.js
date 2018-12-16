@@ -19,7 +19,8 @@ $(document).ready(function () {
 	//firstChangeInfo()
 	//secondListUsers();
 	//thirdClothesType();
-	forthClothes()
+	//forthClothes()
+	fifthTryOnClothes();
 });
 
 function firstChangeInfo() {
@@ -187,7 +188,56 @@ function forthClothes() {
 	}
 }
 
-function fifth(){}
+function filterClothesType(self) { 
+	
+}
+
+function addAllClothes(obj) { 
+	$newCard = $("#first_clothes_card").clone();
+	$newCard.find(".dressed_on_info_table").children().children().eq(0).children().eq(1).text(obj.mark);
+	$newCard.find(".dressed_on_info_table").children().children().eq(1).children().eq(1).text(obj.name);
+	$newCard.find(".dressed_on_info_table").children().children().eq(2).children().eq(1).text(obj.price);
+	$newCard.find(".clothes_img_ds").attr("src",obj.imgUrl);
+	$newCard.show();
+	
+	$("#search_clothes_body").append($newCard);
+}
+
+var clothesSet = new Set();
+
+function fifthTryOnClothes() {
+	if(whichPage!=5) {
+		
+		empty();
+		
+		$('#five').fadeIn("slow");
+		
+		if(!pageSet.has(5)){
+			//$('#three').load("clothes_type_page.jsp");
+			//$('head').append('<script src="../js/infoPage/pageJs3.js"><\/script>');
+			$('head').append('<link rel="stylesheet" type="text/css" href="../css/pageCss5.css"/>');
+			
+			$("#search_clothes_body").children().eq(0).hide();
+			request("GET", "http://localhost:8080/suit/clothesoperate/operate",null,true,function(result){
+				$("#all_clothes_type_select").append("<option>所有</option>");
+				$.each(result.data,function(idx, obj){
+					addAllClothes(obj);
+					if(!clothesSet.has(obj.type)){
+						$("#all_clothes_type_select").append("<option>" + obj.name +"</option>");
+						clothesSet.add(obj.type);
+					} 
+				});
+			},errorMethod);
+			//给衣服类别选择框设置监听选中事件
+			$("#all_clothes_type_select").change(filterClothesType(this));
+			
+			pageSet.add(5);
+		}
+		whichPage = 5;
+	} else {
+		alert("已经是第五个页面哦！")
+	}
+}
 
 function sixthExit() {
 	alert("退出")

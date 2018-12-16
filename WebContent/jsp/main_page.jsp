@@ -30,7 +30,7 @@
 		<li class="siderbar_selector_li" onclick="secondListUsers()"><img style="width:64px;height=64px;" src="../img/ui/user_list.png"></li>
 		<li class="siderbar_selector_li" onclick="thirdClothesType()"><img style="width:64px;height=64px;" src="../img/ui/catalog.png"></li>
 		<li class="siderbar_selector_li" onclick="forthClothes()"><img style="width:64px;height=64px;" src="../img/ui/all_clothes.png"></li>
-		<li class="siderbar_selector_li" onclick=""><img style="width:64px;height=64px;" src="../img/ui/mine.png"></li>
+		<li class="siderbar_selector_li" onclick="fifthTryOnClothes()"><img style="width:64px;height=64px;" src="../img/ui/mine.png"></li>
 		<li class="siderbar_selector_li" onclick="sixthExit()"><img style="width:64px;height=64px;" src="../img/ui/logout.png"></li>
 		</ul>
 	</div>
@@ -38,7 +38,7 @@
 	<div class="info_page" id="one"></div>
 	<div class="info_page" id="two"></div>
 	<div class="info_page" id="three"></div>
-	<div class="info_page" id="four">
+	<div class="info_page" id="four" hidden="true">
 		<div id="forth">
 			<div id="forthHead">
 				<label class="input_label" for="gender_select_class">性&nbsp;&nbsp;&nbsp;&nbsp;别:
@@ -99,7 +99,55 @@
 			</div>
 		</div>
 	</div>
-	<div class="info_page" id="five"></div>
+	<div class="info_page" id="five">
+		<div id="fifth">
+			<div id="fifth_head">
+				<h1>试&ensp;衣&ensp;间</h1>
+			</div>
+			<div id="fifth_body" >
+				<div id="wearing">
+					<div class="clothes_dressed_on">
+						<h1>已穿</h1>
+						<table class="dressed_on_info_table">
+							<tr><td>编号：</td><td></td></tr>
+							<tr><td>名称：</td><td></td></tr>
+							<tr><td>单价：</td><td></td></tr>
+							<tr><td colspan="2">
+								<img src="../img/ui/zIndex24.png" style="display:inline-block; margin-bottom: -6px;">
+								<p class="zindex" style="display:inline-block;">0</p>
+								<img src="../img/ui/up.png" style="" class="dedup zindex_up">
+								<img src="../img/ui/down.png" style="" class="dedup zindex_down">
+								<img src="../img/ui/delete.png" style="" class="dedup remove_from_model">
+							</td></tr>
+						</table>
+					</div>
+				</div>
+				
+				<div id="model">
+					<img src="../img/ui/ground.png" id="floor_img"/>
+					<img src="../img/data/model/modelShadow.png" id="shadow_img"/>
+					<img src="../img/data/model/wheadAModel.png" id="model_img"/>
+				</div>
+				
+				<div id="all_clothes">
+					<div id="search_clothes_head">
+						选择分类：<select id="all_clothes_type_select"></select>
+					</div>
+					<div id="search_clothes_body">
+						<div class="clothes_card" id="first_clothes_card">
+							<img src="../img/ui/add.png" class="dress_up_button"/>
+							<img src="../img/data/suits/mShirt01.png" class="clothes_img_ds">
+							<table class="dressed_on_info_table" style="margin-left:10px;margin-top:5px;">
+								<tr><td>编号：</td><td></td></tr>
+								<tr><td>名称：</td><td></td></tr>
+								<tr><td>单价：</td><td></td></tr>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 </body>
 </html>

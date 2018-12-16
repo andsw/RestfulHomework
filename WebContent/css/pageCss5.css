@@ -1,0 +1,209 @@
+#fifth {
+	
+}
+
+#fifth #fifth_head {
+	width: 100%;
+	height: 80px;
+	/*background-color: #9DC45F;*/
+	background: url("../img/ui/head.png") repeat;
+	background-size: 100% 80px;
+	border: 0.1px solid rgba(255,255,255,0.1);
+}
+
+#fifth #fifth_head h1 {
+	width: 170px;
+	height: auto;
+	margin: 15px auto;
+	color: #d6d1d1;
+    font-size: 41px;
+    text-align: center;
+    text-shadow: 2px 2px 1px #000;
+    line-height: 48px; 
+}
+
+#fifth #fifth_body {
+	width: 100%;
+	height: 707.5px;
+	border: 1px solid red;
+	overflow: hidden;
+	position: relative;
+}
+
+#fifth #fifth_body #wearing {
+	width: 30%;
+	height: 707px;
+	display: inline-block;
+	border: 1px solid #FFF;
+	overflow: auto;
+	margin-top: 0px;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+}
+
+#fifth #fifth_body #wearing .clothes_dressed_on {
+	width:376px;
+	height:200px;
+	border: 1px solid #FFF;
+	margin-left: 17px;
+	margin-top: 10px;
+	color: #d6d1d1;
+    font-size: 20px;
+    text-shadow: 2px 2px 1px #000;
+    background: url("../img/ui/glass.png") no-repeat;
+}
+
+#fifth #fifth_body #wearing .clothes_dressed_on .dedup {
+	width:24px;
+	height:auto;
+	display:inline-block; 
+	margin-bottom: -6px;
+	cursor: pointer;
+	margin-left: 10px;
+}
+
+#fifth #fifth_body #wearing .clothes_dressed_on h1{
+	width: 100%;
+	height: 34px;
+	color: #d6d1d1;
+    font-size: 20px;
+    text-align: center;
+    text-shadow: 2px 2px 1px #000;
+    line-height: 33px;
+    background: #9DC45F;
+}
+
+#fifth #fifth_body #wearing .dressed_on_info_table {
+    width: 63%;
+    height: 89%;
+    margin-left: 20px;
+    margin-top: -10px;
+}
+
+#fifth #fifth_body #model {
+	width: 40%;
+	height: 1000px;
+	display: inline-block;
+	border: 1px solid #FFF;
+	position: absolute;
+	left: 30%;
+	top: 0;
+}
+
+#fifth #shadow_img{
+	width: 300px;
+	height: auto;
+	position: absolute;
+	left: 147px;
+	top: 137px;
+	z-index: -1px;
+}
+
+#fifth #model_img {
+	width: 300px;
+	height: auto;
+	position: absolute;
+	left: 147px;
+	top: 137px;
+}
+
+#fifth #floor_img{
+	width: 544px;
+	height: auto;
+	position: absolute;
+	left: 34px;
+	top: 170px;
+}
+
+#fifth #fifth_body #all_clothes {
+	width: 30%;
+	height: 707px;
+	display: inline-block;
+	border: 1px solid #FFF;
+	overflow-x: hidden;
+	margin-top: 0px;
+	margin-right: -5px;
+	position: absolute;
+	left: 70%;
+	top: 0px;
+}
+
+#fifth #fifth_body #all_clothes #search_clothes_head {
+	width: 100%;
+	height: 37px;
+	background:#9DC45F; 
+	margin-right:-10px;
+	color: #d6d1d1;
+    font-size: 20px;
+    text-shadow: 2px 2px 1px #000;
+    padding-left: 10px;
+}
+
+#fifth #fifth_body #all_clothes #search_clothes_head #all_clothes_type_select {
+	width: 108px;
+    height: 29px;
+    line-height: 22pt;
+    padding-right: 17pt;
+    text-indent: 4pt;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid #94c1e7;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    font-family: SimHei;
+    font-size: 14pt;
+    font-weight: 500;
+    color: RGBA(102,102,102,0.7);
+    cursor: pointer;
+    outline: none;
+    margin-top:4px;
+}
+
+#fifth #fifth_body #all_clothes #search_clothes_body {
+	overflow-y: auto;
+	overflow-x:hidden;
+}
+
+#fifth #fifth_body #all_clothes #search_clothes_body .clothes_card {
+	width: 328px;
+	height: 435px;
+	border: 1px solid #FFF;
+	background: url("../img/ui/glass.png") no-repeat;
+	margin: 30px auto;
+	color: #d6d1d1;
+    font-size: 20px;
+    text-shadow: 2px 2px 1px #000;
+    position: relative;
+}
+
+/*#fifth #fifth_body #all_clothes #search_clothes_body #first_clothes_card {
+	display: none;
+}*/
+
+#fifth #fifth_body #all_clothes #search_clothes_body .clothes_card .dress_up_button {
+	width: 100px;
+	height: auto;
+	position: absolute;
+	left: 230px;
+	right: 0px;
+	z-index: 1;
+	cursor: pointer;
+}
+
+#fifth #fifth_body #all_clothes #search_clothes_body .clothes_card .dress_up_button:hover {
+	width: 110px;
+	height: auto;
+}
+
+#fifth #fifth_body #all_clothes #search_clothes_body .clothes_card .clothes_img_ds {
+	width: 200px;
+	height: auto;
+	position: absolute;
+	left: 67px;
+	top: 91px;
+}
