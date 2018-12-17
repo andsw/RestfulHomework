@@ -5,7 +5,7 @@ function ListUsers(result){
 				+ "</td><td>" + obj.realName
 				+ "</td><td>" + (obj.gender === true ? '男' : '女')
 				+ "</td><td><img src=\"" +  getImgUrlByGenderAndModel(obj.gender, obj.model)
-				+ "\" style=\"width:54px; height: auto;\"/></td><td>" + (obj.permission === true ? '管理员' : "普通用户")
+				+ "\" style=\"width:54px; height: auto;\" alt=\"" + obj.model +"\"/></td><td>" + (obj.permission === true ? '管理员' : "普通用户")
 				+ "</td><td>" + "<button class=\"operate_button\" onclick=\"changeUserFromTable(this)\">修改</button>" 
 							  + "<button class=\"operate_button\" onclick=\"deleteUserFromTable(this) \">删除</button>"
 				+ "</td></tr>")
@@ -16,9 +16,9 @@ function ListUsers(result){
 function getImgUrlByGenderAndModel(gender,model){
 	var result = "";
 	if(gender === true) {//男
-		result = model ? "../img/data/model/mheadA.png" : "../img/data/model/mheadB.png";
+		result = model ? "../img/data/model/mheadB.png" : "../img/data/model/mheadA.png";
 	} else {
-		result = model ? "../img/data/model/wheadA.png" : "../img/data/model/wheadB.png"
+		result = model ? "../img/data/model/wheadB.png" : "../img/data/model/wheadA.png"
 	}//男
 	return result;
 }
@@ -59,7 +59,28 @@ function changeUserFromTable(self){
 			"</option><option>" + ($genderTd.text()==='男' ? '女' : '男') + "</option></select>");
 	
 	//模型选择
-	// TODO
+	//头像旁边出现更换按钮
+	//emmmm 实在太复杂了，现在代码都写好了，变动有些麻烦。。。
+	//就给图片设置点击事件吧！点击图片变换！！！
+	$imgButton = $tableBodyj.children("td").eq(4).children();
+	tempUser.model = $imgButton.attr("alt")
+	$imgButton.bind("click", function(){
+		var url = $imgButton.attr("src");
+		var alt = $imgButton.attr("alt");
+		
+		if(url === '../img/data/model/mheadA.png') {
+			url = '../img/data/model/mheadB.png';
+		} else if(url === '../img/data/model/mheadB.png') {
+			url = '../img/data/model/mheadA.png';
+		} else if(url === '../img/data/model/wheadA.png') {
+			url = '../img/data/model/wheadB.png';
+		} else if(url === '../img/data/model/wheadB.png') {
+			url = '../img/data/model/wheadA.png';
+		}
+		alt = !alt;
+		$imgButton.attr("src", url);
+		$imgButton.attr("alt", alt);
+	})
 	
 	//是否为管理员变为下拉框
 	$isAdminTd = $tableBodyj.children("td").eq(5);
@@ -76,9 +97,6 @@ function changeUserFromTable(self){
 	$deleteButton = $tableBodyj.children("td").eq(6).children().eq(1);
 	$deleteButton.attr("onclick", "cancelChange(this, null)")
 	$deleteButton.text("取消");
-	
-	//头像旁边出现更换按钮
-	//emmmm 实在太复杂了，现在代码都写好了，变动有些麻烦。。。
 }
 
 function saveChange(self) {
@@ -106,10 +124,10 @@ function saveChange(self) {
 	
 	// 获取模型选择
 	// TODO
-	$modelTd = $tableBodyj.children("td").eq(4);
-	user.model = $modelTd.text();
+	$modelTd = $tableBodyj.children("td").eq(4).children();
+	user.model = $modelTd.children().attr("alt");
 	
-	//获取身份
+	//获取身份	
 	$isAdminTd = $tableBodyj.children("td").eq(5);
 	user.permission = $isAdminTd.children("select").eq(0).find("option:selected").text();
 	
@@ -148,7 +166,11 @@ function cancelChange(self, user) {
 	$genderTd.html(tempUser.gender);
 	
 	//模型选择
-	// TODO
+	$ImageButton = $tableBodyj.children("td").eq(4).children();
+	var url = getImgUrlByGenderAndModel(tempUser.gender === '男', tempUser.model);
+	$ImageButton.attr("alt", tempUser.model); 
+	$ImageButton.attr("src", url);
+	$ImageButton.bind("click" , "");
 	
 	//用户身份还原
 	$isAdminTd = $tableBodyj.children("td").eq(5);

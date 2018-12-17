@@ -84,9 +84,7 @@ public class ToAllPageNormalFilter implements Filter {
 			//未登录 访问的是非loing和register界面！！！
 			if("".equals(hasLogged) 
 					&& !"/suit/login.jsp".equals(path) 
-					&& !"/suit/register.jsp".equals(path)
-					&& !"/suit/jsp/main_page.jsp".equals(path)
-					&& !"/suit/jsp/clothes_page.jsp".equals(path)) {//!!!!!
+					&& !"/suit/register.jsp".equals(path)) {//!!!!!
 				//未登录状态且访问的还不是登陆或注册页面！
 				System.out.println("未登录，跳转到登录界面");
 				response.sendRedirect("/suit/login.jsp");
