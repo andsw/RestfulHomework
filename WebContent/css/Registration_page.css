@@ -38,22 +38,22 @@ input{
    .container .ReturnLogin{
    position: absolute;
    z-index: 6;
-   top: 380px;
+   top: 480px;
    left: 25%;
    width: 7%;
    height: 4%;
-   background:url(../img/register/ReturnLogin.jpg) no-repeat left top
+   /*background:url(../img/register/ReturnLogin.jpg) no-repeat left top*/
    }
    .container .Click_registration{
     position: absolute;
     z-index: 6;
-   top: 380px;
+   top: 480px;
    left: 34%;
    width: 7%;
    height: 4%;
-    background:url(../img/register/Click_registration.jpg) no-repeat left top
+    /*background:url(../img/register/Click_registration.jpg) no-repeat left top*/
    }
-     .container .box{
+  .container .box{
        position: absolute;
        z-index: 3;
        background: #cdcdcd;
@@ -61,8 +61,8 @@ input{
        left: 19.82%;
        width: 26%;
        height: 70%;
-  filter:alpha(opacity=60);
-  opacity:0.6;
+	  filter:alpha(opacity=60);
+	  opacity:0.6;
    } 
    .container .InputName{
     position: absolute;

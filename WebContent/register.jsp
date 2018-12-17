@@ -101,11 +101,11 @@ window.setInterval(index, 3000); //让index 多久循
 </p> 
 
 <div>
-	<button type="button" class="ReturnLogin" onclick="toLoginPage()"></button>
+	<button type="button" class="ReturnLogin" onclick="toLoginPage()">返回登录</button>
 </div>
 
 <div>  
-	<button type="button" class="Click_registration" onclick="register()"></button>
+	<button type="button" class="Click_registration" onclick="register()">注册用户</button>
 </div>
 
 </div> 
