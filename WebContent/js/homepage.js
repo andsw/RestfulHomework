@@ -209,9 +209,10 @@ function filterClothesType(self) {
 //定义一个set类型的全局变量来记录已经穿了的衣服，并保证一件衣服不重复穿！
 var dressedSet = new Set();
 
-function putOnClothes(self) {
+function putOnClothes(self,z) {
 	$cardj = $(self.parentNode);
 	var mark = $cardj.find(".dressed_on_info_table").children().children().eq(0).children().eq(1).text();
+	
 	//判断是否已经穿了！
 	if(dressedSet.has(mark)){
 		alert("已经穿了哦！")
@@ -222,9 +223,10 @@ function putOnClothes(self) {
 	var url = $cardj.find("img.clothes_img_ds").attr("src");
 	var name = $cardj.find(".dressed_on_info_table").children().children().eq(1).children().eq(1).text();
 	var price = $cardj.find(".dressed_on_info_table").children().children().eq(2).children().eq(1).text();
+
 	//在模特身上先穿上
 	$("#model").append("<img src=\""+ url +"\" name=\"" + mark + "\" class=\"clothes_on_model\"" +
-			" style=\"z-index:0;\">");
+			" style=\"z-index:" + z + ";\">");
 	
 	//然后写入已穿列表中
 	$firstDressed = $("#first_dressed_on").clone();
@@ -232,6 +234,12 @@ function putOnClothes(self) {
 	$firstDressed.find(".dressed_on_info_table").children().children().eq(0).children().eq(1).text(mark);
 	$firstDressed.find(".dressed_on_info_table").children().children().eq(1).children().eq(1).text(name);
 	$firstDressed.find(".dressed_on_info_table").children().children().eq(2).children().eq(1).text(price);
+	
+	//模仿点击事件改编zindex的值！
+	for(var i=0; i<z; i++){
+		$firstDressed.find(".zindex_up").click();
+	}
+	
 	$firstDressed.show();
 	$("#wearing").append($firstDressed)
 	
@@ -312,7 +320,7 @@ function fifthTryOnClothes() {
 			//第一张没有内容的卡片设置为隐藏
 			$("#search_clothes_body").children().eq(0).hide();
 			$("#first_dressed_on").hide();//同理
-			request("GET", "http://localhost:8080/suit/clothesoperate/operate",null,true,function(result){
+			request("GET", "http://localhost:8080/suit/clothesoperate/operate",null,false,function(result){
 				$("#all_clothes_type_select").append("<option value=\"all\">所有</option>");
 				$.each(result.data,function(idx, obj){
 					addAllClothes_try(obj);
@@ -328,6 +336,25 @@ function fifthTryOnClothes() {
 				filterClothesType(this)
 			});
 			
+			var dressed = {};
+			dressed.username = getCookie("username");
+			//读取之前传的衣服！
+			request("POST", "http://localhost:8080/suit/dressedoperate/select",dressed,true,function(result){
+				//扫描到相应的衣服卡片，然后模拟添加按钮点击页面！
+				$allClothes = $("#search_clothes_body").children(".clothes_card");
+				$.each(result.data,function(idx, obj){
+					for(var i=1; i<$allClothes.length; i++){
+						var m = $allClothes.eq(i).find(".dressed_on_info_table")
+						.find("tr").eq(0).children().eq(1).text();
+						
+						if(m === obj.mark){
+							putOnClothes($allClothes.eq(i).find("img.dress_up_button")[0]
+									, obj.zindex);
+						}
+					}
+				})
+			},errorMethod);
+			
 			pageSet.add(5);
 		}
 		whichPage = 5;
@@ -337,7 +364,20 @@ function fifthTryOnClothes() {
 }
 
 function sixthExit() {
-	alert("退出")
+	
+	//在这里记录所穿的衣服！
+	$all_dressed = $("#wearing").find(".clothes_dressed_on");
+	for(var i = 1; i<$all_dressed.length; i++) {
+		var dressed = {};
+		dressed.username = getCookie("username");
+		dressed.mark = $all_dressed.eq(i).find(".dressed_on_info_table").find("tr").eq(1).children().eq(1).text();
+		dressed.zindex = $all_dressed.eq(i).find(".dressed_on_info_table").find(".zindex").text();
+		//alert(dressed.username + " " + dressed.mark +" " + dressed.zindex);
+		request("POST","http://localhost:8080/suit/dressedoperate/operate", dressed, true, function(result){
+			
+		}, errorMethod);
+	}
+	
 	var successMethod = function(result){
 		alert(result.description);
 		window.location.href="../login.jsp";

@@ -139,7 +139,7 @@
 					</div>
 					<div id="search_clothes_body">
 						<div class="clothes_card" id="first_clothes_card">
-							<img src="../img/ui/add.png" class="dress_up_button" onclick="putOnClothes(this)"/>
+							<img src="../img/ui/add.png" class="dress_up_button" onclick="putOnClothes(this,0)"/>
 							<img src="../img/data/suits/mShirt01.png" class="clothes_img_ds">
 							<table class="dressed_on_info_table" style="margin-left:10px;margin-top:5px;">
 								<tr><td>编号：</td><td></td></tr>

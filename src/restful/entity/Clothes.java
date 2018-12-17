@@ -10,7 +10,7 @@ import javax.persistence.Table;
 @Table(name = "tbl_clothes")
 @NamedQueries({
     @NamedQuery(name = "Clothes.findAll", query = "SELECT clothes FROM Clothes clothes"),
-    @NamedQuery(name = "Clothes.listByName", query = "SELECT clothes FROM Clothes clothes where Clothes.name like :name")
+    @NamedQuery(name = "Clothes.listByMark", query = "SELECT clothes FROM Clothes clothes where Clothes.mark like :mark")
 })
 public class Clothes extends IdEntity{
 	private String mark;

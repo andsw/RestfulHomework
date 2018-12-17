@@ -167,6 +167,8 @@
 	overflow: hidden;
 	display: inline-block;
 	position: relative;
+	border-radius: 8px;
+	box-shadow: 1px 1px 13px 2px #000;
 }
 
 #forth #forthBody .list_add_form:hover .save_change_button {
