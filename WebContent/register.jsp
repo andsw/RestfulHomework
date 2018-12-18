@@ -76,12 +76,12 @@ window.setInterval(index, 3000); //让index 多久循
 		
 <div class="PassWord">密  码：</div>
 <div class="InputBox3"> 
-	<input  type="text" id="password" value=""/>
+	<input  type="password" id="password" value=""/>
 </div> 
 	
 <div class="Password_confirmation">密码确认：</div>
 <div class="InputBox4"> 
-	<input  type="text" id="password_confirming" value="">
+	<input  type="password" id="password_confirming" value="">
 </div> 
 	
 <div class="Sex">性  别：</div> 

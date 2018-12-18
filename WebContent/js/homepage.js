@@ -16,11 +16,11 @@ $(document).ready(function () {
 	$("#four").hide();
 	$("#five").hide();
 	
-	//firstChangeInfo()
+	firstChangeInfo()
 	//secondListUsers();
 	//thirdClothesType();
 	//forthClothes()
-	fifthTryOnClothes();
+	//fifthTryOnClothes();
 });
 
 function firstChangeInfo() {
@@ -85,7 +85,10 @@ function firstChangeInfo() {
 }
 
 function secondListUsers() {
-
+	if(getCookie("isAdmin") === 'false'){
+		alert("没有权限");
+		return;
+	}
 	if(whichPage!=2) {
 		
 		empty();
@@ -106,6 +109,10 @@ function secondListUsers() {
 }
 
 function thirdClothesType() {
+	if(getCookie("isAdmin") === 'false'){
+		alert("没有权限");
+		return;
+	}
 	if(whichPage!=3) {
 		
 		empty();
@@ -132,6 +139,10 @@ function thirdClothesType() {
 }
 
 function forthClothes() {
+	if(getCookie("isAdmin") === 'false'){
+		alert("没有权限");
+		return;
+	}
 	if(!pageSet.has(4))
 	//因为每次都要动态地更新select中的选项，所以要先加载js文件
 		$('head').append('<script src="../js/infoPage/pageJs4.js"><\/script>');
